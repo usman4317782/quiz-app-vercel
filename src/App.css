@@ -185,6 +185,7 @@
 .quiz-card {
     max-width: 800px;
     margin: 0 auto;
+    position: relative;
 }
 
 .progress-container {
@@ -216,6 +217,7 @@
 
 .question-container {
     margin-bottom: 30px;
+    transition: all 0.3s ease;
 }
 
 .question-number {
@@ -527,6 +529,104 @@
     text-align: right;
 }
 
+/* Interactive Answer Required Styles */
+.answer-required-message {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #f59e0b 0%, #ef4444 100%);
+    color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    box-shadow: 0 10px 25px rgba(239, 68, 68, 0.3);
+    z-index: 10000;
+    animation: slideInDown 0.4s ease-out, shakeMessage 0.5s ease-in-out 0.4s;
+}
+
+@keyframes slideInDown {
+    from {
+        opacity: 0;
+        transform: translateX(-50%) translateY(-100px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(-50%) translateY(0);
+    }
+}
+
+@keyframes shakeMessage {
+
+    0%,
+    100% {
+        transform: translateX(-50%) translateY(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-50%) translateY(0) rotate(-2deg);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(-50%) translateY(0) rotate(2deg);
+    }
+}
+
+.shake-animation {
+    animation: shakeOptions 0.5s ease-in-out;
+}
+
+@keyframes shakeOptions {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    10%,
+    30%,
+    50%,
+    70%,
+    90% {
+        transform: translateX(-10px);
+    }
+
+    20%,
+    40%,
+    60%,
+    80% {
+        transform: translateX(10px);
+    }
+}
+
+.highlight-required {
+    animation: highlightPulse 1s ease-in-out 2;
+}
+
+@keyframes highlightPulse {
+
+    0%,
+    100% {
+        background: transparent;
+    }
+
+    50% {
+        background: rgba(239, 68, 68, 0.1);
+        border-radius: 12px;
+        padding: 10px;
+        margin: -10px;
+    }
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .card {
@@ -581,6 +681,11 @@
     .answer-value {
         text-align: left;
     }
+
+    .answer-required-message {
+        font-size: 1rem;
+        padding: 12px 25px;
+    }
 }
 
 @media (max-width: 480px) {
@@ -611,5 +716,10 @@
 
     .percentage-text {
         font-size: 2.5rem;
+    }
+
+    .answer-required-message {
+        font-size: 0.9rem;
+        padding: 10px 20px;
     }
 }

@@ -38,7 +38,29 @@ const Quiz = ({ questions, onComplete }) => {
     const handleNext = () => {
         // Check if current question is answered
         if (!answers[currentQuestion.id]) {
-            alert('Please select an answer before proceeding to the next question.');
+            // Add shake animation to options container
+            const optionsContainer = document.querySelector('.options-container');
+            const questionContainer = document.querySelector('.question-container');
+
+            // Add shake class
+            optionsContainer?.classList.add('shake-animation');
+            questionContainer?.classList.add('highlight-required');
+
+            // Show interactive message
+            const message = document.createElement('div');
+            message.className = 'answer-required-message';
+            message.innerHTML = '⚠️ Please select an answer to continue';
+
+            const quizCard = document.querySelector('.quiz-card');
+            quizCard?.appendChild(message);
+
+            // Remove after 3 seconds
+            setTimeout(() => {
+                optionsContainer?.classList.remove('shake-animation');
+                questionContainer?.classList.remove('highlight-required');
+                message.remove();
+            }, 3000);
+
             return;
         }
 
