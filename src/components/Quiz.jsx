@@ -37,21 +37,6 @@ const Quiz = ({ questions, onComplete }) => {
         saveAnswer(currentQuestion.id, option);
     };
 
-    const goToNext = useCallback(() => {
-        if (currentIndex < questions.length - 1) {
-            setCurrentIndex(prev => prev + 1);
-        } else {
-            // If it's the last question, we need to handle submission differently
-            // But for now, let's just let the user click submit manually or auto-submit?
-            // The user said "once submitted just move to next". 
-            // If time runs out on last question, maybe just stop or auto-submit?
-            // Let's auto-submit if time runs out on last question.
-            onComplete(answers); // This might be risky if answers is stale, but answers is a ref dependency?
-            // Actually, onComplete needs the latest answers. 
-            // Let's just handle next question for now.
-        }
-    }, [currentIndex, questions.length, answers, onComplete]);
-
     // Timer logic
     useEffect(() => {
         if (timeLeft === 0) {
@@ -59,10 +44,7 @@ const Quiz = ({ questions, onComplete }) => {
             if (currentIndex < questions.length - 1) {
                 setCurrentIndex(prev => prev + 1);
             } else {
-                // Last question time up - auto submit?
-                // Let's just do nothing or maybe alert? 
-                // "maximum allow 50 seconds to attemp each quiz"
-                // Let's auto-submit to be safe/strict.
+                // Last question time up - auto submit
                 onComplete(answers);
             }
             return;
@@ -130,7 +112,7 @@ const Quiz = ({ questions, onComplete }) => {
     const progress = ((currentIndex + 1) / questions.length) * 100;
     const isLastQuestion = currentIndex === questions.length - 1;
 
-    // Timer color warning
+    // Timer color based on time remaining
     const getTimerColor = () => {
         if (timeLeft > 20) return '#10b981'; // Green
         if (timeLeft > 10) return '#f59e0b'; // Orange
@@ -140,9 +122,9 @@ const Quiz = ({ questions, onComplete }) => {
     return (
         <div className="screen-container">
             <div className="card quiz-card">
-                {/* Header with Progress and Timer */}
-                <div className="quiz-header">
-                    <div className="progress-container" style={{ flex: 1, marginBottom: 0 }}>
+                {/* Header with Progress and Digital Clock Timer */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px' }}>
+                    <div className="progress-container" style={{ flex: 1 }}>
                         <div className="progress-bar">
                             <div
                                 className="progress-fill"
@@ -154,22 +136,44 @@ const Quiz = ({ questions, onComplete }) => {
                         </div>
                     </div>
 
-                    <div className="timer-container" style={{
-                        marginLeft: '20px',
+                    {/* Attractive Digital Clock Timer */}
+                    <div style={{
                         display: 'flex',
+                        flexDirection: 'column',
                         alignItems: 'center',
-                        fontWeight: 'bold',
-                        color: getTimerColor(),
-                        fontSize: '1.2rem',
-                        border: `2px solid ${getTimerColor()}`,
-                        padding: '5px 15px',
-                        borderRadius: '20px'
+                        gap: '4px'
                     }}>
-                        ⏱️ {timeLeft}s
+                        <div style={{
+                            background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+                            padding: '8px 18px',
+                            borderRadius: '12px',
+                            boxShadow: '0 4px 15px rgba(0, 0, 0, 0.2), inset 0 -2px 5px rgba(0, 0, 0, 0.3)',
+                            border: '2px solid #475569',
+                            minWidth: '90px',
+                            textAlign: 'center'
+                        }}>
+                            <div style={{
+                                fontFamily: "'Courier New', 'Consolas', monospace",
+                                fontSize: '1.8rem',
+                                fontWeight: 'bold',
+                                color: getTimerColor(),
+                                textShadow: `0 0 10px ${getTimerColor()}, 0 0 20px ${getTimerColor()}`,
+                                letterSpacing: '4px'
+                            }}>
+                                {String(timeLeft).padStart(2, '0')}
+                            </div>
+                        </div>
+                        <div style={{
+                            fontSize: '0.65rem',
+                            color: '#64748b',
+                            fontWeight: '600',
+                            textTransform: 'uppercase',
+                            letterSpacing: '1px'
+                        }}>
+                            Seconds
+                        </div>
                     </div>
                 </div>
-
-                <hr style={{ margin: '20px 0', border: 'none', borderTop: '1px solid #e5e7eb' }} />
 
                 {/* Question */}
                 <div className="question-container">
@@ -191,7 +195,7 @@ const Quiz = ({ questions, onComplete }) => {
                     ))}
                 </div>
 
-                {/* Navigation */}
+                {/* Navigation - No Previous button, forward only */}
                 <div className="navigation-container" style={{ justifyContent: 'flex-end' }}>
                     <div className="answered-count" style={{ marginRight: 'auto' }}>
                         Answered: {Object.keys(answers).length} / {questions.length}
