@@ -90,6 +90,27 @@ const StartScreen = ({ onStart }) => {
                 <h1 className="title">Secure Quiz Application</h1>
                 <p className="subtitle">Test Your Knowledge</p>
 
+                <div className="instructions" style={{ marginTop: '30px' }}>
+                    <h3>Instructions:</h3>
+                    <ul>
+                        <li>This quiz contains <strong>50 multiple-choice questions</strong></li>
+                        <li>Each question has <strong>50 seconds</strong> time limit</li>
+                        <li>You need <strong>≥60% to pass</strong></li>
+                        <li>No going back to previous questions</li>
+                    </ul>
+
+                    <div className="security-notice">
+                        {/* <h4>🔒 Security Features Active:</h4>
+                        <ul>
+                            <li>Screenshots disabled</li>
+                            <li>Right-click disabled</li>
+                            <li>Tab switching limited (3 max)</li>
+                        </ul> */}
+                        <p className="warning-text">
+                            ⚠️ Switching tabs more than 3 times will reset your quiz!
+                        </p>
+                    </div>
+                </div>
                 {/* Student Information Form */}
                 <form onSubmit={handleSubmit} className="student-form">
                     <h3 style={{ marginBottom: '20px', color: 'var(--text-primary)' }}>Student Information</h3>
@@ -162,27 +183,7 @@ const StartScreen = ({ onStart }) => {
                     </button>
                 </form>
 
-                <div className="instructions" style={{ marginTop: '30px' }}>
-                    <h3>Instructions:</h3>
-                    <ul>
-                        <li>This quiz contains <strong>50 multiple-choice questions</strong></li>
-                        <li>Each question has <strong>50 seconds</strong> time limit</li>
-                        <li>You need <strong>≥60% to pass</strong></li>
-                        <li>No going back to previous questions</li>
-                    </ul>
 
-                    <div className="security-notice">
-                        {/* <h4>🔒 Security Features Active:</h4>
-                        <ul>
-                            <li>Screenshots disabled</li>
-                            <li>Right-click disabled</li>
-                            <li>Tab switching limited (3 max)</li>
-                        </ul> */}
-                        <p className="warning-text">
-                            ⚠️ Switching tabs more than 3 times will reset your quiz!
-                        </p>
-                    </div>
-                </div>
             </div>
         </div>
     );
