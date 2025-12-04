@@ -172,12 +172,12 @@ const StartScreen = ({ onStart }) => {
                     </ul>
 
                     <div className="security-notice">
-                        <h4>🔒 Security Features Active:</h4>
+                        {/* <h4>🔒 Security Features Active:</h4>
                         <ul>
                             <li>Screenshots disabled</li>
                             <li>Right-click disabled</li>
                             <li>Tab switching limited (3 max)</li>
-                        </ul>
+                        </ul> */}
                         <p className="warning-text">
                             ⚠️ Switching tabs more than 3 times will reset your quiz!
                         </p>
