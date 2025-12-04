@@ -1,14 +1,61 @@
 import { getPassStatus } from '../utils/helpers';
 import '../App.css';
+import '../StudentStyles.css';
 
 const Result = ({ result, onReviewWrong, onRestart }) => {
     const passStatus = getPassStatus(result.percentage);
     const isPassed = passStatus === 'PASS';
 
+    // Get student info from localStorage
+    const studentInfo = JSON.parse(localStorage.getItem('studentInfo') || '{}');
+
+    const handlePrint = () => {
+        window.print();
+    };
+
     return (
         <div className="screen-container">
             <div className="card result-card">
-                <div className={`result-icon ${isPassed ? 'pass' : 'fail'}`}>
+                {/* Print Header - Only visible when printing */}
+                <div className="print-only" style={{ textAlign: 'center', marginBottom: '30px' }}>
+                    <h1 style={{ color: 'var(--primary-color)', marginBottom: '10px' }}>Quiz Result Certificate</h1>
+                    <p style={{ color: 'var(--text-secondary)' }}>Secure Quiz Application</p>
+                </div>
+
+                {/* Student Information Card */}
+                <div className="student-info-card">
+                    <h3 style={{ marginBottom: '15px', color: 'var(--primary-color)' }}>Student Information</h3>
+                    <div className="student-info-grid">
+                        <div className="info-item">
+                            <span className="info-label">Name:</span>
+                            <span className="info-value">{studentInfo.fullName || 'N/A'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Roll Number:</span>
+                            <span className="info-value">{studentInfo.rollNumber || 'N/A'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Discipline:</span>
+                            <span className="info-value">{studentInfo.discipline || 'N/A'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Subject:</span>
+                            <span className="info-value">{studentInfo.subject || 'N/A'}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Date:</span>
+                            <span className="info-value">{new Date().toLocaleDateString()}</span>
+                        </div>
+                        <div className="info-item">
+                            <span className="info-label">Time:</span>
+                            <span className="info-value">{new Date().toLocaleTimeString()}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <hr style={{ margin: '30px 0', border: 'none', borderTop: '2px solid var(--border-color)' }} />
+
+                <div className={`result-icon ${isPassed ? 'pass' : 'fail'} no-print`}>
                     {isPassed ? '🎉' : '📚'}
                 </div>
 
@@ -80,7 +127,10 @@ const Result = ({ result, onReviewWrong, onRestart }) => {
                     )}
                 </div>
 
-                <div className="button-group">
+                <div className="button-group no-print">
+                    <button className="btn btn-secondary" onClick={handlePrint}>
+                        🖨️ Print Result
+                    </button>
                     {result.wrongQuestions.length > 0 && (
                         <button className="btn btn-secondary" onClick={onReviewWrong}>
                             Review Wrong Answers
@@ -89,6 +139,12 @@ const Result = ({ result, onReviewWrong, onRestart }) => {
                     <button className="btn btn-primary" onClick={onRestart}>
                         Restart Quiz
                     </button>
+                </div>
+
+                {/* Print Footer */}
+                <div className="print-only" style={{ marginTop: '40px', textAlign: 'center', fontSize: '0.9rem', color: 'var(--text-secondary)' }}>
+                    <p>This is a computer-generated result. No signature required.</p>
+                    <p>© {new Date().getFullYear()} Secure Quiz Application</p>
                 </div>
             </div>
         </div>

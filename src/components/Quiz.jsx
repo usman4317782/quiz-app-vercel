@@ -2,6 +2,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { saveAnswer, getAnswers, saveProgress } from '../utils/storage';
 import { shuffleArray } from '../utils/helpers';
 import '../App.css';
+import '../StudentStyles.css';
 
 const Quiz = ({ questions, onComplete }) => {
     const [currentIndex, setCurrentIndex] = useState(0);
