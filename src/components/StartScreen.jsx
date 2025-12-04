@@ -21,14 +21,14 @@ const StartScreen = ({ onStart }) => {
                 '1. This quiz contains 50 multiple-choice questions\n' +
                 '2. You need 60% or higher to pass\n' +
                 '3. Each question has 50 seconds time limit\n' +
-                '4. SECURITY FEATURES ENABLED:\n' +
-                '   • Screenshots are disabled\n' +
-                '   • Right-click is disabled\n' +
-                '   • Copy/paste is disabled\n' +
-                '   • Tab switching is limited to 3 times\n' +
-                '   • Developer tools are blocked\n\n' +
-                '5. If you switch tabs 3 times, your quiz will reset automatically\n' +
-                '6. Stay focused and complete the quiz in one session\n\n' +
+                // '4. SECURITY FEATURES ENABLED:\n' +
+                // '   • Screenshots are disabled\n' +
+                // '   • Right-click is disabled\n' +
+                // '   • Copy/paste is disabled\n' +
+                // '   • Tab switching is limited to 3 times\n' +
+                // '   • Developer tools are blocked\n\n' +
+                // '5. If you switch tabs 3 times, your quiz will reset automatically\n' +
+                '4. Stay focused and complete the quiz in one session\n\n' +
                 'Good luck!'
             );
             sessionStorage.setItem('seen_instructions', 'true');
