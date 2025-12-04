@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { saveAnswer, getAnswers, saveProgress } from '../utils/storage';
+import { saveAnswer, getAnswers, saveProgress, getViolations } from '../utils/storage';
 import { shuffleArray } from '../utils/helpers';
+import { getDeviceCapabilities } from '../utils/deviceDetection';
 import '../App.css';
 import '../StudentStyles.css';
 
@@ -9,11 +10,17 @@ const Quiz = ({ questions, onComplete }) => {
     const [answers, setAnswers] = useState({});
     const [shuffledOptions, setShuffledOptions] = useState({});
     const [timeLeft, setTimeLeft] = useState(50);
+    const [violations, setViolations] = useState(0);
+    const [deviceInfo, setDeviceInfo] = useState(null);
 
     // Load saved answers on mount
     useEffect(() => {
         const savedAnswers = getAnswers();
         setAnswers(savedAnswers);
+
+        // Get device capabilities for security display
+        const capabilities = getDeviceCapabilities();
+        setDeviceInfo(capabilities);
 
         // Shuffle options for all questions
         const optionsMap = {};
@@ -21,6 +28,14 @@ const Quiz = ({ questions, onComplete }) => {
             optionsMap[q.id] = shuffleArray(q.options);
         });
         setShuffledOptions(optionsMap);
+
+        // Monitor violations periodically
+        const violationInterval = setInterval(() => {
+            const currentViolations = getViolations();
+            setViolations(currentViolations);
+        }, 1000);
+
+        return () => clearInterval(violationInterval);
     }, [questions]);
 
     // Save progress whenever current index changes
@@ -122,6 +137,85 @@ const Quiz = ({ questions, onComplete }) => {
 
     return (
         <div className="screen-container">
+            {/* Security Status Indicator */}
+            <div style={{
+                background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
+                padding: '12px 20px',
+                borderRadius: '12px',
+                marginBottom: '15px',
+                border: '2px solid #475569',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+            }}>
+                <div style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    flexWrap: 'wrap',
+                    gap: '10px'
+                }}>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        <span style={{ fontSize: '1.2rem' }}>🔒</span>
+                        <span style={{
+                            color: '#10b981',
+                            fontWeight: '600',
+                            fontSize: '0.9rem'
+                        }}>
+                            Security Active
+                        </span>
+                    </div>
+
+                    <div style={{
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '15px',
+                        fontSize: '0.75rem',
+                        color: '#94a3b8'
+                    }}>
+                        {deviceInfo && (
+                            <>
+                                <span>📱 {deviceInfo.mobile ? 'Mobile' : deviceInfo.desktop ? 'Desktop' : 'Tablet'}</span>
+                                <span>🌐 {deviceInfo.browser}</span>
+                            </>
+                        )}
+                        <span style={{
+                            color: violations > 0 ? '#ef4444' : '#10b981',
+                            fontWeight: 'bold'
+                        }}>
+                            ⚠️ Violations: {violations}/3
+                        </span>
+                    </div>
+                </div>
+
+                {/* Security Features Active */}
+                <div style={{
+                    marginTop: '8px',
+                    padding: '8px',
+                    background: 'rgba(0, 0, 0, 0.2)',
+                    borderRadius: '6px',
+                    fontSize: '0.7rem',
+                    color: '#cbd5e1',
+                    lineHeight: '1.6'
+                }}>
+                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
+                        <span>✓ Tab Switch Detection</span>
+                        <span>✓ Screenshot Prevention</span>
+                        <span>✓ DevTools Detection</span>
+                        {deviceInfo?.mobile && (
+                            <>
+                                <span>✓ Keyboard Detection</span>
+                                <span>✓ Screen Split Detection</span>
+                            </>
+                        )}
+                        {deviceInfo?.desktop && (
+                            <>
+                                <span>✓ Fullscreen Mode</span>
+                                <span>✓ Keyboard Detection</span>
+                            </>
+                        )}
+                    </div>
+                </div>
+            </div>
+
             <div className="card quiz-card">
                 {/* Header with Progress and Digital Clock Timer */}
                 <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px' }}>

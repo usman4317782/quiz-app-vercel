@@ -1,15 +1,38 @@
 import { incrementViolation, getViolations, resetQuiz } from './storage';
+import { isMobile, isDesktop, getDeviceCapabilities } from './deviceDetection';
+import { initMobileSecurity, getKeyboardViolationCount as getMobileKeyboardViolations } from './mobileDetection';
+import { initDesktopSecurity, getKeyboardViolationCount as getDesktopKeyboardViolations } from './desktopSecurity';
 
 let violationWarningShown = false;
 
 // Initialize all security features
 export const initSecurityFeatures = (onViolationLimit) => {
+    console.log('🔒 Initializing comprehensive security system...');
+
+    // Log device capabilities
+    const capabilities = getDeviceCapabilities();
+    console.log('📱 Device Info:', capabilities);
+
+    // Initialize core security (all platforms)
     preventScreenshot();
     preventRightClick();
     preventTextSelection();
     detectTabSwitch(onViolationLimit);
     detectDevTools();
     preventKeyboardShortcuts();
+    initMouseTracking();
+    initIdleDetection();
+
+    // Initialize platform-specific security
+    if (isMobile()) {
+        console.log('📱 Mobile device detected - activating mobile security');
+        initMobileSecurity(onViolationLimit);
+    } else if (isDesktop()) {
+        console.log('💻 Desktop device detected - activating desktop security');
+        initDesktopSecurity(onViolationLimit);
+    }
+
+    console.log('✅ Security system fully activated');
 };
 
 // Prevent screenshot attempts
@@ -177,6 +200,107 @@ const detectDevTools = () => {
         devtools.open = false;
         console.log(element);
     }, 1000);
+};
+
+// Mouse movement tracking to detect anomalies
+const initMouseTracking = () => {
+    let mouseMovements = [];
+    let lastMouseTime = Date.now();
+    let noMovementWarningShown = false;
+
+    const trackMouse = (e) => {
+        const now = Date.now();
+        mouseMovements.push({
+            x: e.clientX,
+            y: e.clientY,
+            time: now
+        });
+
+        // Keep only last 50 movements
+        if (mouseMovements.length > 50) {
+            mouseMovements.shift();
+        }
+
+        lastMouseTime = now;
+        noMovementWarningShown = false;
+    };
+
+    document.addEventListener('mousemove', trackMouse);
+
+    // Check for suspicious patterns periodically
+    setInterval(() => {
+        const now = Date.now();
+        const timeSinceLastMove = now - lastMouseTime;
+
+        // If no mouse movement for 30 seconds (but user is still active on keyboard)
+        if (timeSinceLastMove > 30000 && !noMovementWarningShown) {
+            // This could indicate automation or someone else taking the quiz
+            noMovementWarningShown = true;
+        }
+
+        // Check for perfectly straight lines (bot behavior)
+        if (mouseMovements.length >= 10) {
+            let straightLineCount = 0;
+            for (let i = 2; i < mouseMovements.length; i++) {
+                const prev = mouseMovements[i - 1];
+                const curr = mouseMovements[i];
+                const prevPrev = mouseMovements[i - 2];
+
+                // Check if points are in a straight line
+                const dx1 = curr.x - prev.x;
+                const dy1 = curr.y - prev.y;
+                const dx2 = prev.x - prevPrev.x;
+                const dy2 = prev.y - prevPrev.y;
+
+                const angle1 = Math.atan2(dy1, dx1);
+                const angle2 = Math.atan2(dy2, dx2);
+
+                if (Math.abs(angle1 - angle2) < 0.01) {
+                    straightLineCount++;
+                }
+            }
+
+            if (straightLineCount > 7) {
+                showWarning('⚠️ Unusual mouse pattern detected!');
+                mouseMovements = [];
+            }
+        }
+    }, 10000);
+};
+
+// Idle detection
+const initIdleDetection = () => {
+    let lastActivity = Date.now();
+    let idleWarningShown = false;
+
+    const resetIdle = () => {
+        lastActivity = Date.now();
+        idleWarningShown = false;
+    };
+
+    // Track various user activities
+    document.addEventListener('mousemove', resetIdle);
+    document.addEventListener('mousedown', resetIdle);
+    document.addEventListener('keypress', resetIdle);
+    document.addEventListener('scroll', resetIdle);
+    document.addEventListener('touchstart', resetIdle);
+
+    // Check for idle time
+    setInterval(() => {
+        const now = Date.now();
+        const idleTime = now - lastActivity;
+
+        // Warn if idle for more than 2 minutes
+        if (idleTime > 120000 && !idleWarningShown) {
+            showWarning('⚠️ Are you still there? Please continue with the quiz.');
+            idleWarningShown = true;
+        }
+
+        // Could implement auto-submit after extended idle time if needed
+        // if (idleTime > 300000) { // 5 minutes
+        //     // Auto-submit quiz
+        // }
+    }, 30000); // Check every 30 seconds
 };
 
 // Show warning overlay
