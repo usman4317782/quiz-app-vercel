@@ -36,6 +36,12 @@ const Quiz = ({ questions, onComplete }) => {
     };
 
     const handleNext = () => {
+        // Check if current question is answered
+        if (!answers[currentQuestion.id]) {
+            alert('Please select an answer before proceeding to the next question.');
+            return;
+        }
+
         if (currentIndex < questions.length - 1) {
             setCurrentIndex(currentIndex + 1);
         }
