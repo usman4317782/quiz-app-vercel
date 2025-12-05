@@ -93,7 +93,7 @@ const StartScreen = ({ onStart }) => {
                 <div className="instructions" style={{ marginTop: '30px' }}>
                     <h3>Instructions:</h3>
                     <ul>
-                        <li>This quiz contains <strong> multiple-choice questions</strong></li>
+                        <li>This quiz contains <strong>multiple-choice questions</strong></li>
                         <li>Each question has <strong>50 seconds</strong> time limit</li>
                         <li>You need <strong>≥60% to pass</strong></li>
                         <li>No going back to previous questions</li>
