@@ -18,7 +18,7 @@ const StartScreen = ({ onStart }) => {
         if (!hasSeenInstructions) {
             alert(
                 '⚠️ IMPORTANT QUIZ INSTRUCTIONS:\n\n' +
-                '1. This quiz contains 50 multiple-choice questions\n' +
+                '1. This quiz contains multiple-choice questions\n' +
                 '2. You need 60% or higher to pass\n' +
                 '3. Each question has 50 seconds time limit\n' +
                 // '4. SECURITY FEATURES ENABLED:\n' +
