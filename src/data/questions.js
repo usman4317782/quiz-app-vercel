@@ -4,304 +4,304 @@
 const questionBank = [
     {
         id: 1,
-        question: "What will be the output of: lst = [1, 2, 3]; print(lst.append(4) or lst)?",
-        options: ["None", "[1, 2, 3, 4]", "[1, 2, 3, 4, None]", "Error"],
-        correctAnswer: "[1, 2, 3, 4]"
+        question: "According to the segmenting principle, how should complex multimedia content be presented?",
+        options: ["All at once for efficiency", "In learner-controlled segments", "Only through text", "With background music"],
+        correctAnswer: "In learner-controlled segments"
     },
     {
         id: 2,
-        question: "What is the result of: {**{'a': 1}, **{'a': 2, 'b': 3}}?",
-        options: ["{'a': 1, 'b': 3}", "{'a': 2, 'b': 3}", "{'a': [1, 2], 'b': 3}", "Error"],
-        correctAnswer: "{'a': 2, 'b': 3}"
+        question: "What is the primary benefit of applying the pre-training principle?",
+        options: ["Reduces file size", "Familiarizes learners with key concepts before main lesson", "Increases animation speed", "Eliminates need for audio"],
+        correctAnswer: "Familiarizes learners with key concepts before main lesson"
     },
     {
         id: 3,
-        question: "What does list(map(lambda x: x**2, filter(lambda x: x % 2, [1,2,3,4,5]))) produce?",
-        options: ["[1, 9, 25]", "[4, 16]", "[1, 4, 9, 16, 25]", "[2, 4]"],
-        correctAnswer: "[1, 9, 25]"
+        question: "The modality principle suggests combining:",
+        options: ["Text with more text", "Graphics with narration rather than on-screen text", "Multiple videos simultaneously", "Audio with audio"],
+        correctAnswer: "Graphics with narration rather than on-screen text"
     },
     {
         id: 4,
-        question: "Given x = [1, 2, 3]; y = x[:]; y[0] = 99. What is x[0]?",
-        options: ["99", "1", "None", "Error"],
-        correctAnswer: "1"
+        question: "Which principle involves using conversational style rather than formal language?",
+        options: ["Modality principle", "Segmenting principle", "Personalization principle", "Pre-training principle"],
+        correctAnswer: "Personalization principle"
     },
     {
         id: 5,
-        question: "What is the output of: print(all([True, 1, 'hello', [1]]))?",
-        options: ["True", "False", "1", "Error"],
-        correctAnswer: "True"
+        question: "The voice principle recommends using:",
+        options: ["Computer-generated voice only", "Human voice rather than machine voice", "Multiple voices simultaneously", "No voice at all"],
+        correctAnswer: "Human voice rather than machine voice"
     },
     {
         id: 6,
-        question: "What does {x: x**2 for x in range(5) if x % 2 == 0} produce?",
-        options: ["{0: 0, 2: 4, 4: 16}", "{1: 1, 3: 9}", "{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}", "Error"],
-        correctAnswer: "{0: 0, 2: 4, 4: 16}"
+        question: "Breaking a 10-minute tutorial into five 2-minute segments applies which principle?",
+        options: ["Voice principle", "Segmenting principle", "Personalization principle", "Modality principle"],
+        correctAnswer: "Segmenting principle"
     },
     {
         id: 7,
-        question: "What is the result of: [(x, y) for x in [1, 2] for y in [3, 4]]?",
-        options: ["[(1, 3), (1, 4), (2, 3), (2, 4)]", "[(1, 2), (3, 4)]", "[(1, 3), (2, 4)]", "Error"],
-        correctAnswer: "[(1, 3), (1, 4), (2, 3), (2, 4)]"
+        question: "Pre-training is most useful when learners:",
+        options: ["Are already experts", "Need to learn component names and characteristics first", "Prefer reading only", "Dislike multimedia"],
+        correctAnswer: "Need to learn component names and characteristics first"
     },
     {
         id: 8,
-        question: "What will be printed: d = {}; d.setdefault('key', []).append(1); print(d)?",
-        options: ["{'key': []}", "{'key': [1]}", "{}", "Error"],
-        correctAnswer: "{'key': [1]}"
+        question: "Which combination violates the modality principle?",
+        options: ["Animation with narration", "Diagram with spoken explanation", "Animation with identical on-screen text", "Video with audio"],
+        correctAnswer: "Animation with identical on-screen text"
     },
     {
         id: 9,
-        question: "What does sorted([3, 1, 4], key=lambda x: -x) return?",
-        options: ["[1, 3, 4]", "[4, 3, 1]", "[-4, -3, -1]", "Error"],
-        correctAnswer: "[4, 3, 1]"
+        question: "Using 'you' and 'your' in instructional content applies:",
+        options: ["The segmenting principle", "The personalization principle", "The modality principle", "The voice principle"],
+        correctAnswer: "The personalization principle"
     },
     {
         id: 10,
-        question: "What is the output of: print(any([False, 0, '', [], None]))?",
-        options: ["True", "False", "None", "Error"],
-        correctAnswer: "False"
+        question: "What does the voice principle specifically address?",
+        options: ["Volume levels", "The quality and type of narration voice", "Number of speakers", "Background noise"],
+        correctAnswer: "The quality and type of narration voice"
     },
     {
         id: 11,
-        question: "What does list(zip(*[(1, 2), (3, 4), (5, 6)])) produce?",
-        options: ["[(1, 2), (3, 4), (5, 6)]", "[(1, 3, 5), (2, 4, 6)]", "[(1, 2, 3, 4, 5, 6)]", "Error"],
-        correctAnswer: "[(1, 3, 5), (2, 4, 6)]"
+        question: "Essential processing refers to:",
+        options: ["Unnecessary decorative elements", "Cognitive processing required to understand the material", "File compression", "Audio editing"],
+        correctAnswer: "Cognitive processing required to understand the material"
     },
     {
         id: 12,
-        question: "What is the result of: s = {1, 2, 3}; s.add(2); len(s)?",
-        options: ["4", "3", "5", "Error"],
-        correctAnswer: "3"
+        question: "Which is an example of applying the segmenting principle?",
+        options: ["Adding background music", "Providing pause buttons between sections", "Using formal language", "Removing all images"],
+        correctAnswer: "Providing pause buttons between sections"
     },
     {
         id: 13,
-        question: "What does ''.join(map(str, [1, 2, 3])) produce?",
-        options: ["'[1, 2, 3]'", "'123'", "'1 2 3'", "Error"],
-        correctAnswer: "'123'"
+        question: "Pre-training should occur:",
+        options: ["After the main lesson", "During the assessment", "Before presenting complex material", "Never in multimedia"],
+        correctAnswer: "Before presenting complex material"
     },
     {
         id: 14,
-        question: "What will be the value of x: x = [1]; x = x + [2]; y = x; x += [3]?",
-        options: ["x = [1, 2, 3], y = [1, 2]", "x = [1, 2, 3], y = [1, 2, 3]", "x = [1, 2], y = [1, 2, 3]", "Error"],
-        correctAnswer: "x = [1, 2, 3], y = [1, 2]"
+        question: "The modality principle helps reduce:",
+        options: ["Processing time", "Visual channel overload", "Audio quality", "Interactivity"],
+        correctAnswer: "Visual channel overload"
     },
     {
         id: 15,
-        question: "What does dict.fromkeys(['a', 'b', 'c'], 0) create?",
-        options: ["{'a': 0, 'b': 0, 'c': 0}", "['a', 'b', 'c']", "{0: 'a', 0: 'b', 0: 'c'}", "Error"],
-        correctAnswer: "{'a': 0, 'b': 0, 'c': 0}"
+        question: "Personalization in multimedia production increases:",
+        options: ["File size only", "Learner engagement and social presence", "Production costs exclusively", "Technical complexity only"],
+        correctAnswer: "Learner engagement and social presence"
     },
     {
         id: 16,
-        question: "What is the output of: print([1, 2, 3].index(2))?",
-        options: ["2", "1", "[2]", "Error"],
-        correctAnswer: "1"
+        question: "A human voice is preferred over machine voice because it:",
+        options: ["Is always louder", "Creates social presence and engagement", "Costs less", "Requires no editing"],
+        correctAnswer: "Creates social presence and engagement"
     },
     {
         id: 17,
-        question: "What does set('aabbcc') produce?",
-        options: ["{'a', 'b', 'c'}", "{'aa', 'bb', 'cc'}", "{'aabbcc'}", "['a', 'b', 'c']"],
-        correctAnswer: "{'a', 'b', 'c'}"
+        question: "Which statement best describes generative processing?",
+        options: ["Creating decorative graphics", "Cognitive effort to make sense of material", "Automatic file generation", "Random content creation"],
+        correctAnswer: "Cognitive effort to make sense of material"
     },
     {
         id: 18,
-        question: "What is the result of: [*range(3), *range(3, 6)]?",
-        options: ["[0, 1, 2, 3, 4, 5]", "[range(3), range(3, 6)]", "Error", "[0, 1, 2, 0, 1, 2]"],
-        correctAnswer: "[0, 1, 2, 3, 4, 5]"
+        question: "Segmenting helps learners by:",
+        options: ["Eliminating all breaks", "Allowing time to mentally process information", "Speeding up playback", "Removing audio"],
+        correctAnswer: "Allowing time to mentally process information"
     },
     {
         id: 19,
-        question: "What does ''.join(reversed('hello')) produce?",
-        options: ["'hello'", "'olleh'", "['o', 'l', 'l', 'e', 'h']", "Error"],
-        correctAnswer: "'olleh'"
+        question: "Pre-training lessons should focus on:",
+        options: ["Complex problem-solving immediately", "Key terms and basic concepts", "Final assessments", "Decorative elements"],
+        correctAnswer: "Key terms and basic concepts"
     },
     {
         id: 20,
-        question: "What will dict(zip(['a', 'b'], [1, 2])) create?",
-        options: ["{'a': 1, 'b': 2}", "[('a', 1), ('b', 2)]", "{'a': [1, 2], 'b': [1, 2]}", "Error"],
-        correctAnswer: "{'a': 1, 'b': 2}"
+        question: "Presenting text on screen while identical narration plays violates:",
+        options: ["The personalization principle", "The voice principle", "The modality principle", "The segmenting principle"],
+        correctAnswer: "The modality principle"
     },
     {
         id: 21,
-        question: "What is the output of: print((lambda x, y=2: x * y)(3))?",
-        options: ["6", "5", "Error", "None"],
-        correctAnswer: "6"
+        question: "Using phrases like 'Let's explore together' exemplifies:",
+        options: ["Formal academic writing", "The personalization principle", "Technical documentation", "The modality principle"],
+        correctAnswer: "The personalization principle"
     },
     {
         id: 22,
-        question: "What does list(itertools.chain([1, 2], [3, 4])) require and produce?",
-        options: ["No import needed, [1, 2, 3, 4]", "import itertools, produces [1, 2, 3, 4]", "import itertools, produces [(1, 2), (3, 4)]", "Error without import"],
-        correctAnswer: "import itertools, produces [1, 2, 3, 4]"
+        question: "The voice principle research shows learners perform better with:",
+        options: ["Robotic monotone voices", "Native-accented human voices", "Multiple overlapping voices", "Silent presentations"],
+        correctAnswer: "Native-accented human voices"
     },
     {
         id: 23,
-        question: "What is the result of: {1: 'a', 2: 'b'}.pop(3, 'default')?",
-        options: ["'default'", "KeyError", "None", "3"],
-        correctAnswer: "'default'"
+        question: "Which technique manages essential processing effectively?",
+        options: ["Adding more information simultaneously", "Chunking content into manageable segments", "Using only text", "Eliminating all multimedia"],
+        correctAnswer: "Chunking content into manageable segments"
     },
     {
         id: 24,
-        question: "What does [x if x > 2 else 0 for x in [1, 2, 3, 4]] produce?",
-        options: ["[0, 0, 3, 4]", "[1, 2, 3, 4]", "[3, 4]", "Error"],
-        correctAnswer: "[0, 0, 3, 4]"
+        question: "Pre-training is part of managing:",
+        options: ["Extraneous processing", "Essential processing", "Budget constraints", "Color schemes"],
+        correctAnswer: "Essential processing"
     },
     {
         id: 25,
-        question: "What is the output of: print(sum([[1, 2], [3, 4]], []))?",
-        options: ["[1, 2, 3, 4]", "10", "[[1, 2], [3, 4]]", "Error"],
-        correctAnswer: "[1, 2, 3, 4]"
+        question: "The modality principle is based on:",
+        options: ["Aesthetic preferences", "Dual-channel processing theory", "File format compatibility", "Internet speed"],
+        correctAnswer: "Dual-channel processing theory"
     },
     {
         id: 26,
-        question: "What does {'a': 1, 'b': 2, 'c': 3}.items() return?",
-        options: ["[('a', 1), ('b', 2), ('c', 3)]", "dict_items view object", "{'a': 1, 'b': 2, 'c': 3}", "(['a', 'b', 'c'], [1, 2, 3])"],
-        correctAnswer: "dict_items view object"
+        question: "Fostering generative processing means:",
+        options: ["Preventing deep thinking", "Encouraging meaningful cognitive engagement", "Using automatic generation tools", "Avoiding interaction"],
+        correctAnswer: "Encouraging meaningful cognitive engagement"
     },
     {
         id: 27,
-        question: "What is the result of: next(iter([1, 2, 3]))?",
-        options: ["[1, 2, 3]", "1", "3", "Error"],
-        correctAnswer: "1"
+        question: "Which is NOT a benefit of the segmenting principle?",
+        options: ["Learner control over pacing", "Reduced cognitive overload", "Time for mental processing", "Faster completion time"],
+        correctAnswer: "Faster completion time"
     },
     {
         id: 28,
-        question: "What does list(filter(None, [0, 1, False, True, '', 'hello'])) produce?",
-        options: ["[1, True, 'hello']", "[0, 1, False, True, '', 'hello']", "[False, True]", "[0, False, '']"],
-        correctAnswer: "[1, True, 'hello']"
+        question: "In pre-training, you should introduce:",
+        options: ["All content simultaneously", "Vocabulary and component relationships", "Only final conclusions", "Unrelated topics"],
+        correctAnswer: "Vocabulary and component relationships"
     },
     {
         id: 29,
-        question: "What is the output of: print({1, 2, 3}.issubset({1, 2, 3, 4}))?",
-        options: ["True", "False", "{1, 2, 3}", "Error"],
-        correctAnswer: "True"
+        question: "Narration is preferred over on-screen text because:",
+        options: ["It's cheaper to produce", "It allows visual channel to process graphics", "It requires no script", "It's easier to update"],
+        correctAnswer: "It allows visual channel to process graphics"
     },
     {
         id: 30,
-        question: "What does collections.Counter('aabbcc').most_common(1) return?",
-        options: ["[('a', 2)]", "['a']", "{'a': 2}", "Error without import"],
-        correctAnswer: "[('a', 2)]"
+        question: "The personalization principle suggests narration should sound:",
+        options: ["Like a formal lecture", "Conversational and friendly", "Authoritative and distant", "Robotic and precise"],
+        correctAnswer: "Conversational and friendly"
     },
     {
         id: 31,
-        question: "What is the result of: list(enumerate(['a', 'b'], start=1))?",
-        options: ["[(0, 'a'), (1, 'b')]", "[(1, 'a'), (2, 'b')]", "[('a', 1), ('b', 2)]", "Error"],
-        correctAnswer: "[(1, 'a'), (2, 'b')]"
+        question: "Research on the voice principle indicates that learners prefer:",
+        options: ["Any accent regardless of comprehension", "Voices they can easily understand", "Multiple voices speaking simultaneously", "Computer-synthesized speech"],
+        correctAnswer: "Voices they can easily understand"
     },
     {
         id: 32,
-        question: "What does functools.reduce(lambda x, y: x + y, [1, 2, 3, 4]) return?",
-        options: ["10", "[1, 2, 3, 4]", "Error without import", "4"],
-        correctAnswer: "10"
+        question: "Which scenario best applies the segmenting principle?",
+        options: ["A 30-minute uninterrupted video lecture", "Short lessons with continue buttons", "Scrolling text without breaks", "Simultaneous multiple animations"],
+        correctAnswer: "Short lessons with continue buttons"
     },
     {
         id: 33,
-        question: "What is the output of: print('test'.center(10, '*'))?",
-        options: ["'***test***'", "'test******'", "'***test***'", "'**test****'"],
-        correctAnswer: "'***test***'"
+        question: "Pre-training helps manage essential processing by:",
+        options: ["Eliminating the need for the main lesson", "Reducing cognitive load during complex instruction", "Replacing all multimedia elements", "Testing prior knowledge only"],
+        correctAnswer: "Reducing cognitive load during complex instruction"
     },
     {
         id: 34,
-        question: "What does list(dict.fromkeys(['a', 'b', 'a', 'c'])) preserve?",
-        options: ["['a', 'b', 'a', 'c']", "['a', 'b', 'c'] in insertion order", "{'a', 'b', 'c'} unordered", "Error"],
-        correctAnswer: "['a', 'b', 'c'] in insertion order"
+        question: "Combining graphics with spoken text rather than printed text is called:",
+        options: ["The redundancy effect", "The modality effect", "The coherence effect", "The signaling effect"],
+        correctAnswer: "The modality effect"
     },
     {
         id: 35,
-        question: "What is the result of: [].append(1) or [1]?",
-        options: ["[1]", "None", "[[1]]", "Error"],
-        correctAnswer: "[1]"
+        question: "Personalization fosters generative processing by:",
+        options: ["Making content more formal", "Creating social partnership with learner", "Reducing content depth", "Eliminating interaction"],
+        correctAnswer: "Creating social partnership with learner"
     },
     {
         id: 36,
-        question: "What does {(1, 2): 'a', (3, 4): 'b'}[(1, 2)] return?",
-        options: ["'a'", "(1, 2)", "['a']", "Error - lists can't be keys"],
-        correctAnswer: "'a'"
+        question: "Using a friendly human voice instead of a computer voice applies:",
+        options: ["Both voice and personalization principles", "Neither principle", "Only the modality principle", "Only the segmenting principle"],
+        correctAnswer: "Both voice and personalization principles"
     },
     {
         id: 37,
-        question: "What is the output of: print(int('FF', 16))?",
-        options: ["255", "FF", "15", "Error"],
-        correctAnswer: "255"
+        question: "The main goal of segmenting is to:",
+        options: ["Make videos shorter", "Prevent cognitive overload from continuous information", "Reduce production time", "Eliminate narration"],
+        correctAnswer: "Prevent cognitive overload from continuous information"
     },
     {
         id: 38,
-        question: "What does {1, 2, 3}.symmetric_difference({2, 3, 4}) produce?",
-        options: ["{1, 4}", "{2, 3}", "{1, 2, 3, 4}", "Error"],
-        correctAnswer: "{1, 4}"
+        question: "A pre-training module should be presented:",
+        options: ["After assessment", "Before the main learning content", "During breaks only", "As optional material"],
+        correctAnswer: "Before the main learning content"
     },
     {
         id: 39,
-        question: "What is the result of: sorted(['10', '2', '30'], key=int)?",
-        options: ["['2', '10', '30']", "['10', '2', '30']", "[2, 10, 30]", "Error"],
-        correctAnswer: "['2', '10', '30']"
+        question: "The modality principle works because it:",
+        options: ["Eliminates all text", "Distributes processing across visual and auditory channels", "Focuses only on audio", "Removes all graphics"],
+        correctAnswer: "Distributes processing across visual and auditory channels"
     },
     {
         id: 40,
-        question: "What does [x for x in range(10) if x % 2 == 0 if x % 3 == 0] produce?",
-        options: ["[0, 6]", "[0, 2, 4, 6, 8]", "[0, 3, 6, 9]", "[6]"],
-        correctAnswer: "[0, 6]"
+        question: "Which phrase demonstrates personalization?",
+        options: ["The student will learn", "One should understand", "You will discover", "It is important to note"],
+        correctAnswer: "You will discover"
     },
     {
         id: 41,
-        question: "What is the output of: print(bin(10)[2:])?",
-        options: ["'1010'", "'0b1010'", "'b1010'", "10"],
-        correctAnswer: "'1010'"
+        question: "The voice principle is violated when:",
+        options: ["Using expressive human narration", "Using high-quality machine-generated voice", "Using multiple human narrators", "Using clear professional voice"],
+        correctAnswer: "Using high-quality machine-generated voice"
     },
     {
         id: 42,
-        question: "What does dict(a=1).update(b=2) return?",
-        options: ["{'a': 1, 'b': 2}", "None", "{'b': 2}", "Error"],
-        correctAnswer: "None"
+        question: "Effective segmenting in a simulation includes:",
+        options: ["No pauses between steps", "User-controlled progression through stages", "Automatic rapid advancement", "Single continuous playback"],
+        correctAnswer: "User-controlled progression through stages"
     },
     {
         id: 43,
-        question: "What is the result of: max([1, 2], [1, 3], [2, 1])?",
-        options: ["[2, 1]", "[1, 3]", "3", "Error"],
-        correctAnswer: "[2, 1]"
+        question: "Pre-training is most effective for:",
+        options: ["Novice learners facing complex material", "Experts needing quick review", "Simple, familiar content", "Entertainment purposes"],
+        correctAnswer: "Novice learners facing complex material"
     },
     {
         id: 44,
-        question: "What does 'abc'.zfill(5) produce?",
-        options: ["'abc00'", "'00abc'", "'0abc0'", "'abc'"],
-        correctAnswer: "'00abc'"
+        question: "According to the modality principle, complex diagrams should be explained:",
+        options: ["Only with on-screen text", "With spoken narration", "Without any explanation", "With printed handouts only"],
+        correctAnswer: "With spoken narration"
     },
     {
         id: 45,
-        question: "What is the output of: print(list(reversed(range(3))))?",
-        options: ["[2, 1, 0]", "[0, 1, 2]", "range(2, -1, -1)", "Error"],
-        correctAnswer: "[2, 1, 0]"
+        question: "Personalization affects learning by:",
+        options: ["Decreasing engagement", "Activating social and motivational processes", "Increasing formal distance", "Removing all context"],
+        correctAnswer: "Activating social and motivational processes"
     },
     {
         id: 46,
-        question: "What does {**{'a': 1}, 'a': 2} create?",
-        options: ["{'a': 1}", "{'a': 2}", "{'a': [1, 2]}", "Error"],
-        correctAnswer: "{'a': 2}"
+        question: "The voice principle suggests that learner performance improves with:",
+        options: ["Text-to-speech synthesis", "Authentic human narration", "No audio at all", "Background music only"],
+        correctAnswer: "Authentic human narration"
     },
     {
         id: 47,
-        question: "What is the result of: list(map(lambda x: x[0], ['ab', 'cd', 'ef']))?",
-        options: ["['a', 'c', 'e']", "['ab', 'cd', 'ef']", "['b', 'd', 'f']", "Error"],
-        correctAnswer: "['a', 'c', 'e']"
+        question: "When should you NOT segment content?",
+        options: ["When content is highly complex", "When material is simple and brief", "When learners are novices", "When teaching procedures"],
+        correctAnswer: "When material is simple and brief"
     },
     {
         id: 48,
-        question: "What does '1,2,3'.split(',') produce?",
-        options: ["['1', '2', '3']", "[1, 2, 3]", "'1 2 3'", "['1,2,3']"],
-        correctAnswer: "['1', '2', '3']"
+        question: "What should pre-training NOT include?",
+        options: ["Key terminology", "Definitions of components", "Complete problem solutions and complex applications", "Basic characteristics"],
+        correctAnswer: "Complete problem solutions and complex applications"
     },
     {
         id: 49,
-        question: "What is the output of: print(pow(2, 3, 5))?",
-        options: ["8", "3", "13", "Error"],
-        correctAnswer: "3"
+        question: "The modality principle primarily aims to:",
+        options: ["Increase entertainment value", "Optimize working memory capacity", "Reduce production costs", "Eliminate printed materials"],
+        correctAnswer: "Optimize working memory capacity"
     },
     {
         id: 50,
-        question: "What does dict(enumerate(['a', 'b', 'c'])) create?",
-        options: ["{0: 'a', 1: 'b', 2: 'c'}", "{'a': 0, 'b': 1, 'c': 2}", "[(0, 'a'), (1, 'b'), (2, 'c')]", "Error"],
-        correctAnswer: "{0: 'a', 1: 'b', 2: 'c'}"
-    },
+        question: "Which combination best fosters generative processing?",
+        options: ["Formal voice with dense text", "Personalized conversational narration with human voice", "Machine voice with technical jargon", "Silent animations with no guidance"],
+        correctAnswer: "Personalized conversational narration with human voice"
+    }
 ];
 
 export default questionBank;
