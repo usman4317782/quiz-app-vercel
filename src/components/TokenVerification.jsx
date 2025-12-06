@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { isQuizStarted, markQuizAsStarted } from '../utils/qrAuth';
+import { isTokenUsed, markTokenAsUsed } from '../utils/qrAuth';
 import '../App.css';
 
 const TokenVerification = () => {
@@ -12,13 +12,6 @@ const TokenVerification = () => {
     useEffect(() => {
         const token = searchParams.get('token');
 
-        // Check if quiz already started
-        if (isQuizStarted()) {
-            setStatus('error');
-            setMessage('Quiz already started. You cannot restart with the same QR code.');
-            return;
-        }
-
         // No token provided
         if (!token) {
             setStatus('error');
@@ -26,10 +19,17 @@ const TokenVerification = () => {
             return;
         }
 
+        // Check if THIS SPECIFIC token has already been used
+        if (isTokenUsed(token)) {
+            setStatus('error');
+            setMessage('This QR code has already been used. Please ask administrator for a new QR code.');
+            return;
+        }
+
         // Verify token format
         if (token.startsWith('QZ-') && token.length > 10) {
-            // Valid token format
-            markQuizAsStarted();
+            // Valid token format - mark THIS token as used
+            markTokenAsUsed(token);
             setStatus('success');
             setMessage('Access granted! Please fill in your information...');
 
@@ -80,8 +80,15 @@ const TokenVerification = () => {
                         <div className="alert alert-error" style={{ marginTop: '20px' }}>
                             {message}
                         </div>
-                        <p style={{ marginTop: '20px', color: '#666' }}>
-                            Please contact your administrator for a valid QR code.
+                        <p style={{ marginTop: '20px', color: '#666', fontSize: '0.95rem' }}>
+                            {message.includes('already been used') ? (
+                                <>
+                                    You cannot use the same QR code twice.<br />
+                                    Ask administrator to generate a <strong>new QR code</strong>.
+                                </>
+                            ) : (
+                                'Please contact your administrator for a valid QR code.'
+                            )}
                         </p>
                     </>
                 )}

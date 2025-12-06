@@ -36,33 +36,48 @@ export const clearActiveToken = () => {
 };
 
 /**
- * Verify if student's token matches admin's active token
- * @param {string} studentToken 
+ * Check if a specific token has already been used
+ * @param {string} token 
  * @returns {boolean}
  */
-export const verifyToken = (studentToken) => {
-    const activeToken = getActiveToken();
-    return studentToken === activeToken;
+export const isTokenUsed = (token) => {
+    const usedToken = localStorage.getItem('used_quiz_token');
+    return usedToken === token;
 };
 
 /**
- * Check if quiz has already been started
+ * Mark a specific token as used
+ * @param {string} token 
+ */
+export const markTokenAsUsed = (token) => {
+    localStorage.setItem('used_quiz_token', token);
+    localStorage.setItem('token_used_at', Date.now().toString());
+};
+
+/**
+ * Check if quiz has been completed (to prevent retaking)
  * @returns {boolean}
  */
+export const isQuizCompleted = () => {
+    return localStorage.getItem('quiz_completed') === 'true';
+};
+
+/**
+ * Mark quiz as completed
+ */
+export const markQuizAsCompleted = () => {
+    localStorage.setItem('quiz_completed', 'true');
+};
+
+// Deprecated - keeping for compatibility
 export const isQuizStarted = () => {
     return localStorage.getItem('quiz_started') === 'true';
 };
 
-/**
- * Mark quiz as started (prevents restart with same QR)
- */
 export const markQuizAsStarted = () => {
     localStorage.setItem('quiz_started', 'true');
 };
 
-/**
- * Reset quiz started flag (for testing/admin)
- */
 export const resetQuizStarted = () => {
     localStorage.removeItem('quiz_started');
 };
