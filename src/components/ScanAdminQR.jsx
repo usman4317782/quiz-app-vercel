@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import QRScanner from './QRScanner';
-import { parseQRData } from '../utils/qrAuth';
-import { saveSessionKey } from '../utils/storage';
+import { verifyStaticAdminQR } from '../utils/qrAuth';
 import '../App.css';
 import '../QRAuth.css';
 
@@ -12,24 +11,17 @@ const ScanAdminQR = () => {
     const [error, setError] = useState(null);
 
     const handleScan = (qrData) => {
-        const parsed = parseQRData(qrData);
+        const isValid = verifyStaticAdminQR(qrData);
 
-        if (!parsed) {
-            setError('Invalid QR code format');
+        if (isValid) {
+            // Valid admin QR - proceed to quiz
+            localStorage.setItem('adminVerified', 'true');
             setShowScanner(false);
-            return;
-        }
-
-        if (parsed.type !== 'admin') {
-            setError('This is not an administrator QR code. Please scan the correct code.');
+            navigate('/quiz');
+        } else {
+            setError('Invalid administrator QR code. Please scan the correct code from your administrator.');
             setShowScanner(false);
-            return;
         }
-
-        // Save session key and proceed
-        saveSessionKey(parsed.sessionKey);
-        setShowScanner(false);
-        navigate('/start');
     };
 
     const handleError = (error) => {
@@ -52,11 +44,11 @@ const ScanAdminQR = () => {
                 )}
 
                 <div className="instructions" style={{ marginTop: '30px' }}>
-                    <h3>Step 1: Scan Administrator's QR Code</h3>
+                    <h3>Scan Administrator's QR Code to Start Quiz</h3>
                     <div className="instruction-steps">
                         <div className="step-item">
                             <span className="step-number">1</span>
-                            <p>Ask the administrator to show their session QR code</p>
+                            <p>Ask the administrator to show their QR code</p>
                         </div>
                         <div className="step-item">
                             <span className="step-number">2</span>
@@ -64,18 +56,17 @@ const ScanAdminQR = () => {
                         </div>
                         <div className="step-item">
                             <span className="step-number">3</span>
-                            <p>Point your camera at the administrator's mobile screen</p>
+                            <p>Point your camera at the administrator's QR code</p>
                         </div>
                         <div className="step-item">
                             <span className="step-number">4</span>
-                            <p>Wait for the QR code to be recognized</p>
+                            <p>Quiz will start automatically after verification</p>
                         </div>
                     </div>
 
                     <div className="security-notice" style={{ marginTop: '20px' }}>
                         <p>🔒 <strong>Security Notice:</strong></p>
-                        <p>This step ensures that only authorized students can access the quiz.
-                            You must scan the administrator's QR code before proceeding.</p>
+                        <p>You must scan the administrator's QR code before you can access the quiz.</p>
                     </div>
                 </div>
 
