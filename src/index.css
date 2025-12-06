@@ -8,12 +8,21 @@
   --primary-color: #4f46e5;
   --primary-dark: #4338ca;
   --secondary-color: #10b981;
+  --accent-color: #8b5cf6;
   --danger-color: #ef4444;
   --warning-color: #f59e0b;
+  --success-color: #10b981;
+  --error-color: #dc2626;
   --text-primary: #1f2937;
   --text-secondary: #6b7280;
   --bg-light: #f9fafb;
   --bg-white: #ffffff;
+  --card-bg: #ffffff;
+  --secondary-bg: #f9fafb;
+  --info-bg: #dbeafe;
+  --success-bg: #d1fae5;
+  --warning-bg: #fef3c7;
+  --error-bg: #fee2e2;
   --border-color: #e5e7eb;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
@@ -50,4 +59,67 @@ body {
 
 ::-moz-selection {
   background: transparent;
+}
+
+/* Utility classes */
+.alert {
+  padding: 15px 20px;
+  border-radius: 8px;
+  margin: 15px 0;
+  border-left: 4px solid;
+}
+
+.alert-error {
+  background: var(--error-bg);
+  border-color: var(--error-color);
+  color: var(--error-color);
+}
+
+.alert-warning {
+  background: var(--warning-bg);
+  border-color: var(--warning-color);
+  color: #92400e;
+}
+
+.alert-info {
+  background: var(--info-bg);
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.info-text {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.btn-danger {
+  background: var(--danger-color);
+  color: white;
+  padding: 12px 30px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: #dc2626;
+  transform: translateY(-2px);
+}
+
+.btn-text {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  padding: 12px 30px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-text:hover {
+  color: var(--primary-color);
+  text-decoration: underline;
 }

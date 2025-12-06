@@ -73,3 +73,117 @@ export const resetQuiz = () => {
         localStorage.removeItem(key);
     });
 };
+
+// ========================================
+// QR Authentication Storage Functions
+// ========================================
+
+/**
+ * Save session key (student side)
+ * @param {string} key - Session key from admin QR
+ */
+export const saveSessionKey = (key) => {
+    localStorage.setItem('qr_sessionKey', key);
+};
+
+/**
+ * Get session key (student side)
+ * @returns {string|null}
+ */
+export const getSessionKey = () => {
+    return localStorage.getItem('qr_sessionKey');
+};
+
+/**
+ * Clear session key
+ */
+export const clearSessionKey = () => {
+    localStorage.removeItem('qr_sessionKey');
+    localStorage.removeItem('qr_verificationData');
+};
+
+/**
+ * Save admin session (admin side - mobile)
+ * @param {string} sessionKey 
+ * @param {number} timestamp 
+ */
+export const saveAdminSession = (sessionKey, timestamp) => {
+    const session = {
+        sessionKey,
+        timestamp,
+        createdAt: new Date(timestamp).toISOString()
+    };
+    localStorage.setItem('admin_session', JSON.stringify(session));
+    localStorage.setItem('admin_verifiedStudents', JSON.stringify([]));
+};
+
+/**
+ * Get admin session
+ * @returns {object|null}
+ */
+export const getAdminSession = () => {
+    const session = localStorage.getItem('admin_session');
+    return session ? JSON.parse(session) : null;
+};
+
+/**
+ * Add verified student to list (admin side)
+ * @param {object} studentInfo 
+ */
+export const addVerifiedStudent = (studentInfo) => {
+    const students = getVerifiedStudents();
+    students.push({
+        ...studentInfo,
+        verifiedAt: new Date().toISOString()
+    });
+    localStorage.setItem('admin_verifiedStudents', JSON.stringify(students));
+};
+
+/**
+ * Get list of verified students
+ * @returns {Array}
+ */
+export const getVerifiedStudents = () => {
+    const students = localStorage.getItem('admin_verifiedStudents');
+    return students ? JSON.parse(students) : [];
+};
+
+/**
+ * Clear admin session and verified students
+ */
+export const clearAdminSession = () => {
+    localStorage.removeItem('admin_session');
+    localStorage.removeItem('admin_verifiedStudents');
+};
+
+/**
+ * Save student verification data (student side)
+ * Used to regenerate QR and validate PIN
+ * @param {string} sessionKey 
+ * @param {object} studentInfo 
+ * @param {number} timestamp 
+ */
+export const saveVerificationData = (sessionKey, studentInfo, timestamp) => {
+    const data = {
+        sessionKey,
+        studentInfo,
+        timestamp
+    };
+    localStorage.setItem('qr_verificationData', JSON.stringify(data));
+};
+
+/**
+ * Get verification data (student side)
+ * @returns {object|null}
+ */
+export const getVerificationData = () => {
+    const data = localStorage.getItem('qr_verificationData');
+    return data ? JSON.parse(data) : null;
+};
+
+/**
+ * Clear verification data
+ */
+export const clearVerificationData = () => {
+    localStorage.removeItem('qr_verificationData');
+};

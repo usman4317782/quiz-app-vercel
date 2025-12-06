@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import StartScreen from './components/StartScreen';
+import { useNavigate } from 'react-router-dom';
 import Quiz from './components/Quiz';
 import Result from './components/Result';
 import Review from './components/Review';
@@ -10,7 +10,8 @@ import { initSecurityFeatures } from './utils/security';
 import './App.css';
 
 function App() {
-    const [screen, setScreen] = useState('start'); // start, quiz, result, review
+    const navigate = useNavigate();
+    const [screen, setScreen] = useState('quiz'); // Only manages quiz flow now
     const [shuffledQuestions, setShuffledQuestions] = useState([]);
     const [result, setResult] = useState(null);
 
@@ -24,18 +25,17 @@ function App() {
         return cleanup;
     }, []);
 
-    // Handle quiz start
-    const handleStart = () => {
-        // Reset any previous quiz data
-        resetQuiz();
-
-        // Shuffle questions
-        const shuffled = shuffleArray(questionBank);
-        setShuffledQuestions(shuffled);
-        saveShuffledQuestions(shuffled);
-
-        setScreen('quiz');
-    };
+    // Load or shuffle questions when component mounts
+    useEffect(() => {
+        const existingQuestions = getShuffledQuestions();
+        if (existingQuestions && existingQuestions.length > 0) {
+            setShuffledQuestions(existingQuestions);
+        } else {
+            const shuffled = shuffleArray(questionBank);
+            setShuffledQuestions(shuffled);
+            saveShuffledQuestions(shuffled);
+        }
+    }, []);
 
     // Handle quiz completion
     const handleComplete = (answers) => {
@@ -59,16 +59,13 @@ function App() {
     // Handle restart quiz
     const handleRestart = () => {
         resetQuiz();
-        setScreen('start');
-        setResult(null);
-        setShuffledQuestions([]);
+        navigate('/');
+        window.location.reload(); // Force full reload to start from beginning
     };
 
     return (
         <div className="app">
-            {screen === 'start' && <StartScreen onStart={handleStart} />}
-
-            {screen === 'quiz' && (
+            {screen === 'quiz' && shuffledQuestions.length > 0 && (
                 <Quiz
                     questions={shuffledQuestions}
                     onComplete={handleComplete}

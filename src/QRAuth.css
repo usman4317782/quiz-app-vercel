@@ -1,0 +1,575 @@
+/* QR Authentication Styles */
+
+/* QR Scanner Modal */
+.qr-scanner-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+    padding: 20px;
+}
+
+.qr-scanner-modal {
+    background: var(--card-bg);
+    border-radius: 16px;
+    max-width: 600px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+}
+
+.qr-scanner-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.qr-scanner-header h2 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--text-primary);
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.8rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: all 0.2s;
+}
+
+.close-btn:hover {
+    background: var(--error-bg);
+    color: var(--error-color);
+}
+
+.qr-scanner-body {
+    padding: 24px;
+}
+
+.scanner-wrapper {
+    background: #000;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+
+.scanner-instructions {
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.scanner-instructions p {
+    margin: 8px 0;
+}
+
+.scanner-hint {
+    font-size: 0.9rem;
+    opacity: 0.8;
+}
+
+.scanner-error,
+.scanner-success {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.error-icon,
+.success-icon {
+    font-size: 4rem;
+    margin-bottom: 20px;
+}
+
+.error-icon {
+    filter: grayscale(1);
+}
+
+.error-help {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.qr-scanner-footer {
+    padding: 20px 24px;
+    border-top: 1px solid var(--border-color);
+    display: flex;
+    justify-content: center;
+}
+
+/* QR Code Display */
+.qr-display-header,
+.pin-entry-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.qr-display-header h2,
+.pin-entry-header h2 {
+    margin-bottom: 8px;
+}
+
+.student-info-summary {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.student-info-summary h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    color: var(--primary-color);
+}
+
+.student-info-summary p {
+    margin: 8px 0;
+    font-size: 0.95rem;
+}
+
+.qr-code-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    background: white;
+    border-radius: 16px;
+    margin: 30px 0;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.qr-instructions {
+    background: var(--info-bg);
+    padding: 20px;
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.qr-instructions h3 {
+    margin-top: 0;
+    margin-bottom: 15px;
+}
+
+.qr-instructions ol {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.qr-instructions li {
+    margin: 10px 0;
+    line-height: 1.6;
+}
+
+/* PIN Entry */
+.pin-input-container {
+    display: flex;
+    justify-content: center;
+    margin: 30px 0;
+}
+
+.pin-input {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    letter-spacing: 20px;
+    padding: 20px 30px;
+    border: 3px solid var(--primary-color);
+    border-radius: 16px;
+    background: var(--card-bg);
+    color: var(--text-primary);
+    width: 300px;
+    max-width: 100%;
+}
+
+.pin-input:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 4px rgba(139, 92, 246, 0.1);
+}
+
+.pin-input:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.pin-instructions {
+    text-align: center;
+    padding: 20px;
+    background: var(--secondary-bg);
+    border-radius: 12px;
+}
+
+/* Admin Panel Styles */
+.admin-container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    min-height: 100vh;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 30px 20px;
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    border-radius: 16px;
+    color: white;
+}
+
+.admin-header h1 {
+    margin: 0 0 10px 0;
+    font-size: 2rem;
+}
+
+.admin-welcome {
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.welcome-icon {
+    font-size: 5rem;
+    margin-bottom: 20px;
+}
+
+.admin-instructions {
+    text-align: left;
+    background: var(--secondary-bg);
+    padding: 25px;
+    border-radius: 12px;
+    margin-top: 30px;
+}
+
+.admin-instructions h3 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.admin-instructions ol {
+    line-height: 1.8;
+    padding-left: 20px;
+}
+
+.session-info-card {
+    background: var(--card-bg);
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+    border: 2px solid var(--primary-color);
+}
+
+.session-info-card h3 {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.session-details {
+    font-size: 0.95rem;
+}
+
+.session-details p {
+    margin: 10px 0;
+}
+
+.session-id {
+    font-family: monospace;
+    background: var(--secondary-bg);
+    padding: 8px 12px;
+    border-radius: 6px;
+    display: inline-block;
+    margin-top: 5px;
+    font-size: 0.85rem;
+}
+
+.admin-qr-section {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.admin-qr-section h3 {
+    margin-bottom: 10px;
+}
+
+.qr-instruction {
+    color: var(--text-secondary);
+    margin-bottom: 20px;
+}
+
+.admin-qr-display {
+    background: white;
+    padding: 30px;
+    border-radius: 16px;
+    display: inline-block;
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15);
+}
+
+.qr-hint {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.admin-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+.verified-students-section {
+    margin-top: 40px;
+}
+
+.verified-students-section h3 {
+    margin-bottom: 20px;
+}
+
+.students-list {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.student-card {
+    background: var(--card-bg);
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid var(--border-color);
+    transition: all 0.2s;
+}
+
+.student-card:hover {
+    border-color: var(--primary-color);
+    transform: translateX(5px);
+}
+
+.student-info {
+    flex: 1;
+}
+
+.student-name {
+    font-weight: 600;
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+    color: var(--text-primary);
+}
+
+.student-details {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin: 5px 0;
+}
+
+.verified-time {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    opacity: 0.8;
+    margin: 5px 0 0 0;
+}
+
+.verified-badge {
+    font-size: 2rem;
+    color: var(--success-color);
+}
+
+/* Admin Scanner Result */
+.admin-scanner-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.admin-scanner-result {
+    width: 100%;
+    max-width: 500px;
+}
+
+.result-modal {
+    background: var(--card-bg);
+    border-radius: 16px;
+    padding: 40px 30px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.verification-success,
+.verification-error {
+    text-align: center;
+}
+
+.success-icon-large {
+    font-size: 6rem;
+    color: var(--success-color);
+    margin-bottom: 20px;
+}
+
+.error-icon-large {
+    font-size: 6rem;
+    color: var(--error-color);
+    margin-bottom: 20px;
+}
+
+.student-verified-info {
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+    text-align: left;
+}
+
+.student-verified-info p {
+    margin: 10px 0;
+}
+
+.pin-display {
+    background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+    padding: 30px;
+    border-radius: 16px;
+    margin: 30px 0;
+    color: white;
+}
+
+.pin-display h3 {
+    margin: 0 0 15px 0;
+    font-size: 1.2rem;
+}
+
+.pin-number {
+    font-size: 4rem;
+    font-weight: bold;
+    letter-spacing: 15px;
+    text-align: center;
+    margin: 20px 0;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.pin-instruction {
+    font-size: 0.95rem;
+    margin: 15px 0 0 0;
+    opacity: 0.95;
+}
+
+.error-message {
+    background: var(--error-bg);
+    color: var(--error-color);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 20px 0;
+    border-left: 4px solid var(--error-color);
+}
+
+.error-help {
+    text-align: left;
+    background: var(--secondary-bg);
+    padding: 20px;
+    border-radius: 12px;
+    margin: 25px 0;
+}
+
+.error-help h4 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.error-help ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.error-help li {
+    margin: 12px 0;
+    line-height: 1.6;
+}
+
+/* Instruction steps */
+.instruction-steps {
+    margin: 25px 0;
+}
+
+.step-item {
+    display: flex;
+    align-items: flex-start;
+    margin: 20px 0;
+    padding: 15px;
+    background: var(--secondary-bg);
+    border-radius: 12px;
+    transition: all 0.2s;
+}
+
+.step-item:hover {
+    transform: translateX(5px);
+    background: var(--primary-color);
+    color: white;
+}
+
+.step-number {
+    background: var(--primary-color);
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    flex-shrink: 0;
+    margin-right: 15px;
+}
+
+.step-item:hover .step-number {
+    background: white;
+    color: var(--primary-color);
+}
+
+.step-item p {
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+    .pin-input {
+        font-size: 2rem;
+        letter-spacing: 10px;
+        width: 100%;
+    }
+    
+    .pin-number {
+        font-size: 3rem;
+        letter-spacing: 10px;
+    }
+    
+    .admin-qr-display {
+        padding: 20px;
+    }
+    
+    .qr-code-display {
+        padding: 20px;
+    }
+}
