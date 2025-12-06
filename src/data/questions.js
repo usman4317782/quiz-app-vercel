@@ -620,7 +620,7 @@ const questionBank = [
         question: "What does the 'static' keyword mean in C#?",
         options: ["The variable never changes", "The member belongs to the class itself, not instances", "The variable is slow", "The variable is private"],
         correctAnswer: "The member belongs to the class itself, not instances"
-    }
+    },
 ];
 
 export default questionBank;
