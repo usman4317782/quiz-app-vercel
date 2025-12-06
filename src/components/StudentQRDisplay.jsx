@@ -1,40 +1,41 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { QRCodeSVG } from 'qrcode.react';
-import { generateVerificationCode, generateStudentQRData } from '../utils/qrAuth';
+import { STUDENT_STATIC_QR } from '../utils/qrAuth';
 import '../App.css';
 import '../QRAuth.css';
 
 const StudentQRDisplay = () => {
     const navigate = useNavigate();
-    const [verificationCode, setVerificationCode] = useState('');
-    const [qrData, setQrData] = useState('');
     const [enteredCode, setEnteredCode] = useState('');
     const [error, setError] = useState('');
     const [showCodeInput, setShowCodeInput] = useState(false);
+    const [sessionCode, setSessionCode] = useState('');
 
     useEffect(() => {
-        // Generate unique verification code for this session
-        const code = generateVerificationCode();
-        setVerificationCode(code);
+        // Check if admin has set a verification code in localStorage
+        const checkForCode = setInterval(() => {
+            const code = localStorage.getItem('adminVerificationCode');
+            if (code) {
+                setSessionCode(code);
+            }
+        }, 1000);
 
-        // Store in localStorage for verification
-        localStorage.setItem('verificationCode', code);
-
-        // Generate QR data
-        const qrString = generateStudentQRData(code);
-        setQrData(qrString);
+        return () => clearInterval(checkForCode);
     }, []);
 
     const handleCodeSubmit = (e) => {
         e.preventDefault();
 
-        if (enteredCode === verificationCode) {
+        const storedCode = localStorage.getItem('adminVerificationCode');
+
+        if (enteredCode === storedCode) {
             // Correct code - start quiz
+            localStorage.removeItem('adminVerificationCode');
             localStorage.setItem('adminVerified', 'true');
             navigate('/quiz');
         } else {
-            setError('Incorrect verification code. Please ask administrator to scan QR code again.');
+            setError('Incorrect verification code. Please ask administrator for the correct code.');
             setEnteredCode('');
         }
     };
@@ -43,34 +44,33 @@ const StudentQRDisplay = () => {
         <div className="screen-container">
             <div className="card">
                 <div className="qr-display-header">
-                    <h2>📱 Administrator Verification Required</h2>
-                    <p className="subtitle">Show this QR code to start quiz</p>
+                    <h2>📱 Show QR Code to Administrator</h2>
+                    <p className="subtitle">Waiting for administrator verification</p>
                 </div>
 
-                {qrData && (
-                    <div className="qr-code-display">
-                        <QRCodeSVG
-                            value={qrData}
-                            size={320}
-                            level="H"
-                            includeMargin={true}
-                        />
-                    </div>
-                )}
+                <div className="qr-code-display">
+                    <QRCodeSVG
+                        value={STUDENT_STATIC_QR}
+                        size={320}
+                        level="H"
+                        includeMargin={true}
+                    />
+                </div>
 
                 <div className="qr-instructions">
                     <h3>📋 Verification Steps:</h3>
                     <ol>
                         <li><strong>Show</strong> this QR code to the administrator</li>
                         <li><strong>Wait</strong> for administrator to scan with mobile device</li>
-                        <li>Administrator will give you a <strong>4-digit code</strong></li>
-                        <li><strong>Enter</strong> the code below to start quiz</li>
+                        <li>Administrator will verify and give you a <strong>4-digit code</strong></li>
+                        <li><strong>Click button below</strong> and enter the code to start quiz</li>
                     </ol>
                 </div>
 
                 <div className="security-notice" style={{ marginTop: '20px', marginBottom: '20px' }}>
                     <p className="warning-text">
-                        🔒 Quiz cannot start without administrator's verification code
+                        🔒 All students show the same QR code<br />
+                        Quiz starts only after administrator gives you verification code
                     </p>
                 </div>
 

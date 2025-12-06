@@ -187,6 +187,16 @@
         .hidden {
             display: none !important;
         }
+
+        .info-box {
+            background: #dbeafe;
+            border: 2px solid #3b82f6;
+            color: #1e40af;
+            padding: 15px;
+            border-radius: 12px;
+            margin: 20px 0;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 
@@ -197,15 +207,20 @@
             <p class="subtitle">Verify students before quiz</p>
 
             <div id="start-screen">
+                <div class="info-box">
+                    <strong>ℹ️ Note:</strong> All students show the same QR code. You scan to verify and get a unique
+                    code for each student.
+                </div>
+
                 <div class="instructions">
                     <h3>How to Verify Students:</h3>
                     <ol>
-                        <li>Student opens quiz app and shows QR code on their laptop</li>
+                        <li>Student opens quiz app and shows QR code</li>
                         <li>Click "Start Scanner" below</li>
-                        <li>Point your mobile camera at student's laptop screen</li>
-                        <li>You'll get a 4-digit verification code</li>
-                        <li><strong>Tell the code to the student</strong></li>
-                        <li>Student enters code on laptop to start quiz</li>
+                        <li>Scan student's QR code on laptop screen</li>
+                        <li>System generates unique 4-digit code</li>
+                        <li><strong>Tell the code to student</strong></li>
+                        <li>Student enters code to start quiz</li>
                     </ol>
                 </div>
 
@@ -226,6 +241,7 @@
     </div>
 
     <script>
+        const VALID_STUDENT_QR = "STUDENT_QUIZ_ACCESS_2024";
         let html5QrCode = null;
 
         function startScanner() {
@@ -234,8 +250,8 @@
             document.getElementById('result').classList.add('hidden');
 
             html5QrCode = new Html5Qrcode("reader");
-            
-            html5Q rCode.start(
+
+            html5QrCode.start(
                 { facingMode: "environment" },
                 {
                     fps: 10,
@@ -262,28 +278,24 @@
         }
 
         function onScanSuccess(decodedText) {
-            // Stop scanner after successful scan
+            // Stop scanner
             html5QrCode.stop().then(() => {
                 html5QrCode.clear();
                 document.getElementById('scanner-controls').classList.remove('active');
 
-                // Parse QR data
-                try {
-                    const data = JSON.parse(decodedText);
-
-                    if (data.type === 'student' && data.verificationCode) {
-                        showResult(true, data.verificationCode);
-                    } else {
-                        showResult(false, null);
-                    }
-                } catch {
+                // Check if it's the valid student QR
+                if (decodedText === VALID_STUDENT_QR) {
+                    // Generate random 4-digit code
+                    const verificationCode = Math.floor(1000 + Math.random() * 9000).toString();
+                    showResult(true, verificationCode);
+                } else {
                     showResult(false, null);
                 }
             });
         }
 
         function onScanError(errorMessage) {
-            // Ignore scan errors (happens while scanning)
+            // Ignore scan errors
         }
 
         function showResult(isValid, verificationCode) {
@@ -294,7 +306,7 @@
                 resultDiv.className = 'result success';
                 resultDiv.innerHTML = `
                     <div class="result-icon">✅</div>
-                    <div class="result-text">Student Verified!</div>
+                    <div class="result-text">Student QR Verified!</div>
                     
                     <div class="verification-code">
                         <div class="verification-code-label">Tell student this code:</div>
@@ -303,13 +315,14 @@
                     
                     <div class="instruction-box">
                         <h3>⚠️ Next Steps:</h3>
-                        <p><strong>1.</strong> Tell the student this 4-digit code: <strong>${verificationCode}</strong></p>
-                        <p><strong>2.</strong> Student will enter it on their laptop</p>
-                        <p><strong>3.</strong> Quiz will start automatically after correct code</p>
+                        <p><strong>1.</strong> Tell student: "${verificationCode}"</p>
+                        <p><strong>2.</strong> Student clicks "I Have Verification Code"</p>
+                        <p><strong>3.</strong> Student enters code on laptop</p>
+                        <p><strong>4.</strong> Quiz starts automatically</p>
                     </div>
                     
                     <button class="btn btn-primary" onclick="location.reload()">
-                        ✓ Scan Next Student
+                        ✓ Verify Next Student
                     </button>
                 `;
             } else {
@@ -318,7 +331,8 @@
                     <div class="result-icon">❌</div>
                     <div class="result-text">Invalid QR Code</div>
                     <p style="margin: 15px 0; color: #991b1b;">
-                        This QR code is not valid. Make sure student has opened the correct quiz application.
+                        This is not a valid student QR code.<br>
+                        Make sure student opened the correct quiz link.
                     </p>
                     <button class="btn btn-primary" onclick="startScanner()">
                         Try Again
