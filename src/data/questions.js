@@ -4,604 +4,304 @@
 const questionBank = [
     {
         id: 1,
-        question: "What is the primary goal of Artificial Intelligence?",
-        options: ["To replace human workers", "To simulate human intelligence in machines", "To create faster computers", "To develop new programming languages"],
-        correctAnswer: "To simulate human intelligence in machines"
+        question: "What will be the output of: lst = [1, 2, 3]; print(lst.append(4) or lst)?",
+        options: ["None", "[1, 2, 3, 4]", "[1, 2, 3, 4, None]", "Error"],
+        correctAnswer: "[1, 2, 3, 4]"
     },
     {
         id: 2,
-        question: "Who is considered the father of Artificial Intelligence?",
-        options: ["Alan Turing", "John McCarthy", "Marvin Minsky", "Herbert Simon"],
-        correctAnswer: "John McCarthy"
+        question: "What is the result of: {**{'a': 1}, **{'a': 2, 'b': 3}}?",
+        options: ["{'a': 1, 'b': 3}", "{'a': 2, 'b': 3}", "{'a': [1, 2], 'b': 3}", "Error"],
+        correctAnswer: "{'a': 2, 'b': 3}"
     },
     {
         id: 3,
-        question: "The Turing Test was proposed in which year?",
-        options: ["1956", "1950", "1943", "1965"],
-        correctAnswer: "1950"
+        question: "What does list(map(lambda x: x**2, filter(lambda x: x % 2, [1,2,3,4,5]))) produce?",
+        options: ["[1, 9, 25]", "[4, 16]", "[1, 4, 9, 16, 25]", "[2, 4]"],
+        correctAnswer: "[1, 9, 25]"
     },
     {
         id: 4,
-        question: "Which component of AI deals with understanding and generating human language?",
-        options: ["Computer Vision", "Natural Language Processing", "Robotics", "Expert Systems"],
-        correctAnswer: "Natural Language Processing"
+        question: "Given x = [1, 2, 3]; y = x[:]; y[0] = 99. What is x[0]?",
+        options: ["99", "1", "None", "Error"],
+        correctAnswer: "1"
     },
     {
         id: 5,
-        question: "An agent that can perceive its environment through sensors and act upon it through actuators is called:",
-        options: ["Intelligent Agent", "Passive Agent", "Static Agent", "Observer Agent"],
-        correctAnswer: "Intelligent Agent"
+        question: "What is the output of: print(all([True, 1, 'hello', [1]]))?",
+        options: ["True", "False", "1", "Error"],
+        correctAnswer: "True"
     },
     {
         id: 6,
-        question: "Which of the following is NOT a component of AI?",
-        options: ["Learning", "Manual Programming", "Reasoning", "Problem Solving"],
-        correctAnswer: "Manual Programming"
+        question: "What does {x: x**2 for x in range(5) if x % 2 == 0} produce?",
+        options: ["{0: 0, 2: 4, 4: 16}", "{1: 1, 3: 9}", "{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}", "Error"],
+        correctAnswer: "{0: 0, 2: 4, 4: 16}"
     },
     {
         id: 7,
-        question: "The Dartmouth Conference, which marked the birth of AI as a field, was held in:",
-        options: ["1950", "1943", "1956", "1960"],
-        correctAnswer: "1956"
+        question: "What is the result of: [(x, y) for x in [1, 2] for y in [3, 4]]?",
+        options: ["[(1, 3), (1, 4), (2, 3), (2, 4)]", "[(1, 2), (3, 4)]", "[(1, 3), (2, 4)]", "Error"],
+        correctAnswer: "[(1, 3), (1, 4), (2, 3), (2, 4)]"
     },
     {
         id: 8,
-        question: "What type of agent can operate successfully in a wide variety of environments?",
-        options: ["Simple reflex agent", "Goal-based agent", "Universal agent", "Model-based reflex agent"],
-        correctAnswer: "Universal agent"
+        question: "What will be printed: d = {}; d.setdefault('key', []).append(1); print(d)?",
+        options: ["{'key': []}", "{'key': [1]}", "{}", "Error"],
+        correctAnswer: "{'key': [1]}"
     },
     {
         id: 9,
-        question: "Which AI application is used to identify objects in images?",
-        options: ["Speech Recognition", "Computer Vision", "Expert Systems", "Machine Translation"],
-        correctAnswer: "Computer Vision"
+        question: "What does sorted([3, 1, 4], key=lambda x: -x) return?",
+        options: ["[1, 3, 4]", "[4, 3, 1]", "[-4, -3, -1]", "Error"],
+        correctAnswer: "[4, 3, 1]"
     },
     {
         id: 10,
-        question: "The measure of an agent's success in achieving its goals is called:",
-        options: ["Utility function", "Performance measure", "Goal state", "Heuristic value"],
-        correctAnswer: "Performance measure"
+        question: "What is the output of: print(any([False, 0, '', [], None]))?",
+        options: ["True", "False", "None", "Error"],
+        correctAnswer: "False"
     },
     {
         id: 11,
-        question: "Which search strategy expands the shallowest unexpanded node first?",
-        options: ["Depth-first search", "Breadth-first search", "Uniform cost search", "Greedy search"],
-        correctAnswer: "Breadth-first search"
+        question: "What does list(zip(*[(1, 2), (3, 4), (5, 6)])) produce?",
+        options: ["[(1, 2), (3, 4), (5, 6)]", "[(1, 3, 5), (2, 4, 6)]", "[(1, 2, 3, 4, 5, 6)]", "Error"],
+        correctAnswer: "[(1, 3, 5), (2, 4, 6)]"
     },
     {
         id: 12,
-        question: "What is the main advantage of breadth-first search?",
-        options: ["Uses less memory", "Finds optimal solution if all actions have same cost", "Faster execution time", "Works only on trees"],
-        correctAnswer: "Finds optimal solution if all actions have same cost"
+        question: "What is the result of: s = {1, 2, 3}; s.add(2); len(s)?",
+        options: ["4", "3", "5", "Error"],
+        correctAnswer: "3"
     },
     {
         id: 13,
-        question: "Depth-first search uses which data structure?",
-        options: ["Queue", "Priority Queue", "Stack", "Hash Table"],
-        correctAnswer: "Stack"
+        question: "What does ''.join(map(str, [1, 2, 3])) produce?",
+        options: ["'[1, 2, 3]'", "'123'", "'1 2 3'", "Error"],
+        correctAnswer: "'123'"
     },
     {
         id: 14,
-        question: "Which search algorithm is NOT an uninformed search strategy?",
-        options: ["Breadth-first search", "Depth-first search", "A* search", "Uniform cost search"],
-        correctAnswer: "A* search"
+        question: "What will be the value of x: x = [1]; x = x + [2]; y = x; x += [3]?",
+        options: ["x = [1, 2, 3], y = [1, 2]", "x = [1, 2, 3], y = [1, 2, 3]", "x = [1, 2], y = [1, 2, 3]", "Error"],
+        correctAnswer: "x = [1, 2, 3], y = [1, 2]"
     },
     {
         id: 15,
-        question: "The time complexity of breadth-first search is:",
-        options: ["O(b^d)", "O(d)", "O(b*d)", "O(log d)"],
-        correctAnswer: "O(b^d)"
+        question: "What does dict.fromkeys(['a', 'b', 'c'], 0) create?",
+        options: ["{'a': 0, 'b': 0, 'c': 0}", "['a', 'b', 'c']", "{0: 'a', 0: 'b', 0: 'c'}", "Error"],
+        correctAnswer: "{'a': 0, 'b': 0, 'c': 0}"
     },
     {
         id: 16,
-        question: "What is a major disadvantage of depth-first search?",
-        options: ["High memory requirement", "May not find a solution even if one exists", "Too slow", "Cannot handle graphs"],
-        correctAnswer: "May not find a solution even if one exists"
+        question: "What is the output of: print([1, 2, 3].index(2))?",
+        options: ["2", "1", "[2]", "Error"],
+        correctAnswer: "1"
     },
     {
         id: 17,
-        question: "Informed search strategies use which additional information?",
-        options: ["Problem-specific knowledge", "Random values", "User preferences", "Historical data only"],
-        correctAnswer: "Problem-specific knowledge"
+        question: "What does set('aabbcc') produce?",
+        options: ["{'a', 'b', 'c'}", "{'aa', 'bb', 'cc'}", "{'aabbcc'}", "['a', 'b', 'c']"],
+        correctAnswer: "{'a', 'b', 'c'}"
     },
     {
         id: 18,
-        question: "The evaluation function in A* search is:",
-        options: ["f(n) = h(n)", "f(n) = g(n)", "f(n) = g(n) + h(n)", "f(n) = g(n) - h(n)"],
-        correctAnswer: "f(n) = g(n) + h(n)"
+        question: "What is the result of: [*range(3), *range(3, 6)]?",
+        options: ["[0, 1, 2, 3, 4, 5]", "[range(3), range(3, 6)]", "Error", "[0, 1, 2, 0, 1, 2]"],
+        correctAnswer: "[0, 1, 2, 3, 4, 5]"
     },
     {
         id: 19,
-        question: "Greedy best-first search expands nodes based on:",
-        options: ["Path cost from start", "Estimated cost to goal", "Total cost", "Random selection"],
-        correctAnswer: "Estimated cost to goal"
+        question: "What does ''.join(reversed('hello')) produce?",
+        options: ["'hello'", "'olleh'", "['o', 'l', 'l', 'e', 'h']", "Error"],
+        correctAnswer: "'olleh'"
     },
     {
         id: 20,
-        question: "For A* to be optimal, the heuristic function must be:",
-        options: ["Consistent", "Admissible", "Both admissible and consistent", "Neither admissible nor consistent"],
-        correctAnswer: "Admissible"
+        question: "What will dict(zip(['a', 'b'], [1, 2])) create?",
+        options: ["{'a': 1, 'b': 2}", "[('a', 1), ('b', 2)]", "{'a': [1, 2], 'b': [1, 2]}", "Error"],
+        correctAnswer: "{'a': 1, 'b': 2}"
     },
     {
         id: 21,
-        question: "An admissible heuristic is one that:",
-        options: ["Never overestimates the cost to reach the goal", "Always overestimates the cost", "Gives exact cost", "Is always zero"],
-        correctAnswer: "Never overestimates the cost to reach the goal"
+        question: "What is the output of: print((lambda x, y=2: x * y)(3))?",
+        options: ["6", "5", "Error", "None"],
+        correctAnswer: "6"
     },
     {
         id: 22,
-        question: "Which search algorithm is complete and optimal?",
-        options: ["Depth-first search", "Greedy best-first search", "A* search with admissible heuristic", "Hill climbing"],
-        correctAnswer: "A* search with admissible heuristic"
+        question: "What does list(itertools.chain([1, 2], [3, 4])) require and produce?",
+        options: ["No import needed, [1, 2, 3, 4]", "import itertools, produces [1, 2, 3, 4]", "import itertools, produces [(1, 2), (3, 4)]", "Error without import"],
+        correctAnswer: "import itertools, produces [1, 2, 3, 4]"
     },
     {
         id: 23,
-        question: "Machine Learning is a subset of:",
-        options: ["Data Mining", "Statistics", "Artificial Intelligence", "Deep Learning"],
-        correctAnswer: "Artificial Intelligence"
+        question: "What is the result of: {1: 'a', 2: 'b'}.pop(3, 'default')?",
+        options: ["'default'", "KeyError", "None", "3"],
+        correctAnswer: "'default'"
     },
     {
         id: 24,
-        question: "In supervised learning, the algorithm learns from:",
-        options: ["Unlabeled data", "Labeled training data", "Reinforcement signals", "Random inputs"],
-        correctAnswer: "Labeled training data"
+        question: "What does [x if x > 2 else 0 for x in [1, 2, 3, 4]] produce?",
+        options: ["[0, 0, 3, 4]", "[1, 2, 3, 4]", "[3, 4]", "Error"],
+        correctAnswer: "[0, 0, 3, 4]"
     },
     {
         id: 25,
-        question: "Which of the following is an example of supervised learning?",
-        options: ["K-means clustering", "Email spam classification", "Market basket analysis", "Dimensionality reduction"],
-        correctAnswer: "Email spam classification"
+        question: "What is the output of: print(sum([[1, 2], [3, 4]], []))?",
+        options: ["[1, 2, 3, 4]", "10", "[[1, 2], [3, 4]]", "Error"],
+        correctAnswer: "[1, 2, 3, 4]"
     },
     {
         id: 26,
-        question: "Unsupervised learning deals with:",
-        options: ["Labeled data with known outputs", "Data without predefined labels", "Reward-based learning", "Regression problems only"],
-        correctAnswer: "Data without predefined labels"
+        question: "What does {'a': 1, 'b': 2, 'c': 3}.items() return?",
+        options: ["[('a', 1), ('b', 2), ('c', 3)]", "dict_items view object", "{'a': 1, 'b': 2, 'c': 3}", "(['a', 'b', 'c'], [1, 2, 3])"],
+        correctAnswer: "dict_items view object"
     },
     {
         id: 27,
-        question: "Reinforcement learning is characterized by:",
-        options: ["Learning from labeled examples", "Learning from reward and punishment", "Clustering similar items", "Finding patterns in unlabeled data"],
-        correctAnswer: "Learning from reward and punishment"
+        question: "What is the result of: next(iter([1, 2, 3]))?",
+        options: ["[1, 2, 3]", "1", "3", "Error"],
+        correctAnswer: "1"
     },
     {
         id: 28,
-        question: "The training phase in machine learning involves:",
-        options: ["Deploying the model", "Building the model using training data", "Testing the model", "Collecting new data"],
-        correctAnswer: "Building the model using training data"
+        question: "What does list(filter(None, [0, 1, False, True, '', 'hello'])) produce?",
+        options: ["[1, True, 'hello']", "[0, 1, False, True, '', 'hello']", "[False, True]", "[0, False, '']"],
+        correctAnswer: "[1, True, 'hello']"
     },
     {
         id: 29,
-        question: "Overfitting occurs when a model:",
-        options: ["Performs well on training data but poorly on test data", "Performs poorly on all data", "Is too simple", "Has too few parameters"],
-        correctAnswer: "Performs well on training data but poorly on test data"
+        question: "What is the output of: print({1, 2, 3}.issubset({1, 2, 3, 4}))?",
+        options: ["True", "False", "{1, 2, 3}", "Error"],
+        correctAnswer: "True"
     },
     {
         id: 30,
-        question: "Which metric measures the proportion of correct predictions?",
-        options: ["Precision", "F1-score", "Accuracy", "Recall"],
-        correctAnswer: "Accuracy"
+        question: "What does collections.Counter('aabbcc').most_common(1) return?",
+        options: ["[('a', 2)]", "['a']", "{'a': 2}", "Error without import"],
+        correctAnswer: "[('a', 2)]"
     },
     {
         id: 31,
-        question: "Naïve Bayes classifier is based on:",
-        options: ["Decision trees", "Bayes' theorem", "Neural networks", "Linear algebra"],
-        correctAnswer: "Bayes' theorem"
+        question: "What is the result of: list(enumerate(['a', 'b'], start=1))?",
+        options: ["[(0, 'a'), (1, 'b')]", "[(1, 'a'), (2, 'b')]", "[('a', 1), ('b', 2)]", "Error"],
+        correctAnswer: "[(1, 'a'), (2, 'b')]"
     },
     {
         id: 32,
-        question: "The 'naïve' assumption in Naïve Bayes refers to:",
-        options: ["Simple implementation", "Independence of features", "No training required", "Binary classification only"],
-        correctAnswer: "Independence of features"
+        question: "What does functools.reduce(lambda x, y: x + y, [1, 2, 3, 4]) return?",
+        options: ["10", "[1, 2, 3, 4]", "Error without import", "4"],
+        correctAnswer: "10"
     },
     {
         id: 33,
-        question: "Precision is defined as:",
-        options: ["True Positives / (True Positives + False Positives)", "True Positives / Total Predictions", "True Positives / (True Positives + False Negatives)", "False Positives / Total Predictions"],
-        correctAnswer: "True Positives / (True Positives + False Positives)"
+        question: "What is the output of: print('test'.center(10, '*'))?",
+        options: ["'***test***'", "'test******'", "'***test***'", "'**test****'"],
+        correctAnswer: "'***test***'"
     },
     {
         id: 34,
-        question: "Recall is also known as:",
-        options: ["Specificity", "Precision", "Sensitivity", "Accuracy"],
-        correctAnswer: "Sensitivity"
+        question: "What does list(dict.fromkeys(['a', 'b', 'a', 'c'])) preserve?",
+        options: ["['a', 'b', 'a', 'c']", "['a', 'b', 'c'] in insertion order", "{'a', 'b', 'c'} unordered", "Error"],
+        correctAnswer: "['a', 'b', 'c'] in insertion order"
     },
     {
         id: 35,
-        question: "The F1-score is the harmonic mean of:",
-        options: ["Accuracy and Precision", "Precision and Recall", "Recall and Specificity", "Accuracy and Recall"],
-        correctAnswer: "Precision and Recall"
+        question: "What is the result of: [].append(1) or [1]?",
+        options: ["[1]", "None", "[[1]]", "Error"],
+        correctAnswer: "[1]"
     },
     {
         id: 36,
-        question: "In a confusion matrix, false positives are also called:",
-        options: ["Type I error", "Type II error", "Correct rejection", "Hit"],
-        correctAnswer: "Type I error"
+        question: "What does {(1, 2): 'a', (3, 4): 'b'}[(1, 2)] return?",
+        options: ["'a'", "(1, 2)", "['a']", "Error - lists can't be keys"],
+        correctAnswer: "'a'"
     },
     {
         id: 37,
-        question: "Linear regression is used for:",
-        options: ["Classification tasks", "Predicting continuous values", "Clustering", "Dimensionality reduction"],
-        correctAnswer: "Predicting continuous values"
+        question: "What is the output of: print(int('FF', 16))?",
+        options: ["255", "FF", "15", "Error"],
+        correctAnswer: "255"
     },
     {
         id: 38,
-        question: "The goal of linear regression is to find:",
-        options: ["The best clustering", "The line of best fit", "Decision boundaries", "Maximum likelihood"],
-        correctAnswer: "The line of best fit"
+        question: "What does {1, 2, 3}.symmetric_difference({2, 3, 4}) produce?",
+        options: ["{1, 4}", "{2, 3}", "{1, 2, 3, 4}", "Error"],
+        correctAnswer: "{1, 4}"
     },
     {
         id: 39,
-        question: "Mean Squared Error (MSE) is commonly used in:",
-        options: ["Classification", "Clustering", "Linear Regression", "K-means"],
-        correctAnswer: "Linear Regression"
+        question: "What is the result of: sorted(['10', '2', '30'], key=int)?",
+        options: ["['2', '10', '30']", "['10', '2', '30']", "[2, 10, 30]", "Error"],
+        correctAnswer: "['2', '10', '30']"
     },
     {
         id: 40,
-        question: "Logistic regression is used for:",
-        options: ["Predicting continuous outcomes", "Binary classification", "Clustering data", "Feature extraction"],
-        correctAnswer: "Binary classification"
+        question: "What does [x for x in range(10) if x % 2 == 0 if x % 3 == 0] produce?",
+        options: ["[0, 6]", "[0, 2, 4, 6, 8]", "[0, 3, 6, 9]", "[6]"],
+        correctAnswer: "[0, 6]"
     },
     {
         id: 41,
-        question: "The output of logistic regression is:",
-        options: ["A continuous value", "A probability between 0 and 1", "A cluster label", "A discrete class"],
-        correctAnswer: "A probability between 0 and 1"
+        question: "What is the output of: print(bin(10)[2:])?",
+        options: ["'1010'", "'0b1010'", "'b1010'", "10"],
+        correctAnswer: "'1010'"
     },
     {
         id: 42,
-        question: "The sigmoid function is used in:",
-        options: ["K-means clustering", "Linear regression", "Logistic regression", "PCA"],
-        correctAnswer: "Logistic regression"
+        question: "What does dict(a=1).update(b=2) return?",
+        options: ["{'a': 1, 'b': 2}", "None", "{'b': 2}", "Error"],
+        correctAnswer: "None"
     },
     {
         id: 43,
-        question: "K-means clustering is an example of:",
-        options: ["Supervised learning", "Reinforcement learning", "Unsupervised learning", "Semi-supervised learning"],
-        correctAnswer: "Unsupervised learning"
+        question: "What is the result of: max([1, 2], [1, 3], [2, 1])?",
+        options: ["[2, 1]", "[1, 3]", "3", "Error"],
+        correctAnswer: "[2, 1]"
     },
     {
         id: 44,
-        question: "In K-means clustering, 'K' represents:",
-        options: ["Number of features", "Number of clusters", "Number of iterations", "Number of data points"],
-        correctAnswer: "Number of clusters"
+        question: "What does 'abc'.zfill(5) produce?",
+        options: ["'abc00'", "'00abc'", "'0abc0'", "'abc'"],
+        correctAnswer: "'00abc'"
     },
     {
         id: 45,
-        question: "The K-means algorithm aims to minimize:",
-        options: ["Between-cluster variance", "Within-cluster variance", "Total variance", "Cross-entropy"],
-        correctAnswer: "Within-cluster variance"
+        question: "What is the output of: print(list(reversed(range(3))))?",
+        options: ["[2, 1, 0]", "[0, 1, 2]", "range(2, -1, -1)", "Error"],
+        correctAnswer: "[2, 1, 0]"
     },
     {
         id: 46,
-        question: "Which method is used to determine the optimal number of clusters in K-means?",
-        options: ["Confusion matrix", "Elbow method", "F1-score", "ROC curve"],
-        correctAnswer: "Elbow method"
+        question: "What does {**{'a': 1}, 'a': 2} create?",
+        options: ["{'a': 1}", "{'a': 2}", "{'a': [1, 2]}", "Error"],
+        correctAnswer: "{'a': 2}"
     },
     {
         id: 47,
-        question: "What is the first step in the K-means algorithm?",
-        options: ["Assign points to clusters", "Calculate distances", "Initialize K centroids randomly", "Optimize centroids"],
-        correctAnswer: "Initialize K centroids randomly"
+        question: "What is the result of: list(map(lambda x: x[0], ['ab', 'cd', 'ef']))?",
+        options: ["['a', 'c', 'e']", "['ab', 'cd', 'ef']", "['b', 'd', 'f']", "Error"],
+        correctAnswer: "['a', 'c', 'e']"
     },
     {
         id: 48,
-        question: "Which AI winter occurred in the 1970s?",
-        options: ["First AI winter", "Second AI winter", "Third AI winter", "No AI winter in 1970s"],
-        correctAnswer: "First AI winter"
+        question: "What does '1,2,3'.split(',') produce?",
+        options: ["['1', '2', '3']", "[1, 2, 3]", "'1 2 3'", "['1,2,3']"],
+        correctAnswer: "['1', '2', '3']"
     },
     {
         id: 49,
-        question: "Expert systems were popular during which AI era?",
-        options: ["1950s", "1960s", "1980s", "2000s"],
-        correctAnswer: "1980s"
+        question: "What is the output of: print(pow(2, 3, 5))?",
+        options: ["8", "3", "13", "Error"],
+        correctAnswer: "3"
     },
     {
         id: 50,
-        question: "Which of the following is a rational agent?",
-        options: ["An agent that acts randomly", "An agent that always does the right thing", "An agent that maximizes expected performance", "An agent that learns slowly"],
-        correctAnswer: "An agent that maximizes expected performance"
+        question: "What does dict(enumerate(['a', 'b', 'c'])) create?",
+        options: ["{0: 'a', 1: 'b', 2: 'c'}", "{'a': 0, 'b': 1, 'c': 2}", "[(0, 'a'), (1, 'b'), (2, 'c')]", "Error"],
+        correctAnswer: "{0: 'a', 1: 'b', 2: 'c'}"
     },
-    {
-        id: 51,
-        question: "PEAS stands for:",
-        options: ["Performance, Environment, Actuators, Sensors", "Process, Evaluation, Action, State", "Planning, Execution, Analysis, Solution", "Perception, Environment, Action, Search"],
-        correctAnswer: "Performance, Environment, Actuators, Sensors"
-    },
-    {
-        id: 52,
-        question: "A fully observable environment is one where:",
-        options: ["The agent can see the entire state at any time", "The agent has partial information", "The environment changes randomly", "Multiple agents exist"],
-        correctAnswer: "The agent can see the entire state at any time"
-    },
-    {
-        id: 53,
-        question: "Chess is an example of which type of environment?",
-        options: ["Fully observable, deterministic", "Partially observable, stochastic", "Fully observable, stochastic", "Unobservable, deterministic"],
-        correctAnswer: "Fully observable, deterministic"
-    },
-    {
-        id: 54,
-        question: "Multi-agent systems involve:",
-        options: ["Single agent in complex environment", "Multiple agents interacting", "No agents", "Only human agents"],
-        correctAnswer: "Multiple agents interacting"
-    },
-    {
-        id: 55,
-        question: "What future challenge does AI face regarding ethics?",
-        options: ["Faster processors", "Bias and fairness in algorithms", "More data storage", "Better programming languages"],
-        correctAnswer: "Bias and fairness in algorithms"
-    },
-    {
-        id: 56,
-        question: "Strong AI refers to:",
-        options: ["AI with high processing power", "AI with human-level consciousness", "AI for specific tasks", "AI with large datasets"],
-        correctAnswer: "AI with human-level consciousness"
-    },
-    {
-        id: 57,
-        question: "Weak AI is also known as:",
-        options: ["General AI", "Narrow AI", "Super AI", "Conscious AI"],
-        correctAnswer: "Narrow AI"
-    },
-    {
-        id: 58,
-        question: "Which application uses AI for autonomous navigation?",
-        options: ["Email filtering", "Self-driving cars", "Spam detection", "Text completion"],
-        correctAnswer: "Self-driving cars"
-    },
-    {
-        id: 59,
-        question: "In problem-solving, the initial state is:",
-        options: ["Where we want to reach", "Where we start", "A transition between states", "The solution path"],
-        correctAnswer: "Where we start"
-    },
-    {
-        id: 60,
-        question: "A goal test determines:",
-        options: ["The path to solution", "Whether a state is the goal state", "The cost of actions", "Available actions"],
-        correctAnswer: "Whether a state is the goal state"
-    },
-    {
-        id: 61,
-        question: "The branching factor 'b' in search trees represents:",
-        options: ["Depth of tree", "Number of successor nodes", "Number of goal states", "Path cost"],
-        correctAnswer: "Number of successor nodes"
-    },
-    {
-        id: 62,
-        question: "Completeness of a search algorithm means:",
-        options: ["It finds the optimal solution", "It finds a solution if one exists", "It is fast", "It uses less memory"],
-        correctAnswer: "It finds a solution if one exists"
-    },
-    {
-        id: 63,
-        question: "Optimality in search algorithms refers to:",
-        options: ["Speed of execution", "Finding the lowest-cost solution", "Memory efficiency", "Simplicity of implementation"],
-        correctAnswer: "Finding the lowest-cost solution"
-    },
-    {
-        id: 64,
-        question: "Which search algorithm guarantees optimality?",
-        options: ["Depth-first search", "Greedy best-first search", "Uniform cost search", "Depth-limited search"],
-        correctAnswer: "Uniform cost search"
-    },
-    {
-        id: 65,
-        question: "The space complexity of depth-first search is:",
-        options: ["O(b^d)", "O(bd)", "O(bm)", "O(d)"],
-        correctAnswer: "O(bm)"
-    },
-    {
-        id: 66,
-        question: "Iterative deepening search combines benefits of:",
-        options: ["BFS and greedy search", "DFS and BFS", "A* and greedy", "UCS and DFS"],
-        correctAnswer: "DFS and BFS"
-    },
-    {
-        id: 67,
-        question: "Heuristic functions are used to:",
-        options: ["Store data", "Estimate cost to goal", "Execute actions", "Generate random values"],
-        correctAnswer: "Estimate cost to goal"
-    },
-    {
-        id: 68,
-        question: "Manhattan distance is an example of:",
-        options: ["Search algorithm", "Heuristic function", "Cost function", "Goal test"],
-        correctAnswer: "Heuristic function"
-    },
-    {
-        id: 69,
-        question: "In A* search, g(n) represents:",
-        options: ["Heuristic estimate", "Actual cost from start to n", "Total estimated cost", "Cost to goal"],
-        correctAnswer: "Actual cost from start to n"
-    },
-    {
-        id: 70,
-        question: "In A* search, h(n) represents:",
-        options: ["Cost from start", "Estimated cost from n to goal", "Total path cost", "Branching factor"],
-        correctAnswer: "Estimated cost from n to goal"
-    },
-    {
-        id: 71,
-        question: "Consistency in heuristics means:",
-        options: ["h(n) is always zero", "h(n) ≤ c(n,a,n') + h(n')", "h(n) is always maximum", "h(n) equals g(n)"],
-        correctAnswer: "h(n) ≤ c(n,a,n') + h(n')"
-    },
-    {
-        id: 72,
-        question: "Which learning type requires a teacher or supervisor?",
-        options: ["Unsupervised learning", "Supervised learning", "Reinforcement learning", "Transfer learning"],
-        correctAnswer: "Supervised learning"
-    },
-    {
-        id: 73,
-        question: "Classification is different from regression because:",
-        options: ["Classification predicts categories", "Classification uses more data", "Classification is faster", "Classification needs no training"],
-        correctAnswer: "Classification predicts categories"
-    },
-    {
-        id: 74,
-        question: "A decision tree is an example of:",
-        options: ["Unsupervised algorithm", "Supervised algorithm", "Clustering algorithm", "Dimensionality reduction"],
-        correctAnswer: "Supervised algorithm"
-    },
-    {
-        id: 75,
-        question: "The bias-variance tradeoff refers to:",
-        options: ["Speed vs accuracy", "Simplicity vs complexity", "Error from wrong assumptions vs sensitivity to data", "Training vs testing"],
-        correctAnswer: "Error from wrong assumptions vs sensitivity to data"
-    },
-    {
-        id: 76,
-        question: "Cross-validation is used to:",
-        options: ["Clean data", "Assess model performance", "Increase data size", "Remove outliers"],
-        correctAnswer: "Assess model performance"
-    },
-    {
-        id: 77,
-        question: "The ROC curve plots:",
-        options: ["Precision vs Recall", "True Positive Rate vs False Positive Rate", "Accuracy vs Error", "Training vs Testing"],
-        correctAnswer: "True Positive Rate vs False Positive Rate"
-    },
-    {
-        id: 78,
-        question: "AUC stands for:",
-        options: ["Average Under Curve", "Area Under Curve", "Accuracy Under Classification", "Algorithm Under Computation"],
-        correctAnswer: "Area Under Curve"
-    },
-    {
-        id: 79,
-        question: "Feature scaling is important for:",
-        options: ["Decision trees", "Algorithms sensitive to magnitude", "Naïve Bayes", "Random forests"],
-        correctAnswer: "Algorithms sensitive to magnitude"
-    },
-    {
-        id: 80,
-        question: "Gradient descent is used for:",
-        options: ["Classification", "Optimization", "Clustering", "Feature selection"],
-        correctAnswer: "Optimization"
-    },
-    {
-        id: 81,
-        question: "The learning rate in gradient descent controls:",
-        options: ["Number of iterations", "Step size in parameter updates", "Number of features", "Model complexity"],
-        correctAnswer: "Step size in parameter updates"
-    },
-    {
-        id: 82,
-        question: "Regularization is used to:",
-        options: ["Increase model complexity", "Prevent overfitting", "Speed up training", "Add more features"],
-        correctAnswer: "Prevent overfitting"
-    },
-    {
-        id: 83,
-        question: "L1 regularization is also called:",
-        options: ["Ridge", "Lasso", "Elastic Net", "Dropout"],
-        correctAnswer: "Lasso"
-    },
-    {
-        id: 84,
-        question: "L2 regularization is also called:",
-        options: ["Lasso", "Ridge", "Elastic Net", "Dropout"],
-        correctAnswer: "Ridge"
-    },
-    {
-        id: 85,
-        question: "In K-means, convergence occurs when:",
-        options: ["K reaches maximum", "Centroids stop changing significantly", "All points are in one cluster", "Error is zero"],
-        correctAnswer: "Centroids stop changing significantly"
-    },
-    {
-        id: 86,
-        question: "Which distance metric is commonly used in K-means?",
-        options: ["Manhattan distance", "Cosine similarity", "Euclidean distance", "Hamming distance"],
-        correctAnswer: "Euclidean distance"
-    },
-    {
-        id: 87,
-        question: "A limitation of K-means is:",
-        options: ["Cannot handle large datasets", "Sensitive to initial centroid positions", "Only works with binary data", "Requires labeled data"],
-        correctAnswer: "Sensitive to initial centroid positions"
-    },
-    {
-        id: 88,
-        question: "Silhouette score measures:",
-        options: ["Classification accuracy", "Cluster quality", "Regression error", "Training speed"],
-        correctAnswer: "Cluster quality"
-    },
-    {
-        id: 89,
-        question: "In Naïve Bayes, P(A|B) is calculated using:",
-        options: ["P(A|B) = P(B|A) * P(A) / P(B)", "P(A|B) = P(A) + P(B)", "P(A|B) = P(A) * P(B)", "P(A|B) = P(B) - P(A)"],
-        correctAnswer: "P(A|B) = P(B|A) * P(A) / P(B)"
-    },
-    {
-        id: 90,
-        question: "Zero probability problem in Naïve Bayes is solved by:",
-        options: ["Removing features", "Laplace smoothing", "Adding more data", "Using different algorithm"],
-        correctAnswer: "Laplace smoothing"
-    },
-    {
-        id: 91,
-        question: "The coefficient in linear regression represents:",
-        options: ["Error term", "Slope of the line", "Intercept", "Data point"],
-        correctAnswer: "Slope of the line"
-    },
-    {
-        id: 92,
-        question: "R-squared in regression measures:",
-        options: ["Error", "Goodness of fit", "Speed", "Complexity"],
-        correctAnswer: "Goodness of fit"
-    },
-    {
-        id: 93,
-        question: "In logistic regression, the decision boundary is:",
-        options: ["Always linear", "Always curved", "Can be linear or non-linear depending on features", "Random"],
-        correctAnswer: "Can be linear or non-linear depending on features"
-    },
-    {
-        id: 94,
-        question: "Log loss (cross-entropy) is used in:",
-        options: ["K-means", "Linear regression", "Logistic regression", "PCA"],
-        correctAnswer: "Logistic regression"
-    },
-    {
-        id: 95,
-        question: "The odds ratio in logistic regression is:",
-        options: ["Probability of success / Probability of failure", "True Positives / False Positives", "Accuracy / Error", "Precision / Recall"],
-        correctAnswer: "Probability of success / Probability of failure"
-    },
-    {
-        id: 96,
-        question: "Which agent architecture uses condition-action rules?",
-        options: ["Learning agent", "Simple reflex agent", "Utility-based agent", "Goal-based agent"],
-        correctAnswer: "Simple reflex agent"
-    },
-    {
-        id: 97,
-        question: "A utility-based agent makes decisions based on:",
-        options: ["Rules only", "Goals only", "Maximizing utility function", "Random choice"],
-        correctAnswer: "Maximizing utility function"
-    },
-    {
-        id: 98,
-        question: "Model-based agents maintain:",
-        options: ["No internal state", "Internal state of the world", "Only rules", "Only goals"],
-        correctAnswer: "Internal state of the world"
-    },
-    {
-        id: 99,
-        question: "Learning agents improve performance through:",
-        options: ["More memory", "Experience over time", "Faster processors", "More sensors"],
-        correctAnswer: "Experience over time"
-    },
-    {
-        id: 100,
-        question: "The performance element in a learning agent is responsible for:",
-        options: ["Selecting actions", "Generating feedback", "Suggesting improvements", "Determining problems"],
-        correctAnswer: "Selecting actions"
-    }
 ];
 
 export default questionBank;
