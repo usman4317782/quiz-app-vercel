@@ -84,38 +84,75 @@
         }
 
         .result {
-            padding: 20px;
-            border-radius: 12px;
+            padding: 30px;
+            border-radius: 16px;
             margin: 20px 0;
             text-align: center;
         }
 
         .result.success {
-            background: #d1fae5;
-            border: 2px solid #10b981;
-            color: #065f46;
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            border: 3px solid #10b981;
         }
 
         .result.error {
-            background: #fee2e2;
-            border: 2px solid #ef4444;
-            color: #991b1b;
+            background: linear-gradient(135deg, #fee2e2, #fecaca);
+            border: 3px solid #ef4444;
         }
 
         .result-icon {
-            font-size: 3rem;
-            margin-bottom: 10px;
+            font-size: 4rem;
+            margin-bottom: 15px;
         }
 
         .result-text {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 5px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #1f2937;
         }
 
-        .result-detail {
+        .verification-code {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            margin: 25px 0;
+            border: 3px dashed #4f46e5;
+        }
+
+        .verification-code-label {
             font-size: 0.9rem;
-            opacity: 0.8;
+            color: #666;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .verification-code-value {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #4f46e5;
+            letter-spacing: 15px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .instruction-box {
+            background: #fef3c7;
+            border: 2px solid #f59e0b;
+            border-radius: 12px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .instruction-box h3 {
+            color: #92400e;
+            margin-bottom: 10px;
+        }
+
+        .instruction-box p {
+            color: #78350f;
+            line-height: 1.6;
+            margin: 5px 0;
         }
 
         .instructions {
@@ -157,18 +194,18 @@
     <div class="container">
         <div class="card">
             <h1>🔐 Administrator Scanner</h1>
-            <p class="subtitle">Scan student QR codes to verify</p>
+            <p class="subtitle">Verify students before quiz</p>
 
             <div id="start-screen">
                 <div class="instructions">
-                    <h3>How to Use:</h3>
+                    <h3>How to Verify Students:</h3>
                     <ol>
-                        <li>Ask student to open the quiz app on their laptop</li>
-                        <li>Student's laptop will display a QR code</li>
+                        <li>Student opens quiz app and shows QR code on their laptop</li>
                         <li>Click "Start Scanner" below</li>
-                        <li>Point your mobile camera at the student's laptop screen</li>
-                        <li>QR code will be scanned automatically</li>
-                        <li>You'll see if it matches the admin verification code</li>
+                        <li>Point your mobile camera at student's laptop screen</li>
+                        <li>You'll get a 4-digit verification code</li>
+                        <li><strong>Tell the code to the student</strong></li>
+                        <li>Student enters code on laptop to start quiz</li>
                     </ol>
                 </div>
 
@@ -189,7 +226,6 @@
     </div>
 
     <script>
-        const ADMIN_VERIFICATION_CODE = "QUIZ_ADMIN_MASTER_2024_VERIFICATION_KEY";
         let html5QrCode = null;
 
         function startScanner() {
@@ -198,8 +234,8 @@
             document.getElementById('result').classList.add('hidden');
 
             html5QrCode = new Html5Qrcode("reader");
-
-            html5QrCode.start(
+            
+            html5Q rCode.start(
                 { facingMode: "environment" },
                 {
                     fps: 10,
@@ -231,11 +267,17 @@
                 html5QrCode.clear();
                 document.getElementById('scanner-controls').classList.remove('active');
 
-                // Check if scanned code matches admin verification code
-                if (decodedText === ADMIN_VERIFICATION_CODE) {
-                    showResult(true, decodedText);
-                } else {
-                    showResult(false, decodedText);
+                // Parse QR data
+                try {
+                    const data = JSON.parse(decodedText);
+
+                    if (data.type === 'student' && data.verificationCode) {
+                        showResult(true, data.verificationCode);
+                    } else {
+                        showResult(false, null);
+                    }
+                } catch {
+                    showResult(false, null);
                 }
             });
         }
@@ -244,37 +286,45 @@
             // Ignore scan errors (happens while scanning)
         }
 
-        function showResult(isValid, scannedCode) {
+        function showResult(isValid, verificationCode) {
             const resultDiv = document.getElementById('result');
             resultDiv.classList.remove('hidden');
 
-            if (isValid) {
+            if (isValid && verificationCode) {
                 resultDiv.className = 'result success';
                 resultDiv.innerHTML = `
                     <div class="result-icon">✅</div>
-                    <div class="result-text">Verification Successful!</div>
-                    <div class="result-detail">Student QR code matches admin verification.<br>Tell the student to click "Start Quiz".</div>
+                    <div class="result-text">Student Verified!</div>
+                    
+                    <div class="verification-code">
+                        <div class="verification-code-label">Tell student this code:</div>
+                        <div class="verification-code-value">${verificationCode}</div>
+                    </div>
+                    
+                    <div class="instruction-box">
+                        <h3>⚠️ Next Steps:</h3>
+                        <p><strong>1.</strong> Tell the student this 4-digit code: <strong>${verificationCode}</strong></p>
+                        <p><strong>2.</strong> Student will enter it on their laptop</p>
+                        <p><strong>3.</strong> Quiz will start automatically after correct code</p>
+                    </div>
+                    
+                    <button class="btn btn-primary" onclick="location.reload()">
+                        ✓ Scan Next Student
+                    </button>
                 `;
             } else {
                 resultDiv.className = 'result error';
                 resultDiv.innerHTML = `
                     <div class="result-icon">❌</div>
-                    <div class="result-text">Verification Failed</div>
-                    <div class="result-detail">QR code does not match.<br>Student may have wrong QR code.</div>
+                    <div class="result-text">Invalid QR Code</div>
+                    <p style="margin: 15px 0; color: #991b1b;">
+                        This QR code is not valid. Make sure student has opened the correct quiz application.
+                    </p>
+                    <button class="btn btn-primary" onclick="startScanner()">
+                        Try Again
+                    </button>
                 `;
             }
-
-            // Show button to scan again
-            setTimeout(() => {
-                const scanAgainBtn = document.createElement('button');
-                scanAgainBtn.className = 'btn btn-primary';
-                scanAgainBtn.textContent = '📷 Scan Another Student';
-                scanAgainBtn.onclick = () => {
-                    resultDiv.classList.add('hidden');
-                    startScanner();
-                };
-                resultDiv.appendChild(scanAgainBtn);
-            }, 100);
         }
     </script>
 </body>

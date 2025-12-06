@@ -1,40 +1,41 @@
 // Static Admin QR Code Configuration
-// This is the master verification code that admin shows to students
-
 export const ADMIN_STATIC_QR_CODE = "QUIZ_ADMIN_MASTER_2024_VERIFICATION_KEY";
 
 /**
- * Verify if scanned QR matches the admin's static code
- * @param {string} scannedData 
- * @returns {boolean}
+ * Generate a unique verification code for student session
+ * @returns {string} 4-digit verification code
  */
-export const verifyStaticAdminQR = (scannedData) => {
-    return scannedData === ADMIN_STATIC_QR_CODE;
+export const generateVerificationCode = () => {
+    return Math.floor(1000 + Math.random() * 9000).toString();
 };
 
 /**
- * Generate student QR data (simple version)
- * @param {object} studentInfo 
+ * Generate student QR data with unique verification code
+ * @param {string} verificationCode
  * @returns {string}
  */
-export const generateStudentQRData = (studentInfo) => {
+export const generateStudentQRData = (verificationCode) => {
     return JSON.stringify({
         type: 'student',
-        ...studentInfo,
+        verificationCode: verificationCode,
+        adminKey: ADMIN_STATIC_QR_CODE,
         timestamp: Date.now()
     });
 };
 
 /**
- * Parse QR data
- * @param {string} qrData 
- * @returns {object|null}
+ * Verify if scanned QR matches the admin's static code
+ * @param {string} scannedData 
+ * @returns {object} {valid: boolean, verificationCode: string}
  */
-export const parseQRData = (qrData) => {
+export const verifyStudentQR = (scannedData) => {
     try {
-        return JSON.parse(qrData);
+        const data = JSON.parse(scannedData);
+        return {
+            valid: data.type === 'student' && data.adminKey === ADMIN_STATIC_QR_CODE,
+            verificationCode: data.verificationCode || null
+        };
     } catch {
-        // If not JSON, return as plain string (for admin static code)
-        return qrData;
+        return { valid: false, verificationCode: null };
     }
 };
