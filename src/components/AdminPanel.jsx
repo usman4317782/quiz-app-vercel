@@ -1,171 +1,136 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { QRCodeSVG } from 'qrcode.react';
-import { generateSessionKey, generateAdminQRData } from '../utils/qrAuth';
-import { saveAdminSession, getAdminSession, getVerifiedStudents, clearAdminSession } from '../utils/storage';
-import AdminScanner from './AdminScanner';
+import { generateQuizToken, saveActiveToken, getActiveToken, clearActiveToken } from '../utils/qrAuth';
 import '../App.css';
 import '../QRAuth.css';
 
 const AdminPanel = () => {
-    const [session, setSession] = useState(null);
-    const [qrData, setQrData] = useState(null);
-    const [verifiedStudents, setVerifiedStudents] = useState([]);
-    const [showScanner, setShowScanner] = useState(false);
+    const [currentToken, setCurrentToken] = useState(getActiveToken());
+    const [tokenCreatedTime, setTokenCreatedTime] = useState(null);
 
-    useEffect(() => {
-        // Load existing session if any
-        const existingSession = getAdminSession();
-        if (existingSession) {
-            setSession(existingSession);
-            const qr = generateAdminQRData(existingSession.sessionKey);
-            setQrData(qr);
-            setVerifiedStudents(getVerifiedStudents());
-        }
-    }, []);
-
-    const handleGenerateSession = () => {
-        const sessionKey = generateSessionKey();
-        const timestamp = Date.now();
-
-        saveAdminSession(sessionKey, timestamp);
-
-        const newSession = {
-            sessionKey,
-            timestamp,
-            createdAt: new Date(timestamp).toISOString()
-        };
-
-        setSession(newSession);
-        const qr = generateAdminQRData(sessionKey);
-        setQrData(qr);
-        setVerifiedStudents([]);
+    const handleGenerateToken = () => {
+        const token = generateQuizToken();
+        saveActiveToken(token);
+        setCurrentToken(token);
+        setTokenCreatedTime(new Date().toLocaleTimeString());
     };
 
-    const handleEndSession = () => {
-        if (confirm('Are you sure you want to end this session? All verified students will be cleared.')) {
-            clearAdminSession();
-            setSession(null);
-            setQrData(null);
-            setVerifiedStudents([]);
+    const handleClearToken = () => {
+        if (confirm('Clear current token? Students with old QR code will not be able to access quiz.')) {
+            clearActiveToken();
+            setCurrentToken(null);
+            setTokenCreatedTime(null);
         }
     };
 
-    const handleScanComplete = () => {
-        setShowScanner(false);
-        setVerifiedStudents(getVerifiedStudents());
-    };
+    // Generate QR URL with token
+    const quizURL = currentToken
+        ? `https://usman4317782.github.io/quiz-app-vercel/#/?token=${currentToken}`
+        : '';
 
     return (
-        <div className="admin-container">
-            <div className="admin-header">
-                <h1>🔐 Administrator Panel</h1>
-                <p className="subtitle">Quiz Session Management</p>
-            </div>
-
-            {!session ? (
-                <div className="admin-welcome">
-                    <div className="welcome-icon">👨‍💼</div>
-                    <h2>Welcome, Administrator</h2>
-                    <p>Generate a new session to begin student verification</p>
-
-                    <button
-                        onClick={handleGenerateSession}
-                        className="btn btn-primary btn-large"
-                        style={{ marginTop: '30px' }}
-                    >
-                        ✨ Generate New Session
-                    </button>
-
-                    <div className="admin-instructions" style={{ marginTop: '40px' }}>
-                        <h3>How it works:</h3>
-                        <ol>
-                            <li>Generate a session - you'll get a QR code</li>
-                            <li>Students scan your QR code on their laptops</li>
-                            <li>Students fill their information forms</li>
-                            <li>You scan students' verification QR codes</li>
-                            <li>Provide students with the 4-digit PIN</li>
-                            <li>Students enter PIN and start quiz</li>
-                        </ol>
-                    </div>
+        <div className="screen-container">
+            <div className="card admin-container">
+                <div className="admin-header" style={{ marginBottom: '30px' }}>
+                    <h1>🔐 Admin Panel</h1>
+                    <p className="subtitle">Generate Quiz Start QR Code</p>
                 </div>
-            ) : (
-                <div className="admin-session-active">
-                    <div className="session-info-card">
-                        <h3>📱 Active Session</h3>
-                        <div className="session-details">
-                            <p><strong>Session ID:</strong></p>
-                            <p className="session-id">{session.sessionKey.substring(0, 13)}...</p>
-                            <p><strong>Created:</strong> {new Date(session.timestamp).toLocaleString()}</p>
-                            <p><strong>Verified Students:</strong> {verifiedStudents.length}</p>
+
+                {!currentToken ? (
+                    <div className="admin-welcome">
+                        <div className="welcome-icon">👨‍💼</div>
+                        <h2>Generate Start Token</h2>
+                        <p style={{ marginBottom: '30px' }}>
+                            Click below to create a unique QR code for students to scan
+                        </p>
+
+                        <button
+                            onClick={handleGenerateToken}
+                            className="btn btn-primary btn-large"
+                        >
+                            ✨ Generate Quiz QR Code
+                        </button>
+
+                        <div className="admin-instructions" style={{ marginTop: '40px' }}>
+                            <h3>How it works:</h3>
+                            <ol>
+                                <li><strong>Generate</strong> a unique QR code</li>
+                                <li><strong>Show</strong> the QR code to students</li>
+                                <li>Students <strong>scan</strong> with their phone camera</li>
+                                <li>Quiz <strong>opens automatically</strong> in browser</li>
+                                <li>Each QR code works <strong>only once</strong> per student</li>
+                            </ol>
                         </div>
                     </div>
+                ) : (
+                    <div className="admin-session-active">
+                        <div className="session-info-card">
+                            <h3>📱 Active Quiz Token</h3>
+                            <div className="session-details">
+                                <p><strong>Token:</strong></p>
+                                <p className="session-id">{currentToken}</p>
+                                {tokenCreatedTime && (
+                                    <p><strong>Created:</strong> {tokenCreatedTime}</p>
+                                )}
+                            </div>
+                        </div>
 
-                    <div className="admin-qr-section">
-                        <h3>📲 Your Session QR Code</h3>
-                        <p className="qr-instruction">Students must scan this code to join the session</p>
+                        <div className="admin-qr-section">
+                            <h3>📲 Scan This QR Code</h3>
+                            <p className="qr-instruction">
+                                Students scan this with phone camera to start quiz
+                            </p>
 
-                        <div className="admin-qr-display">
-                            {qrData && (
+                            <div className="admin-qr-display">
                                 <QRCodeSVG
-                                    value={qrData}
-                                    size={280}
+                                    value={quizURL}
+                                    size={300}
                                     level="H"
                                     includeMargin={true}
                                 />
-                            )}
-                        </div>
+                            </div>
 
-                        <p className="qr-hint">Show this screen to students so they can scan</p>
-                    </div>
-
-                    <div className="admin-actions">
-                        <button
-                            onClick={() => setShowScanner(true)}
-                            className="btn btn-primary btn-large"
-                        >
-                            📷 Scan Student QR Code
-                        </button>
-
-                        <button
-                            onClick={handleEndSession}
-                            className="btn btn-danger"
-                            style={{ marginTop: '15px' }}
-                        >
-                            ⏹️ End Session
-                        </button>
-                    </div>
-
-                    {verifiedStudents.length > 0 && (
-                        <div className="verified-students-section">
-                            <h3>✓ Verified Students ({verifiedStudents.length})</h3>
-                            <div className="students-list">
-                                {verifiedStudents.map((student, index) => (
-                                    <div key={index} className="student-card">
-                                        <div className="student-info">
-                                            <p className="student-name">{student.fullName}</p>
-                                            <p className="student-details">
-                                                Roll: {student.rollNumber} | {student.discipline}
-                                            </p>
-                                            <p className="verified-time">
-                                                Verified: {new Date(student.verifiedAt).toLocaleTimeString()}
-                                            </p>
-                                        </div>
-                                        <div className="verified-badge">✓</div>
-                                    </div>
-                                ))}
+                            <div className="qr-hint" style={{ marginTop: '15px', padding: '15px', background: '#f3f4f6', borderRadius: '8px' }}>
+                                <p style={{ fontSize: '0.85rem', wordBreak: 'break-all', color: '#666' }}>
+                                    <strong>URL:</strong> {quizURL}
+                                </p>
                             </div>
                         </div>
-                    )}
-                </div>
-            )}
 
-            {showScanner && session && (
-                <AdminScanner
-                    sessionKey={session.sessionKey}
-                    onClose={() => setShowScanner(false)}
-                    onScanComplete={handleScanComplete}
-                />
-            )}
+                        <div className="admin-instructions" style={{ marginTop: '30px' }}>
+                            <h3>Student Instructions:</h3>
+                            <ol>
+                                <li>Open phone camera app</li>
+                                <li>Point camera at this QR code</li>
+                                <li>Tap the notification/link that appears</li>
+                                <li>Quiz will open in browser automatically</li>
+                            </ol>
+                        </div>
+
+                        <div className="admin-actions" style={{ marginTop: '30px' }}>
+                            <button
+                                onClick={handleGenerateToken}
+                                className="btn btn-primary"
+                            >
+                                🔄 Generate New Token
+                            </button>
+                            <button
+                                onClick={handleClearToken}
+                                className="btn btn-danger"
+                            >
+                                🗑️ Clear Token
+                            </button>
+                        </div>
+
+                        <div className="security-notice" style={{ marginTop: '20px' }}>
+                            <p style={{ fontSize: '0.9rem', color: '#92400e' }}>
+                                <strong>🔒 Security:</strong> Each student can use this QR code only once.
+                                After starting the quiz, they cannot restart even with the same QR code.
+                            </p>
+                        </div>
+                    </div>
+                )}
+            </div>
         </div>
     );
 };
