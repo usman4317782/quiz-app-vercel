@@ -80,19 +80,7 @@ const StartScreen = ({ onStart }) => {
             // Save student info to localStorage
             localStorage.setItem('studentInfo', JSON.stringify(studentInfo));
 
-            // Save verification data for QR generation
-            const { saveVerificationData, getSessionKey } = require('../utils/storage');
-            const sessionKey = getSessionKey();
-
-            if (!sessionKey) {
-                alert('Session not found. Please scan administrator QR code first.');
-                return;
-            }
-
-            const timestamp = Date.now();
-            saveVerificationData(sessionKey, studentInfo, timestamp);
-
-            // Navigate to student QR display instead of quiz
+            // Navigate to quiz
             onStart();
         }
     };

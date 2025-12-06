@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { verifyToken, isQuizStarted, markQuizAsStarted } from '../utils/qrAuth';
+import { isQuizStarted, markQuizAsStarted } from '../utils/qrAuth';
 import '../App.css';
 
 const TokenVerification = () => {
@@ -26,21 +26,16 @@ const TokenVerification = () => {
             return;
         }
 
-        // Verify token (would check against backend in production)
-        // For localStorage approach, we just check if token exists
-        // In reality, admin sets the token, and we verify it matches
-
-        // Since both admin and student are on different devices,
-        // we'll use a simple approach: token format validation
+        // Verify token format
         if (token.startsWith('QZ-') && token.length > 10) {
             // Valid token format
             markQuizAsStarted();
             setStatus('success');
-            setMessage('Access granted! Starting quiz...');
+            setMessage('Access granted! Please fill in your information...');
 
-            // Redirect to quiz after 2 seconds
+            // Redirect to student form after 2 seconds
             setTimeout(() => {
-                navigate('/quiz');
+                navigate('/start');
             }, 2000);
         } else {
             setStatus('error');
