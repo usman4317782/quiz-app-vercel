@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
+import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import ScanAdminQR from './components/ScanAdminQR';
 import StartScreen from './components/StartScreen';
 import StudentQRDisplay from './components/StudentQRDisplay';
@@ -32,11 +32,11 @@ const StudentFlow = () => {
 
 ReactDOM.createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-        <BrowserRouter basename="/quiz-app-vercel">
+        <HashRouter>
             <Routes>
                 {/* Student routes */}
                 <Route path="/" element={<StudentFlow />} />
-                <Route path="/start" element={<StartScreen onStart={() => window.location.href = '/quiz-app-vercel/student-qr'} />} />
+                <Route path="/start" element={<StartScreen onStart={() => window.location.hash = '/student-qr'} />} />
                 <Route path="/student-qr" element={<StudentQRDisplay />} />
                 <Route path="/pin-entry" element={<PINEntry />} />
                 <Route path="/quiz" element={<App />} />
@@ -44,6 +44,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
                 {/* Admin route */}
                 <Route path="/admin" element={<AdminApp />} />
             </Routes>
-        </BrowserRouter>
+        </HashRouter>
     </React.StrictMode>
 );
