@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin QR Scanner</title>
+    <script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 1.8rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        #reader {
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 20px 0;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            margin: 10px 0;
+        }
+
+        .btn-primary {
+            background: #4f46e5;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background: #6b7280;
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .result {
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        .result.success {
+            background: #d1fae5;
+            border: 2px solid #10b981;
+            color: #065f46;
+        }
+
+        .result.error {
+            background: #fee2e2;
+            border: 2px solid #ef4444;
+            color: #991b1b;
+        }
+
+        .result-icon {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .result-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .result-detail {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .instructions {
+            background: #f9fafb;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+        }
+
+        .instructions h3 {
+            color: #4f46e5;
+            margin-bottom: 15px;
+        }
+
+        .instructions ol {
+            padding-left: 20px;
+        }
+
+        .instructions li {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        #scanner-controls {
+            display: none;
+        }
+
+        #scanner-controls.active {
+            display: block;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>🔐 Administrator Scanner</h1>
+            <p class="subtitle">Scan student QR codes to verify</p>
+
+            <div id="start-screen">
+                <div class="instructions">
+                    <h3>How to Use:</h3>
+                    <ol>
+                        <li>Ask student to open the quiz app on their laptop</li>
+                        <li>Student's laptop will display a QR code</li>
+                        <li>Click "Start Scanner" below</li>
+                        <li>Point your mobile camera at the student's laptop screen</li>
+                        <li>QR code will be scanned automatically</li>
+                        <li>You'll see if it matches the admin verification code</li>
+                    </ol>
+                </div>
+
+                <button class="btn btn-primary" onclick="startScanner()">
+                    📷 Start Scanner
+                </button>
+            </div>
+
+            <div id="scanner-controls">
+                <div id="reader"></div>
+                <button class="btn btn-secondary" onclick="stopScanner()">
+                    ⏹️ Stop Scanner
+                </button>
+            </div>
+
+            <div id="result" class="hidden"></div>
+        </div>
+    </div>
+
+    <script>
+        const ADMIN_VERIFICATION_CODE = "QUIZ_ADMIN_MASTER_2024_VERIFICATION_KEY";
+        let html5QrCode = null;
+
+        function startScanner() {
+            document.getElementById('start-screen').classList.add('hidden');
+            document.getElementById('scanner-controls').classList.add('active');
+            document.getElementById('result').classList.add('hidden');
+
+            html5QrCode = new Html5Qrcode("reader");
+
+            html5QrCode.start(
+                { facingMode: "environment" },
+                {
+                    fps: 10,
+                    qrbox: { width: 250, height: 250 }
+                },
+                onScanSuccess,
+                onScanError
+            ).catch(err => {
+                alert("Error starting camera: " + err);
+                stopScanner();
+            });
+        }
+
+        function stopScanner() {
+            if (html5QrCode) {
+                html5QrCode.stop().then(() => {
+                    html5QrCode.clear();
+                    document.getElementById('scanner-controls').classList.remove('active');
+                    document.getElementById('start-screen').classList.remove('hidden');
+                }).catch(err => {
+                    console.error("Error stopping scanner:", err);
+                });
+            }
+        }
+
+        function onScanSuccess(decodedText) {
+            // Stop scanner after successful scan
+            html5QrCode.stop().then(() => {
+                html5QrCode.clear();
+                document.getElementById('scanner-controls').classList.remove('active');
+
+                // Check if scanned code matches admin verification code
+                if (decodedText === ADMIN_VERIFICATION_CODE) {
+                    showResult(true, decodedText);
+                } else {
+                    showResult(false, decodedText);
+                }
+            });
+        }
+
+        function onScanError(errorMessage) {
+            // Ignore scan errors (happens while scanning)
+        }
+
+        function showResult(isValid, scannedCode) {
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+
+            if (isValid) {
+                resultDiv.className = 'result success';
+                resultDiv.innerHTML = `
+                    <div class="result-icon">✅</div>
+                    <div class="result-text">Verification Successful!</div>
+                    <div class="result-detail">Student QR code matches admin verification.<br>Tell the student to click "Start Quiz".</div>
+                `;
+            } else {
+                resultDiv.className = 'result error';
+                resultDiv.innerHTML = `
+                    <div class="result-icon">❌</div>
+                    <div class="result-text">Verification Failed</div>
+                    <div class="result-detail">QR code does not match.<br>Student may have wrong QR code.</div>
+                `;
+            }
+
+            // Show button to scan again
+            setTimeout(() => {
+                const scanAgainBtn = document.createElement('button');
+                scanAgainBtn.className = 'btn btn-primary';
+                scanAgainBtn.textContent = '📷 Scan Another Student';
+                scanAgainBtn.onclick = () => {
+                    resultDiv.classList.add('hidden');
+                    startScanner();
+                };
+                resultDiv.appendChild(scanAgainBtn);
+            }, 100);
+        }
+    </script>
+</body>
+
+</html>
