@@ -1,626 +1,1093 @@
 // Sample question bank structure
 // User should replace this with their 50 questions
+// const questionBank = [
+
 
 const questionBank = [
-    // Week 1: Introduction to Game Programming
+    // ============================================
+    // SECTION 1: Introduction / WWW / Static & Dynamic Websites (30 questions)
+    // ============================================
+
+    // Easy (10 questions)
     {
         id: 1,
-        question: "What is the primary purpose of the game development process?",
-        options: ["To maximize profits quickly", "To systematically transform a concept into a playable experience", "To create the most complex graphics", "To hire the largest team possible"],
-        correctAnswer: "To systematically transform a concept into a playable experience"
+        category: "Introduction to WWW",
+        question: "What does WWW stand for?",
+        options: ["World Wide Web", "Wide World Web", "Web World Wide", "World Web Wide"],
+        correctAnswer: "World Wide Web"
     },
     {
         id: 2,
-        question: "Which phase comes first in the typical game development pipeline?",
-        options: ["Production", "Pre-production", "Post-production", "Alpha testing"],
-        correctAnswer: "Pre-production"
+        category: "Introduction to WWW",
+        question: "Who is credited with inventing the World Wide Web?",
+        options: ["Bill Gates", "Steve Jobs", "Tim Berners-Lee", "Mark Zuckerberg"],
+        correctAnswer: "Tim Berners-Lee"
     },
     {
         id: 3,
-        question: "What is the game designer's primary responsibility?",
-        options: ["Writing all the code", "Creating the visual assets", "Defining game mechanics and player experience", "Managing the budget"],
-        correctAnswer: "Defining game mechanics and player experience"
+        category: "Introduction to WWW",
+        question: "What is a static website?",
+        options: ["A website that requires a database", "A website with fixed content that doesn't change unless manually updated", "A website with animations", "A website that uses JavaScript"],
+        correctAnswer: "A website with fixed content that doesn't change unless manually updated"
     },
     {
         id: 4,
-        question: "In a game development team, who is typically responsible for implementing game logic?",
-        options: ["Sound designer", "Programmer", "Producer", "Artist"],
-        correctAnswer: "Programmer"
+        category: "Introduction to WWW",
+        question: "What protocol is primarily used for transferring web pages?",
+        options: ["FTP", "SMTP", "HTTP", "TCP"],
+        correctAnswer: "HTTP"
     },
     {
         id: 5,
-        question: "What is a major cost limitation in game development?",
-        options: ["Free software availability", "Unlimited team size", "Time, budget, and scope constraints", "Excessive hardware resources"],
-        correctAnswer: "Time, budget, and scope constraints"
+        category: "Introduction to WWW",
+        question: "What is a dynamic website?",
+        options: ["A website with animations", "A website that displays content based on user interaction or database queries", "A website written in HTML only", "A website without CSS"],
+        correctAnswer: "A website that displays content based on user interaction or database queries"
     },
     {
         id: 6,
-        question: "Which role manages schedules and ensures the team meets deadlines?",
-        options: ["Lead programmer", "Producer", "Quality assurance tester", "Level designer"],
-        correctAnswer: "Producer"
+        category: "Markup vs Programming",
+        question: "What is the main difference between markup languages and programming languages?",
+        options: ["Markup languages describe structure, programming languages provide logic", "They are the same", "Markup languages are faster", "Programming languages cannot create websites"],
+        correctAnswer: "Markup languages describe structure, programming languages provide logic"
     },
     {
         id: 7,
-        question: "What does 'scope creep' refer to in game development?",
-        options: ["Improving graphics quality", "Uncontrolled expansion of project features", "Reducing team size", "Optimizing code performance"],
-        correctAnswer: "Uncontrolled expansion of project features"
+        category: "Introduction to WWW",
+        question: "Which of the following is a markup language?",
+        options: ["Python", "HTML", "Java", "C++"],
+        correctAnswer: "HTML"
     },
     {
         id: 8,
-        question: "In a 2D shooter game, what is the core gameplay loop?",
-        options: ["Story cutscenes", "Shoot enemies, avoid damage, progress", "Character customization", "Inventory management"],
-        correctAnswer: "Shoot enemies, avoid damage, progress"
+        category: "Static & Dynamic Websites",
+        question: "Which type of website typically loads faster?",
+        options: ["Dynamic websites", "Static websites", "Both load at the same speed", "It depends on the color scheme"],
+        correctAnswer: "Static websites"
     },
     {
         id: 9,
-        question: "What is the purpose of a game design document (GDD)?",
-        options: ["To write the final code", "To provide a comprehensive blueprint of the game", "To test game performance", "To market the game"],
-        correctAnswer: "To provide a comprehensive blueprint of the game"
+        category: "Introduction to WWW",
+        question: "What does URL stand for?",
+        options: ["Uniform Resource Locator", "Universal Resource Locator", "Uniform Retrieval Locator", "Universal Retrieval Link"],
+        correctAnswer: "Uniform Resource Locator"
     },
     {
         id: 10,
-        question: "Which team member typically creates character models and textures?",
-        options: ["3D/2D Artist", "Programmer", "Sound designer", "Writer"],
-        correctAnswer: "3D/2D Artist"
+        category: "Static & Dynamic Websites",
+        question: "Which technology is commonly used to create dynamic websites?",
+        options: ["Only HTML", "Server-side scripting languages like PHP", "Only CSS", "Paint"],
+        correctAnswer: "Server-side scripting languages like PHP"
     },
 
-    // Week 2: Game Engine Overview & Unity Basics
+    // Medium (10 questions)
     {
         id: 11,
-        question: "What is the primary advantage of using a game engine?",
-        options: ["It writes the game for you", "It provides pre-built systems and tools for development", "It eliminates the need for programmers", "It guarantees commercial success"],
-        correctAnswer: "It provides pre-built systems and tools for development"
+        category: "Introduction to WWW",
+        question: "What year was the World Wide Web invented?",
+        options: ["1989", "1995", "1985", "2000"],
+        correctAnswer: "1989"
     },
     {
         id: 12,
-        question: "In Unity, what file format is typically used for project assets?",
-        options: [".unity", ".asset", "Various formats (PNG, FBX, WAV, etc.)", ".exe"],
-        correctAnswer: "Various formats (PNG, FBX, WAV, etc.)"
+        category: "Static & Dynamic Websites",
+        question: "Which of the following is an advantage of static websites?",
+        options: ["Highly personalized content", "Real-time data updates", "Better security and faster loading", "Complex user interactions"],
+        correctAnswer: "Better security and faster loading"
     },
     {
         id: 13,
-        question: "What does importing assets into Unity accomplish?",
-        options: ["Converts them to Unity-compatible formats", "Deletes the original files", "Automatically creates game logic", "Publishes the game"],
-        correctAnswer: "Converts them to Unity-compatible formats"
+        category: "Markup vs Programming",
+        question: "Can markup languages perform calculations or logic operations?",
+        options: ["Yes, all markup languages can", "No, they only describe content structure", "Only HTML5 can", "Only with plugins"],
+        correctAnswer: "No, they only describe content structure"
     },
     {
         id: 14,
-        question: "Which Unity window displays the visual representation of your game scene?",
-        options: ["Inspector", "Hierarchy", "Scene View", "Console"],
-        correctAnswer: "Scene View"
+        category: "Introduction to WWW",
+        question: "What is the purpose of a web browser?",
+        options: ["To host websites", "To interpret and display web content", "To create websites", "To store databases"],
+        correctAnswer: "To interpret and display web content"
     },
     {
         id: 15,
-        question: "What is the purpose of the Unity Inspector window?",
-        options: ["To write C# scripts", "To view and modify component properties of selected objects", "To play the game", "To import assets"],
-        correctAnswer: "To view and modify component properties of selected objects"
+        category: "Static & Dynamic Websites",
+        question: "Which type of website requires a Content Management System (CMS)?",
+        options: ["Static websites only", "Dynamic websites typically", "Neither type", "Both equally"],
+        correctAnswer: "Dynamic websites typically"
     },
     {
         id: 16,
-        question: "In Unity, what is a GameObject?",
-        options: ["A C# script", "The fundamental object in Unity scenes", "A type of asset", "A rendering technique"],
-        correctAnswer: "The fundamental object in Unity scenes"
+        category: "Introduction to WWW",
+        question: "What does HTTP stand for?",
+        options: ["HyperText Transfer Protocol", "HyperText Translation Protocol", "HighText Transfer Protocol", "HyperText Transmission Process"],
+        correctAnswer: "HyperText Transfer Protocol"
     },
     {
         id: 17,
-        question: "What is the Hierarchy window used for in Unity?",
-        options: ["Displaying all GameObjects in the current scene", "Editing code", "Rendering graphics", "Playing audio"],
-        correctAnswer: "Displaying all GameObjects in the current scene"
+        category: "Markup vs Programming",
+        question: "Which of the following is NOT a characteristic of markup languages?",
+        options: ["Uses tags to define elements", "Describes document structure", "Executes conditional logic", "Formats content presentation"],
+        correctAnswer: "Executes conditional logic"
     },
     {
         id: 18,
-        question: "When creating a new Unity project, what should you consider selecting?",
-        options: ["Only the project name", "Template (2D/3D), project name, and location", "Just the Unity version", "Only the asset packages"],
-        correctAnswer: "Template (2D/3D), project name, and location"
+        category: "Static & Dynamic Websites",
+        question: "What is the main disadvantage of static websites?",
+        options: ["They are too secure", "Content updates require manual changes to HTML files", "They load too quickly", "They are too interactive"],
+        correctAnswer: "Content updates require manual changes to HTML files"
     },
     {
         id: 19,
-        question: "What is the purpose of the Project window in Unity?",
-        options: ["To display scene GameObjects", "To show all project assets and folders", "To debug code", "To configure build settings"],
-        correctAnswer: "To show all project assets and folders"
+        category: "Introduction to WWW",
+        question: "Which organization maintains web standards?",
+        options: ["Microsoft", "W3C (World Wide Web Consortium)", "Google", "Apple"],
+        correctAnswer: "W3C (World Wide Web Consortium)"
     },
     {
         id: 20,
-        question: "In a Solar System simulation project, what would control planetary orbits?",
-        options: ["Materials only", "Scripts with rotation and transform logic", "Lights", "Audio clips"],
-        correctAnswer: "Scripts with rotation and transform logic"
+        category: "Static & Dynamic Websites",
+        question: "Which scenario is best suited for a dynamic website?",
+        options: ["A simple portfolio page", "An e-commerce store with user accounts", "A company's about page", "A digital business card"],
+        correctAnswer: "An e-commerce store with user accounts"
     },
 
-    // Week 3: Materials, Lights, Behaviors, Cameras, Audio, Prefabs
+    // Hard (10 questions)
     {
         id: 21,
-        question: "What does a Material define in Unity?",
-        options: ["Object behavior", "Surface appearance and properties", "Object position", "Audio settings"],
-        correctAnswer: "Surface appearance and properties"
+        category: "Introduction to WWW",
+        question: "What is the difference between the Internet and the World Wide Web?",
+        options: ["They are the same thing", "The Internet is the infrastructure; the Web is a service that runs on it", "The Web came before the Internet", "The Internet is only for email"],
+        correctAnswer: "The Internet is the infrastructure; the Web is a service that runs on it"
     },
     {
         id: 22,
-        question: "Which light type in Unity simulates sunlight?",
-        options: ["Point Light", "Spot Light", "Directional Light", "Area Light"],
-        correctAnswer: "Directional Light"
+        category: "Static & Dynamic Websites",
+        question: "What technology combination is commonly referred to as the LAMP stack for dynamic websites?",
+        options: ["Linux, Apache, MySQL, PHP", "Linux, Angular, MongoDB, Python", "Linux, Apache, MSSQL, Perl", "Linux, AWS, MySQL, PHP"],
+        correctAnswer: "Linux, Apache, MySQL, PHP"
     },
     {
         id: 23,
-        question: "What is the purpose of a Prefab in Unity?",
-        options: ["To store reusable GameObject templates", "To compile C# code", "To render shadows", "To play audio"],
-        correctAnswer: "To store reusable GameObject templates"
+        category: "Markup vs Programming",
+        question: "Why is XML considered a markup language rather than a programming language?",
+        options: ["It is too old", "It describes data structure without executing logic or algorithms", "It cannot be used with databases", "It is only for styling"],
+        correctAnswer: "It describes data structure without executing logic or algorithms"
     },
     {
         id: 24,
-        question: "In Unity, what component is required for an object to emit sound?",
-        options: ["Renderer", "Audio Source", "Collider", "Rigidbody"],
-        correctAnswer: "Audio Source"
+        category: "Introduction to WWW",
+        question: "What is the purpose of the HTTPS protocol?",
+        options: ["To make websites load faster", "To provide encrypted communication over HTTP", "To compress images", "To enable video streaming"],
+        correctAnswer: "To provide encrypted communication over HTTP"
     },
     {
         id: 25,
-        question: "What does the Camera component's 'Field of View' property control?",
-        options: ["Camera position", "The width of the observable world", "Camera rotation speed", "Rendering quality"],
-        correctAnswer: "The width of the observable world"
+        category: "Static & Dynamic Websites",
+        question: "What is server-side rendering in the context of dynamic websites?",
+        options: ["Rendering graphics on the client", "Generating HTML on the server before sending to the client", "Using only CSS for styling", "Compressing files on the server"],
+        correctAnswer: "Generating HTML on the server before sending to the client"
     },
     {
         id: 26,
-        question: "How do you make changes to all instances of a Prefab?",
-        options: ["Edit each instance individually", "Modify the original Prefab asset", "Rewrite the script", "Delete and recreate them"],
-        correctAnswer: "Modify the original Prefab asset"
+        category: "Introduction to WWW",
+        question: "What is the primary function of DNS in the World Wide Web?",
+        options: ["To encrypt data", "To translate domain names to IP addresses", "To store website content", "To compress images"],
+        correctAnswer: "To translate domain names to IP addresses"
     },
     {
         id: 27,
-        question: "What is the main advantage of using Prefabs?",
-        options: ["Faster rendering", "Consistency and easy updates across multiple instances", "Better physics simulation", "Improved audio quality"],
-        correctAnswer: "Consistency and easy updates across multiple instances"
+        category: "Static & Dynamic Websites",
+        question: "What is the JAMstack approach to building websites?",
+        options: ["Java, Angular, MySQL stack", "JavaScript, APIs, Markup - a modern static site architecture", "Just Another Markup Stack", "Java Application Management stack"],
+        correctAnswer: "JavaScript, APIs, Markup - a modern static site architecture"
     },
     {
         id: 28,
-        question: "In Unity, what does 'baking' refer to in the context of lighting?",
-        options: ["Cooking food in-game", "Pre-calculating lighting information for performance", "Real-time shadow calculation", "Audio mixing"],
-        correctAnswer: "Pre-calculating lighting information for performance"
+        category: "Markup vs Programming",
+        question: "Which statement best describes declarative vs imperative paradigms in web development?",
+        options: ["Both are the same", "Declarative (markup) describes what to display; imperative (programming) describes how to achieve it", "Imperative is always better", "Declarative cannot be used in web development"],
+        correctAnswer: "Declarative (markup) describes what to display; imperative (programming) describes how to achieve it"
     },
     {
         id: 29,
-        question: "Which camera projection mode is typically used for 2D games?",
-        options: ["Perspective", "Orthographic", "Isometric", "Fisheye"],
-        correctAnswer: "Orthographic"
+        category: "Introduction to WWW",
+        question: "What is the purpose of web caching?",
+        options: ["To delete old files", "To store copies of web resources to reduce load times and server load", "To encrypt passwords", "To create backups"],
+        correctAnswer: "To store copies of web resources to reduce load times and server load"
     },
     {
         id: 30,
-        question: "What is an Audio Listener component used for?",
-        options: ["Playing sounds", "Recording audio", "Acting as the 'ear' that hears Audio Sources", "Editing audio files"],
-        correctAnswer: "Acting as the 'ear' that hears Audio Sources"
+        category: "Static & Dynamic Websites",
+        question: "What is the concept of Single Page Applications (SPAs)?",
+        options: ["Websites with only one HTML page", "Dynamic web apps that load a single HTML page and dynamically update content", "Static sites with one page", "Websites without navigation"],
+        correctAnswer: "Dynamic web apps that load a single HTML page and dynamically update content"
     },
 
-    // Week 4: Level Design & Game Systems
+    // ============================================
+    // SECTION 2: HTML Basics (50 questions)
+    // ============================================
+
+    // Easy (20 questions)
     {
         id: 31,
-        question: "What is the primary goal of level design?",
-        options: ["Creating beautiful graphics", "Crafting engaging player experiences through space and gameplay", "Writing complex code", "Recording voice acting"],
-        correctAnswer: "Crafting engaging player experiences through space and gameplay"
+        category: "HTML Basics",
+        question: "What does HTML stand for?",
+        options: ["HyperText Markup Language", "HighText Modern Language", "HyperText Modern Language", "HyperTool Markup Language"],
+        correctAnswer: "HyperText Markup Language"
     },
     {
         id: 32,
-        question: "What is 'pacing' in level design?",
-        options: ["The speed at which players run", "Controlling intensity and rhythm of gameplay", "Frame rate optimization", "Audio synchronization"],
-        correctAnswer: "Controlling intensity and rhythm of gameplay"
+        category: "HTML Basics",
+        question: "Which tag is used to create a hyperlink in HTML?",
+        options: ["<link>", "<a>", "<href>", "<hyperlink>"],
+        correctAnswer: "<a>"
     },
     {
         id: 33,
-        question: "What does a game system refer to?",
-        options: ["The computer hardware", "Interconnected rules and mechanics that create gameplay", "The operating system", "Unity's file system"],
-        correctAnswer: "Interconnected rules and mechanics that create gameplay"
+        category: "HTML Basics",
+        question: "What is the correct HTML tag for the largest heading?",
+        options: ["<heading>", "<h6>", "<h1>", "<head>"],
+        correctAnswer: "<h1>"
     },
     {
         id: 34,
-        question: "In level design, what is 'flow'?",
-        options: ["Water physics", "Smooth player progression through the level", "Animation transitions", "Audio volume changes"],
-        correctAnswer: "Smooth player progression through the level"
+        category: "HTML Basics",
+        question: "Which HTML tag is used to insert an image?",
+        options: ["<img>", "<image>", "<picture>", "<src>"],
+        correctAnswer: "<img>"
     },
     {
         id: 35,
-        question: "What is the purpose of taking screenshots during development?",
-        options: ["Only for marketing", "Documentation, debugging, and progress tracking", "Slowing down the game", "Testing audio"],
-        correctAnswer: "Documentation, debugging, and progress tracking"
+        category: "HTML Basics",
+        question: "What is the correct file extension for HTML files?",
+        options: [".txt", ".html", ".xml", ".web"],
+        correctAnswer: ".html"
     },
     {
         id: 36,
-        question: "What is 'environmental storytelling'?",
-        options: ["Dialogue between characters", "Conveying narrative through level design and props", "Written text only", "Audio narration"],
-        correctAnswer: "Conveying narrative through level design and props"
+        category: "HTML Basics",
+        question: "Which tag defines a paragraph in HTML?",
+        options: ["<para>", "<paragraph>", "<p>", "<pg>"],
+        correctAnswer: "<p>"
     },
     {
         id: 37,
-        question: "Which principle suggests players should be taught mechanics before facing challenges?",
-        options: ["Randomization", "Progressive difficulty", "Instant expert mode", "Hidden mechanics"],
-        correctAnswer: "Progressive difficulty"
+        category: "HTML Basics",
+        question: "What is an HTML attribute?",
+        options: ["A closing tag", "Additional information about an element", "A type of CSS", "A JavaScript function"],
+        correctAnswer: "Additional information about an element"
     },
     {
         id: 38,
-        question: "What is a 'choke point' in level design?",
-        options: ["A bug in the code", "A narrow passage that controls player movement and encounters", "A performance bottleneck", "An audio glitch"],
-        correctAnswer: "A narrow passage that controls player movement and encounters"
+        category: "HTML Basics",
+        question: "Which HTML tag is used to create a line break?",
+        options: ["<break>", "<lb>", "<br>", "<newline>"],
+        correctAnswer: "<br>"
     },
     {
         id: 39,
-        question: "What does 'blocking out' a level mean?",
-        options: ["Preventing player access", "Creating a basic layout with simple shapes before detailing", "Deleting sections", "Adding final textures"],
-        correctAnswer: "Creating a basic layout with simple shapes before detailing"
+        category: "HTML Basics",
+        question: "What does the <title> tag define?",
+        options: ["The main heading", "The document title in the browser tab", "A subtitle", "The page footer"],
+        correctAnswer: "The document title in the browser tab"
     },
     {
         id: 40,
-        question: "In game systems, what is 'emergence'?",
-        options: ["Starting the game", "Complex behaviors arising from simple rule interactions", "Loading screens", "Tutorial sequences"],
-        correctAnswer: "Complex behaviors arising from simple rule interactions"
+        category: "HTML Basics",
+        question: "Where is the <head> section located in an HTML document?",
+        options: ["At the end", "Between <html> and <body>", "Inside <body>", "After <body>"],
+        correctAnswer: "Between <html> and <body>"
     },
-
-    // Week 5: Player Setup (Visual, Control, Health, Damage, Fighting)
     {
         id: 41,
-        question: "What component is essential for detecting player input in Unity?",
-        options: ["Renderer", "Input System or Input class", "Audio Source", "Material"],
-        correctAnswer: "Input System or Input class"
+        category: "HTML Basics",
+        question: "Which tag is used to define bold text?",
+        options: ["<bold>", "<b>", "<strong>", "Both <b> and <strong>"],
+        correctAnswer: "Both <b> and <strong>"
     },
     {
         id: 42,
-        question: "In the new Unity Input System, what is an 'Input Action'?",
-        options: ["A type of GameObject", "A defined player input that can be mapped to different controls", "A rendering technique", "An audio effect"],
-        correctAnswer: "A defined player input that can be mapped to different controls"
+        category: "HTML Basics",
+        question: "What is the purpose of the <!DOCTYPE html> declaration?",
+        options: ["To define the HTML version", "To create a comment", "To link CSS", "To import JavaScript"],
+        correctAnswer: "To define the HTML version"
     },
     {
         id: 43,
-        question: "What is typically used to represent player health in code?",
-        options: ["A string variable", "A float or integer variable", "A boolean", "A Material"],
-        correctAnswer: "A float or integer variable"
+        category: "HTML Basics",
+        question: "Which HTML tag creates an unordered list?",
+        options: ["<ol>", "<ul>", "<list>", "<li>"],
+        correctAnswer: "<ul>"
     },
     {
         id: 44,
-        question: "When implementing player damage, what should happen when health reaches zero?",
-        options: ["Nothing", "Player death or game over state", "Health increases", "Game speeds up"],
-        correctAnswer: "Player death or game over state"
+        category: "HTML Basics",
+        question: "What is the correct HTML tag for inserting a horizontal line?",
+        options: ["<line>", "<hl>", "<hr>", "<horizontal>"],
+        correctAnswer: "<hr>"
     },
     {
         id: 45,
-        question: "What is 'invincibility frames' (i-frames) in game design?",
-        options: ["Frames with no graphics", "Brief period after damage where player can't be hurt", "Performance optimization", "Animation frames"],
-        correctAnswer: "Brief period after damage where player can't be hurt"
+        category: "HTML Basics",
+        question: "Which attribute specifies the destination URL of a link?",
+        options: ["link", "href", "src", "url"],
+        correctAnswer: "href"
     },
     {
         id: 46,
-        question: "In a 2D game, which component typically handles player movement?",
-        options: ["Camera", "Rigidbody2D with script control", "Light", "Audio Source"],
-        correctAnswer: "Rigidbody2D with script control"
+        category: "HTML Basics",
+        question: "What is the purpose of HTML editors?",
+        options: ["To browse websites", "To write and edit HTML code", "To compile programs", "To design graphics"],
+        correctAnswer: "To write and edit HTML code"
     },
     {
         id: 47,
-        question: "What is the purpose of a SpriteRenderer component?",
-        options: ["Playing audio", "Displaying 2D images on GameObjects", "Detecting collisions", "Controlling physics"],
-        correctAnswer: "Displaying 2D images on GameObjects"
+        category: "HTML Basics",
+        question: "Which HTML element defines italic text?",
+        options: ["<italic>", "<i>", "<it>", "<em>"],
+        correctAnswer: "<i>"
     },
     {
         id: 48,
-        question: "How would you implement player shooting mechanics?",
-        options: ["Only through animation", "Instantiating projectile prefabs with velocity", "Changing colors", "Playing audio only"],
-        correctAnswer: "Instantiating projectile prefabs with velocity"
+        category: "HTML Basics",
+        question: "What is the correct HTML for creating a checkbox?",
+        options: ["<input type='check'>", "<input type='checkbox'>", "<checkbox>", "<check>"],
+        correctAnswer: "<input type='checkbox'>"
     },
     {
         id: 49,
-        question: "What is 'input buffering'?",
-        options: ["Delaying all inputs", "Storing recent inputs to execute slightly delayed commands", "Preventing any input", "Audio synchronization"],
-        correctAnswer: "Storing recent inputs to execute slightly delayed commands"
+        category: "HTML Basics",
+        question: "Which tag is used to define a table in HTML?",
+        options: ["<table>", "<tab>", "<tbl>", "<grid>"],
+        correctAnswer: "<table>"
     },
     {
         id: 50,
-        question: "For player backup/support mechanics, what system might you implement?",
-        options: ["AI companions or power-ups", "Only visual effects", "Menu screens", "Loading screens"],
-        correctAnswer: "AI companions or power-ups"
+        category: "HTML Basics",
+        question: "What does the alt attribute in an <img> tag provide?",
+        options: ["Alternative image source", "Image alignment", "Alternative text if image cannot be displayed", "Image size"],
+        correctAnswer: "Alternative text if image cannot be displayed"
     },
 
-    // Week 6: Cameras, Level Environment, Game Loop, UI, Audio
+    // Medium (15 questions)
     {
         id: 51,
-        question: "What does 'framing the action' mean in camera design?",
-        options: ["Drawing borders", "Positioning the camera to best show gameplay", "Freezing the game", "Rendering optimization"],
-        correctAnswer: "Positioning the camera to best show gameplay"
+        category: "HTML Basics",
+        question: "What is the difference between HTML elements and HTML tags?",
+        options: ["There is no difference", "Elements include opening tag, content, and closing tag; tags are just the markers", "Elements are newer", "Tags are deprecated"],
+        correctAnswer: "Elements include opening tag, content, and closing tag; tags are just the markers"
     },
     {
         id: 52,
-        question: "What is a 'follow camera'?",
-        options: ["A camera that never moves", "A camera that tracks the player's position", "A stationary security camera", "A camera that follows enemies"],
-        correctAnswer: "A camera that tracks the player's position"
+        category: "HTML Basics",
+        question: "Which HTML5 semantic tag is used for navigation links?",
+        options: ["<navigation>", "<nav>", "<menu>", "<links>"],
+        correctAnswer: "<nav>"
     },
     {
         id: 53,
-        question: "In Unity UI, what is a Canvas?",
-        options: ["A painting tool", "The area where UI elements are placed and rendered", "A 3D model", "An audio mixer"],
-        correctAnswer: "The area where UI elements are placed and rendered"
+        category: "HTML Basics",
+        question: "What is the purpose of the <meta> tag?",
+        options: ["To create metadata", "To define metadata about the HTML document", "To insert images", "To create links"],
+        correctAnswer: "To define metadata about the HTML document"
     },
     {
         id: 54,
-        question: "What is the game loop's primary function?",
-        options: ["Creating graphics", "Managing game state transitions and continuous updates", "Playing audio", "Saving files"],
-        correctAnswer: "Managing game state transitions and continuous updates"
+        category: "HTML Basics",
+        question: "Which attribute makes an input field required in HTML5?",
+        options: ["required='true'", "required", "mandatory", "needed"],
+        correctAnswer: "required"
     },
     {
         id: 55,
-        question: "Which Unity component is used for clickable buttons in UI?",
-        options: ["Collider", "Button component", "Rigidbody", "Camera"],
-        correctAnswer: "Button component"
+        category: "HTML Basics",
+        question: "What is the correct HTML for creating a dropdown list?",
+        options: ["<list>", "<select>", "<dropdown>", "<input type='dropdown'>"],
+        correctAnswer: "<select>"
     },
     {
         id: 56,
-        question: "What is the purpose of a main menu in a game?",
-        options: ["Starting gameplay immediately", "Providing navigation and game options before playing", "Ending the game", "Saving progress only"],
-        correctAnswer: "Providing navigation and game options before playing"
+        category: "HTML Basics",
+        question: "Which HTML tag is used to define a table row?",
+        options: ["<row>", "<tr>", "<td>", "<table-row>"],
+        correctAnswer: "<tr>"
     },
     {
         id: 57,
-        question: "What is 'diegetic' UI?",
-        options: ["UI that exists outside the game world", "UI that exists within the game world and characters can see", "Hidden UI", "Debug UI"],
-        correctAnswer: "UI that exists within the game world and characters can see"
+        category: "HTML Basics",
+        question: "What does the colspan attribute do in a table?",
+        options: ["Sets column width", "Merges cells horizontally", "Colors the column", "Merges cells vertically"],
+        correctAnswer: "Merges cells horizontally"
     },
     {
         id: 58,
-        question: "How can you make a camera smoothly follow a player?",
-        options: ["Directly copying position every frame", "Using interpolation (Lerp) for smooth transitions", "Teleporting randomly", "Not moving it at all"],
-        correctAnswer: "Using interpolation (Lerp) for smooth transitions"
+        category: "HTML Basics",
+        question: "Which HTML5 tag is used to embed video content?",
+        options: ["<movie>", "<media>", "<video>", "<film>"],
+        correctAnswer: "<video>"
     },
     {
         id: 59,
-        question: "What is background music's role in game design?",
-        options: ["It has no purpose", "Setting mood and enhancing player immersion", "Only for credits", "Replacing sound effects"],
-        correctAnswer: "Setting mood and enhancing player immersion"
+        category: "HTML Basics",
+        question: "What is the difference between <strong> and <b> tags?",
+        options: ["No difference", "<strong> indicates semantic importance, <b> is just visual", "<strong> is deprecated", "<b> is HTML5 only"],
+        correctAnswer: "<strong> indicates semantic importance, <b> is just visual"
     },
     {
         id: 60,
-        question: "What does 'level streaming' accomplish?",
-        options: ["Broadcasting gameplay", "Loading and unloading level sections to optimize performance", "Streaming music", "Online multiplayer"],
-        correctAnswer: "Loading and unloading level sections to optimize performance"
+        category: "HTML Basics",
+        question: "Which attribute specifies where to open a linked document?",
+        options: ["window", "target", "open", "location"],
+        correctAnswer: "target"
     },
-
-    // Week 7: C# Programming Basics - Introduction, OOP, Script Anatomy
     {
         id: 61,
-        question: "What programming language is primarily used in Unity?",
-        options: ["Python", "C#", "Java", "JavaScript"],
-        correctAnswer: "C#"
+        category: "HTML Basics",
+        question: "What is the purpose of the <form> tag in HTML?",
+        options: ["To format text", "To collect user input", "To create tables", "To add images"],
+        correctAnswer: "To collect user input"
     },
     {
         id: 62,
-        question: "What is Object-Oriented Programming (OOP)?",
-        options: ["Programming only with objects in scenes", "A paradigm organizing code into objects with properties and methods", "A rendering technique", "A type of game design"],
-        correctAnswer: "A paradigm organizing code into objects with properties and methods"
+        category: "HTML Basics",
+        question: "Which HTML tag defines table header cells?",
+        options: ["<thead>", "<th>", "<header>", "<td>"],
+        correctAnswer: "<th>"
     },
     {
         id: 63,
-        question: "In C#, what is a class?",
-        options: ["A function", "A blueprint for creating objects", "A variable type", "A game level"],
-        correctAnswer: "A blueprint for creating objects"
+        category: "HTML Basics",
+        question: "What is the correct HTML for creating a text input field?",
+        options: ["<textfield>", "<input type='text'>", "<text>", "<textbox>"],
+        correctAnswer: "<input type='text'>"
     },
     {
         id: 64,
-        question: "What are the main components of a C# script in Unity?",
-        options: ["Only variables", "Using statements, class declaration, variables, and methods", "Only functions", "Only comments"],
-        correctAnswer: "Using statements, class declaration, variables, and methods"
+        category: "HTML Basics",
+        question: "Which HTML standard introduced semantic elements like <article> and <section>?",
+        options: ["HTML 4", "XHTML", "HTML5", "HTML 3"],
+        correctAnswer: "HTML5"
     },
     {
         id: 65,
-        question: "What does 'MonoBehaviour' mean in Unity scripts?",
-        options: ["A type of camera", "The base class for Unity scripts attached to GameObjects", "A rendering setting", "An audio component"],
-        correctAnswer: "The base class for Unity scripts attached to GameObjects"
+        category: "HTML Basics",
+        question: "What does the action attribute in a form specify?",
+        options: ["The button text", "The URL where form data is sent", "The form method", "The form style"],
+        correctAnswer: "The URL where form data is sent"
     },
+
+    // Hard (15 questions)
     {
         id: 66,
-        question: "What is the purpose of the 'using' statement at the top of C# scripts?",
-        options: ["Starting the game", "Importing namespaces to access their classes", "Ending the script", "Creating variables"],
-        correctAnswer: "Importing namespaces to access their classes"
+        category: "HTML Basics",
+        question: "What is the purpose of the data-* attributes in HTML5?",
+        options: ["To store database information", "To store custom data private to the page or application", "To define datatypes", "To validate forms"],
+        correctAnswer: "To store custom data private to the page or application"
     },
     {
         id: 67,
-        question: "What is 'encapsulation' in OOP?",
-        options: ["Wrapping objects in boxes", "Bundling data and methods while hiding internal details", "Creating multiple scripts", "Deleting code"],
-        correctAnswer: "Bundling data and methods while hiding internal details"
+        category: "HTML Basics",
+        question: "Which meta tag is used to make a website responsive?",
+        options: ["<meta responsive='true'>", "<meta name='viewport' content='width=device-width, initial-scale=1.0'>", "<meta type='responsive'>", "<meta mobile='true'>"],
+        correctAnswer: "<meta name='viewport' content='width=device-width, initial-scale=1.0'>"
     },
     {
         id: 68,
-        question: "What is inheritance in object-oriented programming?",
-        options: ["Receiving money from code", "A class acquiring properties and methods from a parent class", "Copying scripts", "Deleting classes"],
-        correctAnswer: "A class acquiring properties and methods from a parent class"
+        category: "HTML Basics",
+        question: "What is the difference between block-level and inline elements?",
+        options: ["No difference", "Block elements start on a new line and take full width; inline elements flow within text", "Inline elements are deprecated", "Block elements are faster"],
+        correctAnswer: "Block elements start on a new line and take full width; inline elements flow within text"
     },
     {
         id: 69,
-        question: "What does 'polymorphism' allow in OOP?",
-        options: ["Creating many files", "Objects to be treated as instances of their parent class", "Deleting objects", "Only using one class"],
-        correctAnswer: "Objects to be treated as instances of their parent class"
+        category: "HTML Basics",
+        question: "What is the purpose of the <template> tag in HTML5?",
+        options: ["To create page templates", "To hold HTML content that is not rendered until activated by JavaScript", "To style pages", "To create forms"],
+        correctAnswer: "To hold HTML content that is not rendered until activated by JavaScript"
     },
     {
         id: 70,
-        question: "In a Unity C# script, what makes a method execute when the script starts?",
-        options: ["Naming it Main()", "Naming it Start() or Awake()", "Naming it Begin()", "Any name works"],
-        correctAnswer: "Naming it Start() or Awake()"
+        category: "HTML Basics",
+        question: "Which HTML5 input type provides a color picker?",
+        options: ["<input type='picker'>", "<input type='color'>", "<input type='colorpicker'>", "<input type='rgb'>"],
+        correctAnswer: "<input type='color'>"
     },
-
-    // C# Variables, Conditionals, Loops, Functions, Classes
     {
         id: 71,
-        question: "Which is the correct way to declare an integer variable in C#?",
-        options: ["integer myNum = 5;", "int myNum = 5;", "num myNum = 5;", "var myNum = '5';"],
-        correctAnswer: "int myNum = 5;"
+        category: "HTML Basics",
+        question: "What is the purpose of the defer attribute in a <script> tag?",
+        options: ["To delay script execution", "To execute script after HTML parsing is complete", "To cache the script", "To compress the script"],
+        correctAnswer: "To execute script after HTML parsing is complete"
     },
     {
         id: 72,
-        question: "What data type would you use to store true/false values?",
-        options: ["int", "string", "bool", "float"],
-        correctAnswer: "bool"
+        category: "HTML Basics",
+        question: "What is semantic HTML and why is it important?",
+        options: ["HTML with semantic versioning", "Using HTML elements that clearly describe their meaning for better accessibility and SEO", "A type of HTML editor", "HTML without CSS"],
+        correctAnswer: "Using HTML elements that clearly describe their meaning for better accessibility and SEO"
     },
     {
         id: 73,
-        question: "What is the difference between 'float' and 'int'?",
-        options: ["No difference", "Float stores decimal numbers, int stores whole numbers", "Float is faster", "Int is more accurate"],
-        correctAnswer: "Float stores decimal numbers, int stores whole numbers"
+        category: "HTML Basics",
+        question: "What is the difference between <section> and <div> elements?",
+        options: ["No difference", "<section> is semantic and represents a thematic grouping; <div> is generic", "<div> is deprecated", "<section> cannot contain other elements"],
+        correctAnswer: "<section> is semantic and represents a thematic grouping; <div> is generic"
     },
     {
         id: 74,
-        question: "What does the 'if' statement do?",
-        options: ["Creates loops", "Executes code conditionally based on a boolean expression", "Declares variables", "Ends the program"],
-        correctAnswer: "Executes code conditionally based on a boolean expression"
+        category: "HTML Basics",
+        question: "Which attribute prevents form resubmission on page refresh?",
+        options: ["novalidate", "Using POST method with redirect pattern", "prevent", "nosubmit"],
+        correctAnswer: "Using POST method with redirect pattern"
     },
     {
         id: 75,
-        question: "Which loop continues while a condition is true?",
-        options: ["for loop", "while loop", "do-while loop", "Both while and do-while loops"],
-        correctAnswer: "Both while and do-while loops"
+        category: "HTML Basics",
+        question: "What is the purpose of the <picture> element in HTML5?",
+        options: ["To replace <img>", "To provide responsive images with multiple sources for different scenarios", "To create image galleries", "To compress images"],
+        correctAnswer: "To provide responsive images with multiple sources for different scenarios"
     },
     {
         id: 76,
-        question: "What is the syntax for a 'for' loop in C#?",
-        options: ["for (i = 0; i < 10; i++)", "for (int i = 0; i < 10; i++)", "loop (int i = 0; i < 10)", "repeat (i = 0; i < 10)"],
-        correctAnswer: "for (int i = 0; i < 10; i++)"
+        category: "HTML Basics",
+        question: "What does the contenteditable attribute do?",
+        options: ["Makes content deletable", "Makes an element's content editable by the user", "Validates content", "Encrypts content"],
+        correctAnswer: "Makes an element's content editable by the user"
     },
     {
         id: 77,
-        question: "What is a function (method) in C#?",
-        options: ["A variable", "A reusable block of code that performs a specific task", "A class", "A loop"],
-        correctAnswer: "A reusable block of code that performs a specific task"
+        category: "HTML Basics",
+        question: "What is the purpose of the <fieldset> tag in forms?",
+        options: ["To create input fields", "To group related form elements together", "To validate fields", "To style forms"],
+        correctAnswer: "To group related form elements together"
     },
     {
         id: 78,
-        question: "What does the 'return' keyword do in a function?",
-        options: ["Starts the function", "Sends a value back to the caller and exits the function", "Creates a loop", "Declares a variable"],
-        correctAnswer: "Sends a value back to the caller and exits the function"
+        category: "HTML Basics",
+        question: "Which HTML5 API allows storing data in the browser?",
+        options: ["Cookie API", "Web Storage API (localStorage/sessionStorage)", "Database API", "Cache API"],
+        correctAnswer: "Web Storage API (localStorage/sessionStorage)"
     },
     {
         id: 79,
-        question: "What are function parameters?",
-        options: ["Return values", "Variables passed into a function for it to use", "Function names", "Loop counters"],
-        correctAnswer: "Variables passed into a function for it to use"
+        category: "HTML Basics",
+        question: "What is the difference between rowspan and colspan?",
+        options: ["No difference", "rowspan merges cells vertically; colspan merges cells horizontally", "rowspan is deprecated", "colspan is CSS"],
+        correctAnswer: "rowspan merges cells vertically; colspan merges cells horizontally"
     },
     {
         id: 80,
-        question: "What is the correct way to define a public variable in C#?",
-        options: ["variable int myVar;", "public int myVar;", "int public myVar;", "open int myVar;"],
-        correctAnswer: "public int myVar;"
+        category: "HTML Basics",
+        question: "What is the purpose of the srcset attribute in the <img> tag?",
+        options: ["To set image source", "To specify multiple image sources for responsive images", "To resize images", "To add alt text"],
+        correctAnswer: "To specify multiple image sources for responsive images"
     },
 
-    // C# within Unity
+    // ============================================
+    // SECTION 3: CSS Basics & Properties (60 questions)
+    // ============================================
+
+    // Easy (20 questions)
     {
         id: 81,
-        question: "What is the Update() method used for in Unity?",
-        options: ["Running once at start", "Running code every frame", "Updating the Unity version", "Compiling scripts"],
-        correctAnswer: "Running code every frame"
+        category: "CSS Basics",
+        question: "What does CSS stand for?",
+        options: ["Cascading Style Sheets", "Creative Style Sheets", "Computer Style Sheets", "Colorful Style Sheets"],
+        correctAnswer: "Cascading Style Sheets"
     },
     {
         id: 82,
-        question: "When should you use FixedUpdate() instead of Update()?",
-        options: ["For UI updates", "For physics calculations", "For audio", "For graphics rendering"],
-        correctAnswer: "For physics calculations"
+        category: "CSS Basics",
+        question: "Which HTML tag is used to define internal CSS?",
+        options: ["<css>", "<style>", "<script>", "<link>"],
+        correctAnswer: "<style>"
     },
     {
         id: 83,
-        question: "How do you access a component attached to the same GameObject?",
-        options: ["GameObject.component", "GetComponent<ComponentType>()", "FindComponent()", "Component.Get()"],
-        correctAnswer: "GetComponent<ComponentType>()"
+        category: "CSS Basics",
+        question: "How do you insert a comment in CSS?",
+        options: ["// comment", "<!-- comment -->", "/* comment */", "' comment"],
+        correctAnswer: "/* comment */"
     },
     {
         id: 84,
-        question: "What does 'Time.deltaTime' represent?",
-        options: ["Current game time", "Time since last frame", "Total play time", "Frame rate"],
-        correctAnswer: "Time since last frame"
+        category: "CSS Basics",
+        question: "Which property is used to change the background color?",
+        options: ["bgcolor", "color", "background-color", "bg-color"],
+        correctAnswer: "background-color"
     },
     {
         id: 85,
-        question: "Why should you multiply movement by Time.deltaTime?",
-        options: ["To make it slower", "To make movement frame-rate independent", "To create animations", "To improve graphics"],
-        correctAnswer: "To make movement frame-rate independent"
+        category: "CSS Basics",
+        question: "How do you link an external CSS file?",
+        options: ["<style src='style.css'>", "<link rel='stylesheet' href='style.css'>", "<css src='style.css'>", "<stylesheet>style.css</stylesheet>"],
+        correctAnswer: "<link rel='stylesheet' href='style.css'>"
     },
     {
         id: 86,
-        question: "How do you instantiate (create) a GameObject in Unity using C#?",
-        options: ["new GameObject()", "Instantiate(prefab)", "Create.GameObject()", "GameObject.Make()"],
-        correctAnswer: "Instantiate(prefab)"
+        category: "CSS Basics",
+        question: "Which property is used to change text color?",
+        options: ["text-color", "font-color", "color", "text-style"],
+        correctAnswer: "color"
     },
     {
         id: 87,
-        question: "What does 'Destroy()' do in Unity?",
-        options: ["Closes Unity", "Removes a GameObject or component", "Deletes a script", "Stops the game"],
-        correctAnswer: "Removes a GameObject or component"
+        category: "CSS Basics",
+        question: "What is the correct CSS syntax to make text bold?",
+        options: ["font-style: bold;", "text-weight: bold;", "font-weight: bold;", "text-style: bold;"],
+        correctAnswer: "font-weight: bold;"
     },
     {
         id: 88,
-        question: "How do you find a GameObject by name in Unity?",
-        options: ["GameObject.Search(name)", "GameObject.Find(name)", "FindObject(name)", "GetGameObject(name)"],
-        correctAnswer: "GameObject.Find(name)"
+        category: "CSS Basics",
+        question: "Which CSS property controls the text size?",
+        options: ["text-size", "font-size", "text-style", "font-style"],
+        correctAnswer: "font-size"
     },
     {
         id: 89,
-        question: "What is a Coroutine in Unity?",
-        options: ["A type of loop", "A function that can pause execution and resume later", "A component", "A variable type"],
-        correctAnswer: "A function that can pause execution and resume later"
+        category: "CSS Basics",
+        question: "How do you select an element with id 'demo'?",
+        options: ["#demo", ".demo", "demo", "*demo"],
+        correctAnswer: "#demo"
     },
     {
         id: 90,
-        question: "How do you start a Coroutine?",
-        options: ["RunCoroutine()", "StartCoroutine()", "BeginCoroutine()", "Coroutine.Start()"],
-        correctAnswer: "StartCoroutine()"
+        category: "CSS Basics",
+        question: "How do you select elements with class 'test'?",
+        options: ["#test", ".test", "test", "*test"],
+        correctAnswer: ".test"
     },
-
-    // Additional Advanced Concepts
     {
         id: 91,
-        question: "What is the purpose of the Awake() method in Unity?",
-        options: ["Waking the computer", "Initializing before Start(), useful for references", "Running every frame", "Ending the game"],
-        correctAnswer: "Initializing before Start(), useful for references"
+        category: "CSS Basics",
+        question: "Which property is used to change the font of an element?",
+        options: ["font-family", "font-style", "font-weight", "font-type"],
+        correctAnswer: "font-family"
     },
     {
         id: 92,
-        question: "What is a collision in Unity?",
-        options: ["A programming error", "Physical contact between GameObjects with colliders", "A rendering technique", "A script error"],
-        correctAnswer: "Physical contact between GameObjects with colliders"
+        category: "CSS Basics",
+        question: "How do you make text italic in CSS?",
+        options: ["font-style: italic;", "text-style: italic;", "font-weight: italic;", "text-decoration: italic;"],
+        correctAnswer: "font-style: italic;"
     },
     {
         id: 93,
-        question: "Which method detects collision in Unity?",
-        options: ["OnHit()", "OnCollisionEnter()", "OnTouch()", "OnContact()"],
-        correctAnswer: "OnCollisionEnter()"
+        category: "CSS Basics",
+        question: "Which property is used to add spacing between letters?",
+        options: ["letter-spacing", "text-spacing", "character-spacing", "word-spacing"],
+        correctAnswer: "letter-spacing"
     },
     {
         id: 94,
-        question: "What is a trigger in Unity?",
-        options: ["A button press", "A collider that detects overlap without physical collision", "A timer", "An animation event"],
-        correctAnswer: "A collider that detects overlap without physical collision"
+        category: "CSS Basics",
+        question: "What is the default value of the position property?",
+        options: ["relative", "absolute", "static", "fixed"],
+        correctAnswer: "static"
     },
     {
         id: 95,
-        question: "What is serialization in Unity?",
-        options: ["Creating series of objects", "Converting data to a format for storage or Inspector display", "Serial communication", "Animation sequencing"],
-        correctAnswer: "Converting data to a format for storage or Inspector display"
+        category: "CSS Basics",
+        question: "Which property is used to align text to the center?",
+        options: ["text-align: center;", "align: center;", "text-center;", "align-text: center;"],
+        correctAnswer: "text-align: center;"
     },
     {
         id: 96,
-        question: "What does the [SerializeField] attribute do?",
-        options: ["Makes a field public", "Makes a private field visible in Inspector", "Hides a field", "Deletes a field"],
-        correctAnswer: "Makes a private field visible in Inspector"
+        category: "CSS Basics",
+        question: "How do you add a border in CSS?",
+        options: ["border: 1px solid black;", "border-style: black;", "border-color: 1px;", "border-width: solid;"],
+        correctAnswer: "border: 1px solid black;"
     },
     {
         id: 97,
-        question: "What is a Vector3 in Unity?",
-        options: ["A 3D model", "A structure representing 3D coordinates (x, y, z)", "A camera type", "An audio format"],
-        correctAnswer: "A structure representing 3D coordinates (x, y, z)"
+        category: "CSS Basics",
+        question: "Which property is used to change the width of an element?",
+        options: ["width", "size", "element-width", "box-width"],
+        correctAnswer: "width"
     },
     {
         id: 98,
-        question: "How do you move a GameObject using its Transform component?",
-        options: ["transform.position = newPosition", "GameObject.Move()", "SetPosition()", "transform.MoveObject()"],
-        correctAnswer: "transform.position = newPosition"
+        category: "CSS Basics",
+        question: "What does the margin property do?",
+        options: ["Creates space inside an element", "Creates space outside an element", "Changes element color", "Changes element size"],
+        correctAnswer: "Creates space outside an element"
     },
     {
         id: 99,
-        question: "What is the difference between 'public' and 'private' variables?",
-        options: ["No difference", "Public can be accessed from other classes, private cannot", "Private is faster", "Public is more secure"],
-        correctAnswer: "Public can be accessed from other classes, private cannot"
+        category: "CSS Basics",
+        question: "Which property adds space inside an element's border?",
+        options: ["margin", "padding", "spacing", "border-spacing"],
+        correctAnswer: "padding"
     },
     {
         id: 100,
-        question: "What does the 'static' keyword mean in C#?",
-        options: ["The variable never changes", "The member belongs to the class itself, not instances", "The variable is slow", "The variable is private"],
-        correctAnswer: "The member belongs to the class itself, not instances"
+        category: "CSS Basics",
+        question: "How do you make a list not display bullet points?",
+        options: ["list-style: none;", "list: none;", "bullet: none;", "list-type: none;"],
+        correctAnswer: "list-style: none;"
     },
-];
 
+    // Medium (20 questions)
+    {
+        id: 101,
+        category: "CSS Properties",
+        question: "What is the difference between margin and padding?",
+        options: ["No difference", "Margin is outside the border, padding is inside", "Padding is outside, margin is inside", "Margin is for text only"],
+        correctAnswer: "Margin is outside the border, padding is inside"
+    },
+    {
+        id: 102,
+        category: "CSS Selectors",
+        question: "What does the CSS selector 'div > p' select?",
+        options: ["All p elements", "All p elements inside div at any level", "Only p elements that are direct children of div", "Only the first p in div"],
+        correctAnswer: "Only p elements that are direct children of div"
+    },
+    {
+        id: 103,
+        category: "CSS Properties",
+        question: "Which CSS property controls the stacking order of elements?",
+        options: ["layer", "stack", "z-index", "order"],
+        correctAnswer: "z-index"
+    },
+    {
+        id: 104,
+        category: "CSS Properties",
+        question: "What does the 'display: none;' property do?",
+        options: ["Makes element transparent", "Hides element and removes it from document flow", "Hides element but keeps its space", "Makes element invisible"],
+        correctAnswer: "Hides element and removes it from document flow"
+    },
+    {
+        id: 105,
+        category: "CSS Properties",
+        question: "What is the difference between 'display: none' and 'visibility: hidden'?",
+        options: ["No difference", "display: none removes from flow; visibility: hidden keeps space", "visibility: hidden removes from flow", "display: none is faster"],
+        correctAnswer: "display: none removes from flow; visibility: hidden keeps space"
+    },
+    {
+        id: 106,
+        category: "CSS Backgrounds",
+        question: "Which property sets a background image in CSS?",
+        options: ["background-img", "background-image", "bg-image", "image"],
+        correctAnswer: "background-image"
+    },
+    {
+        id: 107,
+        category: "CSS Properties",
+        question: "What does 'box-sizing: border-box' do?",
+        options: ["Removes borders", "Includes padding and border in element's total width/height", "Only affects borders", "Makes box larger"],
+        correctAnswer: "Includes padding and border in element's total width/height"
+    },
+    {
+        id: 108,
+        category: "CSS Selectors",
+        question: "What does the ':hover' pseudo-class do?",
+        options: ["Selects clicked elements", "Selects elements when mouse is over them", "Selects all elements", "Selects hidden elements"],
+        correctAnswer: "Selects elements when mouse is over them"
+    },
+    {
+        id: 109,
+        category: "CSS Properties",
+        question: "Which CSS property is used to make rounded corners?",
+        options: ["corner-radius", "border-radius", "round-corner", "corner-style"],
+        correctAnswer: "border-radius"
+    },
+    {
+        id: 110,
+        category: "CSS Text Formatting",
+        question: "How do you add a text shadow in CSS?",
+        options: ["shadow: 2px 2px black;", "text-shadow: 2px 2px black;", "font-shadow: 2px 2px;", "text-effect: shadow;"],
+        correctAnswer: "text-shadow: 2px 2px black;"
+    },
+    {
+        id: 111,
+        category: "CSS Properties",
+        question: "What does 'overflow: hidden' do?",
+        options: ["Hides the element", "Clips content that overflows the element's box", "Makes content transparent", "Removes scrollbars"],
+        correctAnswer: "Clips content that overflows the element's box"
+    },
+    {
+        id: 112,
+        category: "CSS Links",
+        question: "Which pseudo-class selects visited links?",
+        options: [":visited", ":link", ":active", ":seen"],
+        correctAnswer: ":visited"
+    },
+    {
+        id: 113,
+        category: "CSS Properties",
+        question: "What is the correct order for the margin shorthand property?",
+        options: ["left right top bottom", "top right bottom left", "top bottom left right", "right left top bottom"],
+        correctAnswer: "top right bottom left"
+    },
+    {
+        id: 114,
+        category: "CSS Fonts",
+        question: "Which unit is relative to the font-size of the parent element?",
+        options: ["px", "em", "pt", "cm"],
+        correctAnswer: "em"
+    },
+    {
+        id: 115,
+        category: "CSS Lists",
+        question: "How do you change the list item marker to square?",
+        options: ["list-type: square;", "list-style-type: square;", "marker: square;", "list-marker: square;"],
+        correctAnswer: "list-style-type: square;"
+    },
+    {
+        id: 116,
+        category: "CSS Tables",
+        question: "Which property collapses table borders into a single border?",
+        options: ["border-collapse: collapse;", "border-style: collapse;", "table-border: collapse;", "border-merge: true;"],
+        correctAnswer: "border-collapse: collapse;"
+    },
+    {
+        id: 117,
+        category: "CSS Backgrounds",
+        question: "How do you prevent a background image from repeating?",
+        options: ["background-repeat: none;", "background-repeat: no-repeat;", "background: no-repeat;", "repeat: none;"],
+        correctAnswer: "background-repeat: no-repeat;"
+    },
+    {
+        id: 118,
+        category: "CSS Properties",
+        question: "What does 'position: relative' do?",
+        options: ["Positions element relative to viewport", "Positions element relative to its normal position", "Removes element from flow", "Fixes element on scroll"],
+        correctAnswer: "Positions element relative to its normal position"
+    },
+    {
+        id: 119,
+        category: "CSS Outlines",
+        question: "What is the difference between border and outline?",
+        options: ["No difference", "Outline doesn't take up space and is drawn outside border", "Border is thicker", "Outline is deprecated"],
+        correctAnswer: "Outline doesn't take up space and is drawn outside border"
+    },
+    {
+        id: 120,
+        category: "CSS Properties",
+        question: "Which property controls the transparency of an element?",
+        options: ["transparency", "opacity", "visibility", "alpha"],
+        correctAnswer: "opacity"
+    },
+
+    // Hard (20 questions)
+    {
+        id: 121,
+        category: "CSS Selectors",
+        question: "What does the CSS selector 'p:nth-child(2)' select?",
+        options: ["Second p element", "All p elements that are 2nd child of their parent", "Second child of p", "First two p elements"],
+        correctAnswer: "All p elements that are 2nd child of their parent"
+    },
+    {
+        id: 122,
+        category: "CSS Properties",
+        question: "What is the CSS specificity order from lowest to highest?",
+        options: ["inline > ID > class > element", "element > class > ID > inline", "class > element > ID > inline", "ID > inline > class > element"],
+        correctAnswer: "element > class > ID > inline"
+    },
+    {
+        id: 123,
+        category: "CSS Layout",
+        question: "What is the purpose of CSS Flexbox?",
+        options: ["To create animations", "To create flexible, responsive layouts", "To style text", "To create tables"],
+        correctAnswer: "To create flexible, responsive layouts"
+    },
+    {
+        id: 124,
+        category: "CSS Properties",
+        question: "What does 'position: absolute' do to an element?",
+        options: ["Keeps element in normal flow", "Removes from flow and positions relative to nearest positioned ancestor", "Makes element fixed", "Centers element"],
+        correctAnswer: "Removes from flow and positions relative to nearest positioned ancestor"
+    },
+    {
+        id: 125,
+        category: "CSS Generated Content",
+        question: "What do the ::before and ::after pseudo-elements do?",
+        options: ["Select previous/next elements", "Insert generated content before/after element's content", "Create animations", "Style first/last elements"],
+        correctAnswer: "Insert generated content before/after element's content"
+    },
+    {
+        id: 126,
+        category: "CSS Lengths",
+        question: "What is the difference between 'em' and 'rem' units?",
+        options: ["No difference", "em is relative to parent; rem is relative to root element", "rem is deprecated", "em is absolute"],
+        correctAnswer: "em is relative to parent; rem is relative to root element"
+    },
+    {
+        id: 127,
+        category: "CSS Dimensions",
+        question: "What does 'width: 100vw' mean?",
+        options: ["100 pixels width", "100% of parent width", "100% of viewport width", "100 em width"],
+        correctAnswer: "100% of viewport width"
+    },
+    {
+        id: 128,
+        category: "CSS Properties",
+        question: "What is the CSS Box Model order from inside to outside?",
+        options: ["padding, content, border, margin", "content, padding, border, margin", "content, border, padding, margin", "margin, border, padding, content"],
+        correctAnswer: "content, padding, border, margin"
+    },
+    {
+        id: 129,
+        category: "CSS Overflow",
+        question: "What does 'overflow: auto' do?",
+        options: ["Always shows scrollbars", "Adds scrollbars only when content overflows", "Hides overflow", "Clips content"],
+        correctAnswer: "Adds scrollbars only when content overflows"
+    },
+    {
+        id: 130,
+        category: "CSS Page Layout",
+        question: "What is CSS Grid used for?",
+        options: ["Creating tables", "Creating two-dimensional layouts with rows and columns", "Styling grids", "Creating graphs"],
+        correctAnswer: "Creating two-dimensional layouts with rows and columns"
+    },
+    {
+        id: 131,
+        category: "CSS Selectors",
+        question: "What does the '+' combinator select in CSS?",
+        options: ["All siblings", "Adjacent sibling (immediately following)", "Child elements", "Parent element"],
+        correctAnswer: "Adjacent sibling (immediately following)"
+    },
+    {
+        id: 132,
+        category: "CSS Properties",
+        question: "What is the purpose of the 'calc()' function in CSS?",
+        options: ["To calculate colors", "To perform mathematical calculations for CSS values", "To count elements", "To validate CSS"],
+        correctAnswer: "To perform mathematical calculations for CSS values"
+    },
+    {
+        id: 133,
+        category: "CSS Backgrounds",
+        question: "What does 'background-attachment: fixed' do?",
+        options: ["Fixes background color", "Makes background image stay fixed during scrolling", "Prevents background changes", "Locks background position"],
+        correctAnswer: "Makes background image stay fixed during scrolling"
+    },
+    {
+        id: 134,
+        category: "CSS Properties",
+        question: "What is the difference between 'inline', 'inline-block', and 'block' display values?",
+        options: ["No difference", "inline flows in text, inline-block allows width/height, block takes full width", "They are deprecated", "All are the same in HTML5"],
+        correctAnswer: "inline flows in text, inline-block allows width/height, block takes full width"
+    },
+    {
+        id: 135,
+        category: "CSS Selectors",
+        question: "What does the '~' general sibling combinator select?",
+        options: ["Direct siblings only", "All siblings that follow", "Previous siblings", "Parent element"],
+        correctAnswer: "All siblings that follow"
+    },
+    {
+        id: 136,
+        category: "CSS Properties",
+        question: "What is CSS Custom Properties (CSS Variables)?",
+        options: ["JavaScript variables", "Reusable values defined with -- prefix", "Browser settings", "CSS errors"],
+        correctAnswer: "Reusable values defined with -- prefix"
+    },
+    {
+        id: 137,
+        category: "CSS Properties",
+        question: "What does the 'transform' property do?",
+        options: ["Changes colors", "Applies 2D or 3D transformations to elements", "Validates CSS", "Creates animations"],
+        correctAnswer: "Applies 2D or 3D transformations to elements"
+    },
+    {
+        id: 138,
+        category: "CSS Properties",
+        question: "What is the purpose of 'will-change' property?",
+        options: ["To change colors", "To hint browser about upcoming changes for optimization", "To validate changes", "To prevent changes"],
+        correctAnswer: "To hint browser about upcoming changes for optimization"
+    },
+    {
+        id: 139,
+        category: "CSS Page Layout",
+        question: "What is the difference between Flexbox and Grid?",
+        options: ["No difference", "Flexbox is one-dimensional (row or column); Grid is two-dimensional", "Grid is deprecated", "Flexbox is older"],
+        correctAnswer: "Flexbox is one-dimensional (row or column); Grid is two-dimensional"
+    },
+    {
+        id: 140,
+        category: "CSS Properties",
+        question: "What does the 'clamp()' function do in CSS?",
+        options: ["Clips content", "Sets a value between a minimum and maximum range", "Validates values", "Compresses images"],
+        correctAnswer: "Sets a value between a minimum and maximum range"
+    },
+
+    // ============================================
+    // SECTION 4: JavaScript Basics (60 questions)
+    // ============================================
+
+    // Easy (20 questions)
+    {
+        id: 141,
+        category: "JavaScript Basics",
+        question: "What is JavaScript?",
+        options: ["A styling language", "A programming language for web interactivity", "A markup language", "A database"],
+        correctAnswer: "A programming language for web interactivity"
+    },
+    {
+        id: 142,
+        category: "JavaScript Basics",
+        question: "How do you write 'Hello World' in an alert box?",
+        options: ["msgBox('Hello World');", "alert('Hello World');", "msg('Hello World');", "alertBox('Hello World');"],
+        correctAnswer: "alert('Hello World');"
+    },
+    {
+        id: 143,
+        category: "JavaScript Basics",
+        question: "How do you create a variable in JavaScript?",
+        options: ["variable x;", "var x;", "v x;", "create x;"],
+        correctAnswer: "var x;"
+    },
+    {
+        id: 144,
+        category: "JavaScript Basics",
+        question: "Which symbol is used for single-line comments in JavaScript?",
+        options: ["//", "/*", "#", "<!--"],
+        correctAnswer: "//"
+    },
+    {
+        id: 145,
+        category: "JavaScript Basics",
+        question: "How do you call a function named 'myFunction'?",
+        options: ["call myFunction()", "myFunction()", "call function myFunction", "execute myFunction()"],
+        correctAnswer: "myFunction()"
+    },
+    {
+        id: 146,
+        category: "JavaScript DOM",
+        question: "What does DOM stand for?",
+        options: ["Document Object Model", "Data Object Model", "Document Orientation Model", "Display Object Model"],
+        correctAnswer: "Document Object Model"
+    },
+    {
+        id: 147,
+        category: "JavaScript Basics",
+        question: "How do you write an IF statement in JavaScript?",
+        options: ["if i = 5", "if (i == 5)", "if i == 5 then", "if i = 5 then"],
+        correctAnswer: "if (i == 5)"
+    },
+    {
+        id: 148,
+        category: "JavaScript Basics",
+        question: "Which operator is used to assign a value to a variable?",
+        options: ["*", "=", "-", "x"],
+        correctAnswer: "="
+    },
+    {
+        id: 149,
+        category: "JavaScript DOM",
+        question: "How do you select an element by its id in JavaScript?",
+        options: ["document.getId('id')", "document.getElementById('id')", "document.selectId('id')", "getElement('id')"],
+        correctAnswer: "document.getElementById('id')"
+    },
+    {
+        id: 150,
+        category: "JavaScript Basics",
+        question: "How do you create a function in JavaScript?",
+        options: ["function myFunction()", "function:myFunction()", "create myFunction()", "def myFunction()"],
+        correctAnswer: "function myFunction()"
+    }
+];
 export default questionBank;
