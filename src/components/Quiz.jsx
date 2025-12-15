@@ -138,25 +138,6 @@ const Quiz = ({ questions, onComplete }) => {
     return (
         <div className="screen-container">
             {/* Security Status Indicator */}
-            <div style={{
-                background: 'linear-gradient(135deg, #1e293b 0%, #334155 100%)',
-                padding: '12px 20px',
-                borderRadius: '12px',
-                marginBottom: '15px',
-                border: '2px solid #475569',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
-            }}>
-                <div style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'space-between',
-                    flexWrap: 'wrap',
-                    gap: '10px'
-                }}>
-
-                </div>
-
-            </div>
 
             <div className="card quiz-card">
                 {/* Header with Progress and Digital Clock Timer */}
