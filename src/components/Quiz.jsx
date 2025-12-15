@@ -153,67 +153,9 @@ const Quiz = ({ questions, onComplete }) => {
                     flexWrap: 'wrap',
                     gap: '10px'
                 }}>
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '8px' }}>
-                        <span style={{ fontSize: '1.2rem' }}>🔒</span>
-                        <span style={{
-                            color: '#10b981',
-                            fontWeight: '600',
-                            fontSize: '0.9rem'
-                        }}>
-                            Security Active
-                        </span>
-                    </div>
 
-                    <div style={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        gap: '15px',
-                        fontSize: '0.75rem',
-                        color: '#94a3b8'
-                    }}>
-                        {deviceInfo && (
-                            <>
-                                <span>📱 {deviceInfo.mobile ? 'Mobile' : deviceInfo.desktop ? 'Desktop' : 'Tablet'}</span>
-                                <span>🌐 {deviceInfo.browser}</span>
-                            </>
-                        )}
-                        <span style={{
-                            color: violations > 0 ? '#ef4444' : '#10b981',
-                            fontWeight: 'bold'
-                        }}>
-                            ⚠️ Violations: {violations}/3
-                        </span>
-                    </div>
                 </div>
 
-                {/* Security Features Active */}
-                <div style={{
-                    marginTop: '8px',
-                    padding: '8px',
-                    background: 'rgba(0, 0, 0, 0.2)',
-                    borderRadius: '6px',
-                    fontSize: '0.7rem',
-                    color: '#cbd5e1',
-                    lineHeight: '1.6'
-                }}>
-                    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '8px' }}>
-                        <span>✓ Tab Switch Detection</span>
-                        <span>✓ Screenshot Prevention</span>
-                        <span>✓ DevTools Detection</span>
-                        {deviceInfo?.mobile && (
-                            <>
-                                <span>✓ Keyboard Detection</span>
-                                <span>✓ Screen Split Detection</span>
-                            </>
-                        )}
-                        {deviceInfo?.desktop && (
-                            <>
-                                <span>✓ Fullscreen Mode</span>
-                                <span>✓ Keyboard Detection</span>
-                            </>
-                        )}
-                    </div>
-                </div>
             </div>
 
             <div className="card quiz-card">
